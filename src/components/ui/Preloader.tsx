@@ -7,8 +7,7 @@ export default function Preloader() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check session storage to only show once per session, or brief entrance
-    const hasLoaded = sessionStorage.getItem("kontrast_preloaded");
+    const hasLoaded = sessionStorage.getItem("nerdvana_preloaded");
     if (hasLoaded) {
       setLoading(false);
       return;
@@ -16,13 +15,13 @@ export default function Preloader() {
 
     const timer = setTimeout(() => {
       setLoading(false);
-      sessionStorage.setItem("kontrast_preloaded", "true");
+      sessionStorage.setItem("nerdvana_preloaded", "true");
     }, 1200);
 
     return () => clearTimeout(timer);
   }, []);
 
-  const letters = "KONTRAST".split("");
+  const letters = "NERDVANA".split("");
 
   return (
     <AnimatePresence>
@@ -34,7 +33,7 @@ export default function Preloader() {
             y: "-100%",
             transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
           }}
-          className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#0B0B0B] text-[#F4F2EE]"
+          className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#0A0A0A] text-[#F5F5F2]"
         >
           <div className="overflow-hidden flex items-center justify-center">
             {letters.map((char, index) => (
@@ -44,7 +43,7 @@ export default function Preloader() {
                 animate={{ y: "0%", opacity: 1 }}
                 transition={{
                   duration: 0.6,
-                  delay: index * 0.05,
+                  delay: index * 0.04,
                   ease: [0.33, 1, 0.68, 1],
                 }}
                 className="text-4xl md:text-6xl font-extrabold tracking-tighter"
@@ -53,15 +52,19 @@ export default function Preloader() {
               </motion.span>
             ))}
           </div>
+          <div className="flex items-center gap-2 mt-4">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#B8FF00]">
+              Technology • Creativity • Growth
+            </span>
+          </div>
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.9, delay: 0.2, ease: "easeInOut" }}
-            className="w-24 h-[2px] bg-[#FF3E00] mt-4 origin-left"
+            className="w-24 h-[2px] bg-[#B8FF00] mt-3 origin-left"
           />
         </motion.div>
       )}
     </AnimatePresence>
   );
 }
-

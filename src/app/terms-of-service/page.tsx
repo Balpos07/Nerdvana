@@ -6,12 +6,12 @@ import { siteSettings } from "@/lib/cms/data";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: `Standard terms of engagement and service conditions for ${siteSettings.fullName}.`,
+  description: `Standard terms of engagement and service conditions for ${siteSettings.parentBrand}.`,
 };
 
 export default function TermsOfServicePage() {
   return (
-    <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen">
+    <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen bg-[#0A0A0A]">
       <div className="max-w-[860px] mx-auto px-6 md:px-12">
         <div className="mb-8">
           <Link
@@ -39,7 +39,7 @@ export default function TermsOfServicePage() {
               1. Engagement & Scope
             </h2>
             <p>
-              These Terms of Service govern all digital design, branding, software engineering, and strategic advisory services provided by {siteSettings.fullName} (&quot;Kontrast&quot;, &quot;we&quot;, &quot;us&quot;) to our clients. Specific deliverables, milestone schedules, and financial compensation are detailed in mutually executed Statements of Work (SOW) or sprint contracts.
+              These Terms of Service govern all technology, software engineering, cloud architecture, branding, UI/UX, and growth marketing services provided by {siteSettings.parentBrand} (including its operating divisions, Nerdvana Technologies and Figures by Nerdvana) to our clients.
             </p>
           </section>
 
@@ -48,25 +48,25 @@ export default function TermsOfServicePage() {
               2. Intellectual Property Rights
             </h2>
             <p>
-              Upon full receipt of contractual remuneration, all bespoke design artifacts, logos, illustrations, typography layouts, and proprietary application code created specifically for the Client shall transfer to the Client. Kontrast retains the right to display completed work in studio portfolios, awards competitions, and case study archives.
+              Upon receipt of full contractual remuneration, all bespoke software code, custom infrastructure scripts, brand marks, and digital assets engineered specifically for the Client shall transfer in full to the Client.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-bold uppercase text-[var(--fg)] mb-3">
-              3. Retainer Cadence & Payments
+              3. Service Divisions & Retainers
             </h2>
             <p>
-              Monthly retainers and sprint fees are billed in advance. Revisions and priority turnarounds adhere strictly to the parameters defined in your selected package (Foundation, Accelerate, or Command). Unused hours or sprint points within a cycle do not roll over to subsequent months unless explicitly arranged.
+              Services delivered under Nerdvana Technologies and Figures by Nerdvana are governed by unified contractual agreements. Sprints and packages are billed on clear milestone or monthly retainers with transparent deliverable criteria.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-bold uppercase text-[var(--fg)] mb-3">
-              4. Governing Law & Jurisdiction
+              4. Governing Law
             </h2>
             <p>
-              These terms shall be governed by and construed in accordance with the laws of the State of New York and the Federal Republic of Nigeria, without giving effect to conflicts of laws principles.
+              These terms are governed in accordance with the laws of the State of New York and the Federal Republic of Nigeria.
             </p>
           </section>
         </div>
@@ -74,4 +74,3 @@ export default function TermsOfServicePage() {
     </div>
   );
 }
-

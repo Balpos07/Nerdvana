@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, CheckCircle2, Quote } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, CheckCircle2, Quote, Cpu, Sparkles } from "lucide-react";
 import { getProjectBySlug, getAllProjects } from "@/lib/cms/sanityClient";
 import { siteSettings } from "@/lib/cms/data";
 
@@ -21,9 +21,7 @@ export async function generateMetadata({ params }: CaseStudyProps): Promise<Meta
   const project = await getProjectBySlug(slug);
 
   if (!project) {
-    return {
-      title: "Project Not Found",
-    };
+    return { title: "Case Study Not Found" };
   }
 
   return {
@@ -50,7 +48,7 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
   const nextProject = allProjects[(currentIndex + 1) % allProjects.length];
 
   return (
-    <article className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen">
+    <article className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen bg-[#0A0A0A]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* Back Link */}
         <div className="mb-8">
@@ -59,15 +57,19 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
             className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to All Projects</span>
+            <span>Back to All Work</span>
           </Link>
         </div>
 
-        {/* Hero Title & Client Bar */}
+        {/* Title Bar */}
         <div className="border-b border-[var(--line)] pb-12 mb-12">
-          <span className="section-label block mb-3 text-[var(--accent)]">
-            CASE STUDY // {project.category}
-          </span>
+          <div className="flex items-center gap-2 mb-3">
+            <span className="section-label text-[var(--accent)]">CASE STUDY //</span>
+            <span className="px-3 py-1 rounded-full bg-[var(--surface)] text-[10px] font-mono text-[var(--accent)] uppercase border border-[var(--line)]">
+              {project.division}
+            </span>
+          </div>
+
           <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-[var(--fg)] mb-8">
             {project.title}
           </h1>
@@ -78,11 +80,11 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
               <span className="font-bold text-[var(--fg)]">{project.client}</span>
             </div>
             <div>
-              <span className="text-[var(--muted)] block mb-1">YEAR</span>
-              <span className="font-bold text-[var(--fg)]">{project.year}</span>
+              <span className="text-[var(--muted)] block mb-1">INDUSTRY</span>
+              <span className="font-bold text-[var(--fg)]">{project.industry}</span>
             </div>
             <div>
-              <span className="text-[var(--muted)] block mb-1">DISCIPLINE</span>
+              <span className="text-[var(--muted)] block mb-1">CATEGORY</span>
               <span className="font-bold text-[var(--fg)]">{project.category}</span>
             </div>
             <div>
@@ -92,7 +94,7 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
           </div>
         </div>
 
-        {/* Full-Bleed Hero Image */}
+        {/* Hero Image */}
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xs border border-[var(--line)] mb-16 md:mb-24 bg-[var(--surface)]">
           <Image
             src={project.heroImage}
@@ -104,10 +106,10 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
           />
         </div>
 
-        {/* Executive Summary & Key Metrics Grid */}
+        {/* Summary & Metrics */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-20 border-b border-[var(--line)] mb-20">
           <div className="lg:col-span-5">
-            <span className="section-label block mb-3">OVERVIEW</span>
+            <span className="section-label block mb-3 text-[var(--accent)]">OVERVIEW</span>
             <h2 className="text-2xl md:text-3xl font-extrabold uppercase tracking-tight text-[var(--fg)]">
               {project.summary}
             </h2>
@@ -117,7 +119,7 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
             {project.metrics.map((m, i) => (
               <div
                 key={i}
-                className="p-4 md:p-6 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between"
+                className="p-5 md:p-6 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between"
               >
                 <span className="text-2xl md:text-3xl font-black font-mono text-[var(--accent)] mb-2">
                   {m.value}
@@ -130,13 +132,13 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
           </div>
         </div>
 
-        {/* Challenge, Approach & Outcome Narrative Sections */}
+        {/* Challenge, Approach & Results */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-20 border-b border-[var(--line)] mb-20">
-          <div className="lg:col-span-4 flex flex-col gap-12">
+          <div className="lg:col-span-5 flex flex-col gap-12">
             <div>
               <span className="section-label block mb-2 text-[var(--accent)]">01 // THE CHALLENGE</span>
-              <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-[var(--fg)] mb-4">
-                The Tension
+              <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-[var(--fg)] mb-3">
+                The Bottleneck
               </h3>
               <p className="text-sm md:text-base text-[var(--muted)] leading-relaxed">
                 {project.challenge}
@@ -145,8 +147,8 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
 
             <div>
               <span className="section-label block mb-2 text-[var(--accent)]">02 // THE APPROACH</span>
-              <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-[var(--fg)] mb-4">
-                The Solution
+              <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-[var(--fg)] mb-3">
+                Nerdvana Architecture
               </h3>
               <p className="text-sm md:text-base text-[var(--muted)] leading-relaxed">
                 {project.approach}
@@ -154,19 +156,35 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
             </div>
 
             <div>
-              <span className="section-label block mb-2 text-[var(--accent)]">03 // THE IMPACT</span>
-              <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-[var(--fg)] mb-4">
-                The Commercial Outcome
+              <span className="section-label block mb-2 text-[var(--accent)]">03 // THE RESULTS</span>
+              <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-[var(--fg)] mb-3">
+                Commercial Impact
               </h3>
               <p className="text-sm md:text-base text-[var(--muted)] leading-relaxed">
-                {project.outcome}
+                {project.results}
               </p>
             </div>
+
+            {project.technologyStack && (
+              <div className="p-6 rounded-xs border border-[var(--line)] bg-[var(--surface)]">
+                <span className="section-label block mb-3 text-[var(--accent)]">TECH STACK DEPLOYED</span>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologyStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2.5 py-1 rounded-full bg-[var(--card-bg)] text-xs font-mono text-[var(--fg)] border border-[var(--line)]"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
-          {/* Project Gallery */}
-          <div className="lg:col-span-8 flex flex-col gap-8">
-            <span className="section-label block text-[var(--muted)]">GALLERY // VISUAL SYSTEM</span>
+          {/* Gallery */}
+          <div className="lg:col-span-7 flex flex-col gap-8">
+            <span className="section-label block text-[var(--muted)]">VISUAL DOCUMENTATION</span>
             {project.gallery.map((img, idx) => (
               <div
                 key={idx}
@@ -174,9 +192,9 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
               >
                 <Image
                   src={img}
-                  alt={`${project.title} Visual ${idx + 1}`}
+                  alt={`${project.title} Gallery ${idx + 1}`}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  sizes="(max-width: 1024px) 100vw, 55vw"
                   className="object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -184,30 +202,28 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
           </div>
         </div>
 
-        {/* Client Testimonial (if available) */}
+        {/* Testimonial Quote */}
         {project.testimonial && (
-          <div className="p-8 md:p-14 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-24">
+          <div className="p-8 md:p-14 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-20">
             <Quote className="w-10 h-10 text-[var(--accent)]/40 mb-6" />
             <blockquote className="text-2xl md:text-3xl font-bold text-[var(--fg)] tracking-tight mb-8">
               &ldquo;{project.testimonial.quote}&rdquo;
             </blockquote>
-            <div className="flex items-center gap-3 border-t border-[var(--line)] pt-4">
-              <div>
-                <p className="font-extrabold uppercase text-sm text-[var(--fg)]">
-                  {project.testimonial.author}
-                </p>
-                <p className="text-xs font-mono text-[var(--muted)]">
-                  {project.testimonial.role}
-                </p>
-              </div>
+            <div className="border-t border-[var(--line)] pt-4">
+              <p className="font-extrabold uppercase text-sm text-[var(--fg)]">
+                {project.testimonial.author}
+              </p>
+              <p className="text-xs font-mono text-[var(--muted)]">
+                {project.testimonial.role}
+              </p>
             </div>
           </div>
         )}
 
-        {/* Next Project Footer Link */}
+        {/* Next Case Study */}
         <div className="border-t border-[var(--line)] pt-16 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div>
-            <span className="section-label block mb-1">NEXT CASE STUDY</span>
+            <span className="section-label block mb-1 text-[var(--accent)]">NEXT CASE STUDY</span>
             <h4 className="text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-[var(--fg)]">
               {nextProject.title}
             </h4>
@@ -215,7 +231,7 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
 
           <Link
             href={`/work/${nextProject.slug}`}
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[var(--fg)] text-[var(--bg)] font-bold uppercase tracking-wider text-xs hover:bg-[var(--accent)] hover:text-white transition-all shadow-md group"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[var(--accent)] text-[var(--accent-fg)] font-black uppercase tracking-wider text-xs hover:bg-[var(--accent-hover)] transition-all shadow-md group"
             data-cursor-text="NEXT"
           >
             <span>View Case Study</span>
@@ -226,4 +242,3 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
     </article>
   );
 }
-

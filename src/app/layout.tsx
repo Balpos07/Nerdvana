@@ -21,44 +21,49 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kontrast-agency.com"),
+  metadataBase: new URL("https://nerdvana.global"),
   title: {
-    default: `${siteSettings.agencyName} — Global Digital & Creative Engineering Agency`,
+    default: `${siteSettings.agencyName} — ${siteSettings.tagline}`,
     template: `%s | ${siteSettings.agencyName}`,
   },
-  description: siteSettings.descriptor,
+  description: siteSettings.coreBrandStatement,
   keywords: [
-    "creative agency",
-    "digital flagship",
-    "brand identity",
-    "WebGL agency",
-    "Next.js agency",
-    "high-conversion design",
-    "design engineering",
+    "Nerdvana",
+    "Nerdvana Technologies",
+    "Figures by Nerdvana",
+    "technology and creative agency",
+    "cloud infrastructure",
+    "DevOps engineering",
+    "software engineering",
+    "AI automation",
+    "branding agency",
+    "UI UX design",
+    "web development",
+    "digital growth",
   ],
-  authors: [{ name: siteSettings.fullName }],
+  authors: [{ name: siteSettings.parentBrand }],
   creator: siteSettings.agencyName,
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://kontrast-agency.com",
-    siteName: siteSettings.fullName,
-    title: `${siteSettings.agencyName} — Creative Engineering & Digital Flagships`,
-    description: siteSettings.descriptor,
+    url: "https://nerdvana.global",
+    siteName: siteSettings.agencyName,
+    title: `${siteSettings.agencyName} — ${siteSettings.heroHeadline}`,
+    description: siteSettings.coreBrandStatement,
     images: [
       {
         url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=85",
         width: 1200,
         height: 630,
-        alt: `${siteSettings.agencyName} Creative Agency`,
+        alt: `${siteSettings.agencyName} Agency`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteSettings.agencyName} — Creative Engineering & Digital Flagships`,
-    description: siteSettings.descriptor,
-    creator: "@kontrast_hq",
+    title: `${siteSettings.agencyName} — ${siteSettings.heroHeadline}`,
+    description: siteSettings.coreBrandStatement,
+    creator: "@nerdvana_hq",
   },
   robots: {
     index: true,
@@ -74,11 +79,22 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: siteSettings.fullName,
+    name: siteSettings.parentBrand,
     alternateName: siteSettings.agencyName,
-    url: "https://kontrast-agency.com",
-    logo: "https://kontrast-agency.com/logo.png",
-    description: siteSettings.descriptor,
+    url: "https://nerdvana.global",
+    description: siteSettings.coreBrandStatement,
+    department: [
+      {
+        "@type": "Organization",
+        name: "Nerdvana Technologies",
+        description: "Cloud, DevOps, Software Engineering, AI & Automation, Reliability & Security",
+      },
+      {
+        "@type": "Organization",
+        name: "Figures by Nerdvana",
+        description: "Branding, UI/UX, Web Design & Development, Creative Production, Marketing & Growth",
+      },
+    ],
     address: siteSettings.offices.map((office) => ({
       "@type": "PostalAddress",
       streetAddress: office.address,
@@ -96,7 +112,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--fg)] selection:bg-[var(--accent)] selection:text-white">
+      <body className="min-h-screen flex flex-col bg-[#0A0A0A] text-[#F5F5F2] selection:bg-[var(--accent)] selection:text-[var(--accent-fg)]">
         <LenisProvider>
           <Preloader />
           <CustomCursor />

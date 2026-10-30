@@ -2,18 +2,20 @@ import { MetadataRoute } from "next";
 import { getAllProjects, getAllPosts } from "@/lib/cms/sanityClient";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://kontrast-agency.com";
+  const baseUrl = "https://nerdvana.global";
   const projects = await getAllProjects();
   const posts = await getAllPosts();
 
   const staticPages = [
     "",
+    "/services",
     "/work",
-    "/studio",
+    "/about",
     "/feed",
     "/contacts",
     "/terms-of-service",
     "/privacy-policy",
+    "/cookie-policy",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
@@ -37,4 +39,3 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [...staticPages, ...projectPages, ...postPages];
 }
-

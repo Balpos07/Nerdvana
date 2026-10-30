@@ -3,16 +3,20 @@ export interface Project {
   title: string;
   slug: string;
   client: string;
+  industry: string;
   year: string;
-  category: "Branding" | "Digital Design" | "Motion & 3D" | "Strategy";
+  division: "Nerdvana Technologies" | "Figures by Nerdvana" | "Connected Synergy";
+  category: "Technology" | "Branding" | "Web" | "Marketing" | "Creative";
   services: string[];
   coverImage: string;
   heroImage: string;
   summary: string;
   challenge: string;
   approach: string;
-  outcome: string;
+  results: string;
   metrics: { label: string; value: string }[];
+  technologyStack?: string[];
+  creativeStrategy?: string;
   gallery: string[];
   testimonial?: {
     quote: string;
@@ -21,6 +25,55 @@ export interface Project {
   };
   featured: boolean;
   order: number;
+}
+
+export interface ServiceDivision {
+  name: string;
+  slug: string;
+  tagline: string;
+  description: string;
+  services: {
+    title: string;
+    description: string;
+    capabilities: string[];
+    deliverables: string[];
+  }[];
+}
+
+export interface PackageItem {
+  id: string;
+  name: string;
+  category: "Branding" | "Website / Digital Presence" | "Marketing & Growth" | "Technology" | "Custom Solutions";
+  shortDescription: string;
+  idealFor: string;
+  whatsIncluded: string[];
+  startingPrice: string;
+  optionalAddons: string[];
+  featured?: boolean;
+}
+
+export interface CuriousProblem {
+  id: string;
+  problem: string;
+  solution: string;
+  division: "Nerdvana Technologies" | "Figures by Nerdvana";
+  capability: string;
+  ctaText: string;
+  targetHref: string;
+}
+
+export interface ProcessStep {
+  number: string;
+  title: string;
+  tagline: string;
+  description: string;
+  deliverables: string[];
+}
+
+export interface FAQCategoryItem {
+  category: "About Nerdvana" | "Services" | "Projects" | "Packages" | "Working With Nerdvana";
+  question: string;
+  answer: string;
 }
 
 export interface Post {
@@ -41,73 +94,28 @@ export interface Post {
   featured: boolean;
 }
 
-export interface Testimonial {
-  id: string;
-  quote: string;
-  name: string;
-  role: string;
-  company: string;
-  countryFlag: string;
-  order: number;
-}
-
-export interface Award {
-  id: string;
-  name: string;
-  category: string;
-  count: string;
-  year: string;
-}
-
-export interface ServiceItem {
-  letter: string;
-  title: string;
-  shortDescription: string;
-  description: string;
-  items: string[];
-  deliverables: string[];
-}
-
-export interface PricingPackage {
-  id: string;
-  name: string;
-  tagline: string;
-  monthlyPrice: number;
-  originalMonthlyPrice: number;
-  yearlyDiscountPercent: number;
-  setupFee: number;
-  features: string[];
-  highlighted?: boolean;
-  badge?: string;
-}
-
-export interface FAQItem {
-  id: string;
-  question: string;
-  answer: string;
-  order: number;
-}
-
 export interface SiteSettings {
   agencyName: string;
-  fullName: string;
-  descriptor: string;
+  parentBrand: string;
+  tagline: string;
+  heroHeadline: string;
+  coreBrandStatement: string;
   offices: {
     name: string;
     label: string;
     timezone: string;
     address: string;
     phone: string;
+    whatsapp?: string;
   }[];
   socials: {
     name: string;
     url: string;
-    handle: string;
   }[];
   stats: {
-    awards: number;
-    clients: number;
-    projects: number;
+    experienceYears: number;
+    projectsDelivered: number;
+    clientSatisfaction: string;
+    uptimeSLA: string;
   };
 }
-

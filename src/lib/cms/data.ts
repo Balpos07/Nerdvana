@@ -1,19 +1,21 @@
 import {
   Project,
-  Post,
-  Testimonial,
-  Award,
-  ServiceItem,
-  PricingPackage,
-  FAQItem,
+  ServiceDivision,
+  PackageItem,
+  CuriousProblem,
+  ProcessStep,
+  FAQCategoryItem,
   SiteSettings,
+  Post,
 } from "./types";
 
 export const siteSettings: SiteSettings = {
-  agencyName: "KONTRAST",
-  fullName: "KONTRAST ATELIER & LABS",
-  descriptor:
-    "A global creative and digital engineering studio. We build bold identities, iconic digital flagships, and high-conversion software for founders defining the next era.",
+  agencyName: "NERDVANA",
+  parentBrand: "NERDVANA",
+  tagline: "Technology. Creativity. Growth.",
+  heroHeadline: "Build better. Grow faster. Stand out.",
+  coreBrandStatement:
+    "Nerdvana is a global technology and creative agency crafting bold brands, digital experiences and powerful technology solutions through clarity, innovation and timeless craft. We help ambitious businesses build better, move faster and show the world who they are.",
   offices: [
     {
       name: "NEW YORK",
@@ -21,6 +23,7 @@ export const siteSettings: SiteSettings = {
       timezone: "America/New_York",
       address: "447 Broadway, 2nd Fl, Soho, New York, NY 10013",
       phone: "+1 (212) 890-4102",
+      whatsapp: "+12128904102",
     },
     {
       name: "LAGOS",
@@ -28,53 +31,526 @@ export const siteSettings: SiteSettings = {
       timezone: "Africa/Lagos",
       address: "14B Admiralty Way, Lekki Phase 1, Lagos, Nigeria",
       phone: "+234 (1) 880-9214",
+      whatsapp: "+23418809214",
     },
   ],
   socials: [
-    { name: "LinkedIn", url: "https://linkedin.com", handle: "kontrast-agency" },
-    { name: "X (Twitter)", url: "https://x.com", handle: "@kontrast_hq" },
-    { name: "Instagram", url: "https://instagram.com", handle: "@kontrast.studio" },
-    { name: "GitHub", url: "https://github.com", handle: "kontrast-labs" },
+    { name: "LinkedIn", url: "https://linkedin.com/company/nerdvana-global" },
+    { name: "Instagram", url: "https://instagram.com/nerdvana.global" },
+    { name: "X", url: "https://x.com/nerdvana_hq" },
+    { name: "Facebook", url: "https://facebook.com/nerdvanaglobal" },
+    { name: "TikTok", url: "https://tiktok.com/@nerdvanahq" },
+    { name: "YouTube", url: "https://youtube.com/@nerdvanaglobal" },
   ],
   stats: {
-    awards: 28,
-    clients: 64,
-    projects: 142,
+    experienceYears: 10,
+    projectsDelivered: 140,
+    clientSatisfaction: "99.4%",
+    uptimeSLA: "99.99%",
   },
 };
 
-export const heroProjects: {
-  id: string;
-  title: string;
-  client: string;
-  category: string;
-  image: string;
-  slug: string;
-  offset: string;
-}[] = [
+export const whatNerdvanaDoes = {
+  headline: "Technology + Creativity + Growth",
+  descriptor:
+    "We bring technical depth, creative execution and commercial growth together under one roof so your business moves faster without communication friction.",
+  stages: [
+    { label: "Imagine", description: "Market diagnosis, product ideation and creative narrative." },
+    { label: "Build", description: "Full-stack software engineering, scalable cloud and brand systems." },
+    { label: "Launch", description: "Production deployments, digital flagships and market rollouts." },
+    { label: "Automate", description: "AI workflows, CI/CD pipelines and infrastructure optimization." },
+    { label: "Market", description: "Strategic campaigns, SEO, paid performance and audience acquisition." },
+    { label: "Scale", description: "Conversion rate optimization, high-availability reliability and growth engines." },
+  ],
+};
+
+export const serviceDivisions: ServiceDivision[] = [
+  {
+    name: "Nerdvana Technologies",
+    slug: "technologies",
+    tagline: "Technology that moves businesses forward.",
+    description:
+      "Enterprise-grade software engineering, cloud architecture, platform resilience, and intelligent automation built to scale without compromise.",
+    services: [
+      {
+        title: "Cloud & Infrastructure",
+        description:
+          "Cloud architecture, AWS, Azure, Google Cloud, automation, migration and cost optimization.",
+        capabilities: [
+          "Multi-Cloud Architecture (AWS, GCP, Azure)",
+          "Cloud Cost Optimization & FinOps",
+          "Zero-Downtime Infrastructure Migration",
+          "Serverless & Microservices Design",
+        ],
+        deliverables: [
+          "Terraform Infrastructure as Code",
+          "Cloud Security & Compliance Blueprint",
+          "Automated Failover Topology",
+        ],
+      },
+      {
+        title: "DevOps & Platform Engineering",
+        description:
+          "CI/CD, Kubernetes, Docker, IaC, Terraform, GitOps and continuous automation.",
+        capabilities: [
+          "Automated Deployment Pipelines (GitOps)",
+          "Kubernetes Container Orchestration",
+          "Ephemeral Developer Environments",
+          "Policy as Code & Automated Testing",
+        ],
+        deliverables: [
+          "Full CI/CD Pipeline Configuration",
+          "Container Cluster Provisioning",
+          "Release Engineering Handbook",
+        ],
+      },
+      {
+        title: "Software Engineering",
+        description:
+          "Web applications, backend systems, APIs, SaaS platforms and complex integrations.",
+        capabilities: [
+          "Next.js, TypeScript & React Architectures",
+          "High-Throughput Node.js & Go Backends",
+          "GraphQL & RESTful API Engineering",
+          "Multi-Tenant SaaS Database Architecture",
+        ],
+        deliverables: [
+          "Production-Ready GitHub Repository",
+          "Automated Unit & E2E Test Suite",
+          "Interactive API Documentation",
+        ],
+      },
+      {
+        title: "AI & Automation",
+        description:
+          "AI applications, AI infrastructure, deployment, business automation and custom integrations.",
+        capabilities: [
+          "Custom LLM Fine-Tuning & RAG Pipelines",
+          "AI Agent Workflows for Enterprise",
+          "Automated Data Extraction & Synthesis",
+          "Model Serving & Edge Inference",
+        ],
+        deliverables: [
+          "Deployed Vector DB & RAG Pipeline",
+          "Intelligent Workflow Integrations",
+          "AI Usage & Governance Framework",
+        ],
+      },
+      {
+        title: "Reliability & Security",
+        description:
+          "SRE, monitoring, observability, incident management, performance and infrastructure security.",
+        capabilities: [
+          "24/7 SRE Monitoring & Datadog/Grafana Observability",
+          "Automated Alerting & Incident Runbooks",
+          "Penetration Testing & Vulnerability Audits",
+          "DDoS Mitigation & SOC2/ISO27001 Alignment",
+        ],
+        deliverables: [
+          "SRE Observability Dashboard",
+          "Incident Response Playbook",
+          "Security Hardening Certification",
+        ],
+      },
+    ],
+  },
+  {
+    name: "Figures by Nerdvana",
+    slug: "figures",
+    tagline: "Brands, experiences and marketing that move people and businesses forward.",
+    description:
+      "World-class visual identities, high-conversion digital experiences, cinematic content, and data-backed performance marketing.",
+    services: [
+      {
+        title: "Branding",
+        description:
+          "Brand strategy, identity, visual identity, guidelines, logo systems and creative direction.",
+        capabilities: [
+          "Core Positioning & Brand Narrative",
+          "Dynamic Logo Systems & Typography",
+          "Color Architecture & Brand Voice Playbooks",
+          "Packaging & Spatial Touchpoints",
+        ],
+        deliverables: [
+          "Comprehensive Digital Brand Bible",
+          "Vector & Kinetic Master Asset Pack",
+          "Commercial Typography Licenses",
+        ],
+      },
+      {
+        title: "UI/UX Design",
+        description:
+          "UX research, user flows, wireframes, interface design, design systems and product design.",
+        capabilities: [
+          "User Research & Quantitative Testing",
+          "Interactive Wireframes & Prototypes",
+          "Design Systems & Token Architecture (Figma)",
+          "Accessible WCAG 2.1 AA Compliant Interfaces",
+        ],
+        deliverables: [
+          "Production Figma Component Library",
+          "Validated User Journey Blueprints",
+          "Motion & Micro-Interaction Guidelines",
+        ],
+      },
+      {
+        title: "Web Design & Development",
+        description:
+          "Corporate sites, startup sites, landing pages, e-commerce, web apps and conversion-focused websites.",
+        capabilities: [
+          "Bespoke High-Conversion Web Flagships",
+          "Headless E-Commerce (Shopify Plus / Next.js)",
+          "Motion-Led Editorial Experiences (Lenis/GSAP)",
+          "Sub-Second Page Load Optimization",
+        ],
+        deliverables: [
+          "Production Next.js 16 Web Flagship",
+          "Headless CMS Integration",
+          "Lighthouse 95+ Core Web Vitals Guarantee",
+        ],
+      },
+      {
+        title: "Creative Production",
+        description:
+          "Motion graphics, digital assets, campaign creatives, marketing visuals, presentations and content design.",
+        capabilities: [
+          "3D Product Visualizations & Shaders",
+          "High-Impact Motion Graphics & Video",
+          "Investor Pitch Decks & Keynotes",
+          "Omnichannel Social Visual Asset Systems",
+        ],
+        deliverables: [
+          "4K Master Motion Deliverables",
+          "Custom 3D Asset Renders",
+          "Executive Pitch Presentation Suite",
+        ],
+      },
+      {
+        title: "Marketing & Growth",
+        description:
+          "Strategy, campaigns, paid advertising, social media, email, SEO, content, copywriting, lead generation, funnels, CRO and performance marketing.",
+        capabilities: [
+          "Full-Funnel Paid Acquisition (Meta, Google, LinkedIn)",
+          "Technical SEO & Content Strategy",
+          "Conversion Rate Optimization (CRO) & A/B Testing",
+          "Automated Email Retention & Lifecycle Flows",
+        ],
+        deliverables: [
+          "Omnichannel Growth Roadmap",
+          "Custom Paid Ad Creative Suite",
+          "Real-Time Attribution Analytics Dashboard",
+        ],
+      },
+    ],
+  },
+];
+
+export const curiousProblems: CuriousProblem[] = [
+  {
+    id: "curious-1",
+    problem: "Your website looks good, but isn't converting?",
+    solution: "Let's fix the experience.",
+    division: "Figures by Nerdvana",
+    capability: "UI/UX & Web Development",
+    ctaText: "Fix Your Experience",
+    targetHref: "/contacts?interest=web-conversion",
+  },
+  {
+    id: "curious-2",
+    problem: "Your brand doesn't reflect the quality of your business?",
+    solution: "Let's build one that does.",
+    division: "Figures by Nerdvana",
+    capability: "Branding & Creative Direction",
+    ctaText: "Elevate Your Brand",
+    targetHref: "/contacts?interest=branding",
+  },
+  {
+    id: "curious-3",
+    problem: "Cloud costs getting out of control?",
+    solution: "Let's make your infrastructure work smarter.",
+    division: "Nerdvana Technologies",
+    capability: "Cloud & Infrastructure FinOps",
+    ctaText: "Optimize Cloud Costs",
+    targetHref: "/contacts?interest=cloud-finops",
+  },
+  {
+    id: "curious-4",
+    problem: "Too much repetitive work?",
+    solution: "Let's automate it.",
+    division: "Nerdvana Technologies",
+    capability: "AI & Intelligent Automation",
+    ctaText: "Automate Workflows",
+    targetHref: "/contacts?interest=ai-automation",
+  },
+  {
+    id: "curious-5",
+    problem: "Have an idea but don't know how to turn it into a product?",
+    solution: "Let's build it.",
+    division: "Nerdvana Technologies",
+    capability: "Software Engineering & MVP Sprint",
+    ctaText: "Build Your Product",
+    targetHref: "/contacts?interest=software-engineering",
+  },
+  {
+    id: "curious-6",
+    problem: "Struggling to turn attention into customers?",
+    solution: "Let's build a growth system.",
+    division: "Figures by Nerdvana",
+    capability: "Marketing & Growth Engine",
+    ctaText: "Build Growth System",
+    targetHref: "/contacts?interest=growth-marketing",
+  },
+];
+
+export const whyNerdvana = [
+  {
+    title: "Technology + Creativity",
+    subtitle: "One Unified House",
+    description:
+      "Deep software engineering and breathtaking creative direction living under one roof. No compromises, no lost context.",
+  },
+  {
+    title: "Strategy + Execution",
+    subtitle: "We Don't Just Advise; We Ship",
+    description:
+      "We write production code, design living token systems, and manage high-availability infrastructure. Strategy is verified by execution.",
+  },
+  {
+    title: "Built Around Your Business",
+    subtitle: "Commercial Truth First",
+    description:
+      "We diagnose commercial bottlenecks before writing code or designing glyphs, ensuring every investment moves key business metrics.",
+  },
+  {
+    title: "One Connected Partner",
+    subtitle: "Zero Provider Fragmentation",
+    description:
+      "Eliminate the finger-pointing between your marketing agency and tech vendor. Nerdvana synchronizes brand, code, and growth.",
+  },
+  {
+    title: "Built to Scale",
+    subtitle: "Future-Proof Architecture",
+    description:
+      "From your first thousand customers to millions in ARR, our cloud infrastructure and design systems are engineered to scale effortlessly.",
+  },
+];
+
+export const processSteps: ProcessStep[] = [
+  {
+    number: "01",
+    title: "Discover",
+    tagline: "Understand the business, audience, goals and challenges.",
+    description:
+      "We dissect your commercial landscape, target personas, technical debt, and competitive pressures to establish an undeniable baseline.",
+    deliverables: ["Diagnostic Audit", "Competitor Matrix", "Target Audience Models", "Executive Alignment Brief"],
+  },
+  {
+    number: "02",
+    title: "Define",
+    tagline: "Identify the core problem and opportunities.",
+    description:
+      "We narrow the scope to high-leverage opportunities, defining key technical requirements and narrative positioning.",
+    deliverables: ["Product Requirements Document", "Technical Scope of Work", "Creative North Star", "Success Metrics"],
+  },
+  {
+    number: "03",
+    title: "Strategize",
+    tagline: "Develop the strategy, roadmap and approach.",
+    description:
+      "We architect cloud topology, map out wireframes, and outline multi-sprint milestones with transparent delivery dates.",
+    deliverables: ["Architecture Blueprint", "Design System Strategy", "Sprint Roadmap", "Risk Mitigation Plan"],
+  },
+  {
+    number: "04",
+    title: "Create",
+    tagline: "Design, build and execute.",
+    description:
+      "Surgical execution begins. We build production TypeScript code, configure IaC, design interactive interfaces, and model 3D assets.",
+    deliverables: ["Next.js Codebase", "Figma Design System", "Cloud Infrastructure (Terraform)", "Brand Asset Suite"],
+  },
+  {
+    number: "05",
+    title: "Launch",
+    tagline: "Put the work into the world.",
+    description:
+      "Rigorous end-to-end testing, zero-downtime deployment, SEO verification, and synchronized public go-to-market rollout.",
+    deliverables: ["Production Edge Deployment", "SEO & Meta Audits", "Staff CMS Training", "Go-To-Market Push"],
+  },
+  {
+    number: "06",
+    title: "Grow",
+    tagline: "Measure, optimize and improve.",
+    description:
+      "Continuous observability, conversion rate experiments, marketing iterations, and ongoing platform reliability engineering.",
+    deliverables: ["Real-Time Analytics Dashboard", "A/B Testing Funnels", "SRE Monitoring", "Monthly Growth Sync"],
+  },
+];
+
+export const packages: PackageItem[] = [
+  {
+    id: "pkg-branding",
+    name: "Brand Launchpad",
+    category: "Branding",
+    shortDescription: "Complete brand positioning, visual identity, and token system for startups.",
+    idealFor: "Founders establishing their first institutional brand presence before market launch.",
+    whatsIncluded: [
+      "Brand Positioning & Narrative Architecture",
+      "Dynamic Mark, Monogram & Vector System",
+      "Typography Hierarchy & Color Guidelines",
+      "Living Digital Brand Guidelines",
+      "Social Media & Presentation Templates",
+      "3 Weeks Rapid Sprint",
+    ],
+    startingPrice: "$6,500",
+    optionalAddons: ["Packaging Guidelines", "Custom Font Modifications", "Pitch Deck Narrative"],
+  },
+  {
+    id: "pkg-web",
+    name: "Flagship Web & UX",
+    category: "Website / Digital Presence",
+    shortDescription: "Bespoke, motion-led digital flagship engineered for conversion and speed.",
+    idealFor: "Scaling companies replacing outdated templates with an award-winning digital experience.",
+    whatsIncluded: [
+      "UX Research & High-Fidelity Wireframes",
+      "Bespoke Next.js 16 & Tailwind Engineering",
+      "Fluid Lenis Motion & Interactive Choreography",
+      "Headless CMS Integration (Sanity / MDX)",
+      "Lighthouse 95+ Core Web Vitals Optimization",
+      "Complete Mobile & Tablet Responsiveness",
+      "5 Weeks Sprint to Production",
+    ],
+    startingPrice: "$12,500",
+    optionalAddons: ["Custom 3D / WebGL Assets", "Multi-Language Localization", "Advanced Search & Filters"],
+    featured: true,
+  },
+  {
+    id: "pkg-tech",
+    name: "Cloud & DevOps Scale",
+    category: "Technology",
+    shortDescription: "Automated cloud infrastructure, CI/CD platform, and SRE resilience.",
+    idealFor: "Engineering teams suffering from manual deployments, slow builds, or cloud cost spikes.",
+    whatsIncluded: [
+      "Terraform Infrastructure as Code (AWS / GCP)",
+      "Automated GitOps CI/CD Deployment Pipelines",
+      "Kubernetes Cluster Setup & Ingress Rules",
+      "Cloud FinOps Cost Audit & Optimization",
+      "Datadog / Grafana SRE Observability Stack",
+      "4 Weeks Dedicated DevOps Sprint",
+    ],
+    startingPrice: "$9,500",
+    optionalAddons: ["24/7 SRE On-Call SLA", "SOC2 Compliance Hardening", "Database Auto-Sharding"],
+  },
+  {
+    id: "pkg-growth",
+    name: "Growth Engine & CRO",
+    category: "Marketing & Growth",
+    shortDescription: "Full-funnel customer acquisition, technical SEO, and conversion optimization.",
+    idealFor: "Businesses ready to turn traffic into qualified revenue at scalable payback periods.",
+    whatsIncluded: [
+      "Technical SEO & Content Hub Architecture",
+      "Paid Performance Ad Creative & Campaign Setup",
+      "Continuous Conversion Rate (CRO) A/B Testing",
+      "Automated Retention & Lifecycle Email Flows",
+      "Real-Time Multi-Touch Attribution Dashboard",
+      "Monthly Growth Retainer Cadence",
+    ],
+    startingPrice: "$8,000/mo",
+    optionalAddons: ["Influencer Partnership Management", "B2B Account-Based Marketing", "Podcast Production"],
+  },
+  {
+    id: "pkg-custom",
+    name: "Enterprise Synergy",
+    category: "Custom Solutions",
+    shortDescription: "Dedicated cross-disciplinary strike team combining Technology + Figures.",
+    idealFor: "Enterprises needing comprehensive digital transformation with dedicated squads.",
+    whatsIncluded: [
+      "Integrated Tech Squad (Tech Lead, Senior Engineers)",
+      "Integrated Creative Squad (Director, Designers)",
+      "Custom Software Platform & Flagship Web System",
+      "Cloud Infrastructure, DevOps & 99.99% SRE SLA",
+      "Ongoing Performance Marketing & Optimization",
+      "Executive Direct Slack Channel & Weekly Sprints",
+    ],
+    startingPrice: "Custom Quoted",
+    optionalAddons: ["Onsite Executive Workshops", "Dedicated Cloud Security Officer"],
+  },
+];
+
+export const faqCategories: FAQCategoryItem[] = [
+  {
+    category: "About Nerdvana",
+    question: "What does Nerdvana do?",
+    answer:
+      "Nerdvana is a global technology, creative and digital growth agency. We combine deep technology capabilities (cloud, DevOps, software, AI) with high-end creative execution (branding, UI/UX, web design) and performance marketing to help ambitious businesses build, grow, and stand out.",
+  },
+  {
+    category: "About Nerdvana",
+    question: "Who do you work with?",
+    answer:
+      "We partner with startups establishing their initial presence, small and medium businesses modernizing their operations, growth-stage scaleups expanding infrastructure, and forward-thinking organizations requiring specialized cross-disciplinary expertise.",
+  },
+  {
+    category: "Services",
+    question: "What technology and branding services do you provide?",
+    answer:
+      "Under Nerdvana Technologies, we engineer Cloud & Infrastructure, DevOps & Platform Engineering, Software Engineering, AI & Automation, and Reliability & Security. Under Figures by Nerdvana, we deliver Branding, UI/UX Design, Web Design & Development, Creative Production, and Marketing & Growth.",
+  },
+  {
+    category: "Services",
+    question: "Can I combine technology and creative services?",
+    answer:
+      "Absolutely. In fact, that is Nerdvana's greatest superpower. By uniting engineering and creative execution under one connected partner, we eliminate communication gaps, reduce provider friction, and ship cohesive digital products in half the time.",
+  },
+  {
+    category: "Projects",
+    question: "How does a project begin?",
+    answer:
+      "Every engagement starts with Phase 01: Discover. We schedule an alignment deep-dive to understand your business objectives, technical constraints, and growth targets. We then deliver a clear Scope of Work, sprint timeline, and architecture plan before production begins.",
+  },
+  {
+    category: "Projects",
+    question: "How long does a project take?",
+    answer:
+      "Focused brand identity or web development sprints typically take 3 to 5 weeks. Comprehensive software platforms, custom 3D web flagships, and enterprise cloud migrations range between 6 to 12 weeks with weekly demo milestones.",
+  },
+  {
+    category: "Packages",
+    question: "Can packages be customized?",
+    answer:
+      "Yes. While our pre-packaged offerings give transparent starting scopes, we frequently tailor custom scopes and add-on modules to match your exact timeline and commercial requirements.",
+  },
+  {
+    category: "Working With Nerdvana",
+    question: "How do I get started?",
+    answer:
+      "Click 'Let's Talk' or 'Get Started' to submit your project details. Our principals will review your brief and schedule an exploratory strategy call within 24 hours.",
+  },
+];
+
+export const heroProjects = [
   {
     id: "hp-1",
-    title: "Aura Robotics",
-    client: "Aura Intelligence",
-    category: "Identity & Platform",
+    title: "Aura Intelligence",
+    division: "Nerdvana Technologies",
+    category: "AI & Platform Engineering",
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=85",
-    slug: "aura-robotics",
+    slug: "aura-intelligence",
     offset: "0px",
   },
   {
     id: "hp-2",
-    title: "Vesper Soundworks",
-    client: "Vesper Audio",
-    category: "Spatial Audio App",
+    title: "Vesper Spatial Audio",
+    division: "Figures by Nerdvana",
+    category: "UI/UX & Web Development",
     image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=85",
-    slug: "vesper-soundworks",
+    slug: "vesper-audio",
     offset: "40px",
   },
   {
     id: "hp-3",
     title: "Nerve Protocol",
-    client: "Nerve Foundation",
-    category: "Brand & Web3 Portal",
+    division: "Nerdvana Technologies",
+    category: "Cloud, DevOps & Security",
     image: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=900&q=85",
     slug: "nerve-protocol",
     offset: "-20px",
@@ -82,8 +558,8 @@ export const heroProjects: {
   {
     id: "hp-4",
     title: "Kalon Living",
-    client: "Kalon Studios",
-    category: "E-Commerce Flagship",
+    division: "Figures by Nerdvana",
+    category: "Branding & E-Commerce Flagship",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85",
     slug: "kalon-living",
     offset: "20px",
@@ -93,75 +569,78 @@ export const heroProjects: {
 export const projects: Project[] = [
   {
     id: "proj-1",
-    title: "Aura Robotics",
-    slug: "aura-robotics",
-    client: "Aura Intelligence Corp",
+    title: "Aura Intelligence",
+    slug: "aura-intelligence",
+    client: "Aura Corp",
+    industry: "Humanoid Robotics & AI",
     year: "2025",
-    category: "Branding",
-    services: ["Brand Strategy", "Visual Identity", "3D Kinetic System", "Interactive Flagship"],
+    division: "Nerdvana Technologies",
+    category: "Technology",
+    services: ["AI & Automation", "Cloud & Infrastructure", "Software Engineering"],
     coverImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=85",
     heroImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1800&q=85",
-    summary:
-      "A complete brand overhaul and interactive web platform for the pioneer in human-scale humanoid autonomy.",
+    summary: "Cloud-native edge inference platform and interactive control portal for humanoid robotics.",
     challenge:
-      "Aura needed to escape the cold, clinical robotics stereotype and present human-centered intelligence with warmth, precision, and commanding authority prior to their Series B raise.",
+      "Aura required a zero-latency telemetry pipeline to coordinate autonomous sensory inputs across distributed industrial robotics fleets.",
     approach:
-      "We conceived an organic generative kinetic mark that reacts to physical movement. Paired with monochrome editorial typography and tactile physical simulations, we gave Aura a visual language that felt twenty years ahead of the sector.",
-    outcome:
-      "Aura closed their $42M Series B oversubscribed within six weeks of launch, with inbound investor and engineering talent inquiries rising by 340%.",
+      "Nerdvana Technologies engineered a microservices Kubernetes architecture with WebRTC data channels, sub-10ms edge processing, and automated failover.",
+    results:
+      "Aura onboarded 3 Fortune 500 manufacturing pilots and closed an oversubscribed $42M funding round with 99.999% uptime.",
     metrics: [
-      { label: "Funding Closed", value: "$42M" },
-      { label: "Talent Inbound", value: "+340%" },
-      { label: "Avg Session", value: "4m 12s" },
-      { label: "Awards Won", value: "FWA of the Day" },
+      { label: "Telemetry Latency", value: "<8ms" },
+      { label: "System Uptime", value: "99.999%" },
+      { label: "Series B Raised", value: "$42M" },
+      { label: "Edge Nodes", value: "1,200+" },
     ],
+    technologyStack: ["Kubernetes", "Go", "Terraform", "WebSockets", "AWS IoT Core"],
+    creativeStrategy: "High-contrast technical visualization giving operators instant glanceable clarity.",
     gallery: [
       "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=85",
       "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
     ],
     testimonial: {
       quote:
-        "Kontrast transformed how the world perceives humanoid engineering. They didn't just give us a brand; they gave our mission cultural weight.",
+        "Nerdvana delivered the engineering infrastructure that made our robotics technology viable for industrial deployment.",
       author: "Elena Rostova",
-      role: "CEO & Founder, Aura Intelligence",
+      role: "CEO, Aura Intelligence",
     },
     featured: true,
     order: 1,
   },
   {
     id: "proj-2",
-    title: "Vesper Soundworks",
-    slug: "vesper-soundworks",
-    client: "Vesper Audio Zurich",
+    title: "Vesper Spatial Audio",
+    slug: "vesper-audio",
+    client: "Vesper Audio",
+    industry: "Consumer Electronics & Audio",
     year: "2024",
-    category: "Digital Design",
-    services: ["Audio UX", "Platform Design", "WebGL Visualizer", "Design System"],
+    division: "Figures by Nerdvana",
+    category: "Web",
+    services: ["UI/UX Design", "Web Design & Development", "Creative Production"],
     coverImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=85",
     heroImage: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1800&q=85",
-    summary:
-      "Spatial acoustic canvas and companion desktop software for audio purists and film composers.",
+    summary: "Immersive WebGL soundscape visualizer and high-conversion e-commerce flagship.",
     challenge:
-      "Vesper developed breakthrough lossless binaural audio synthesis, but had no software interface matching the exquisite precision of their Swiss acoustic hardware.",
+      "Vesper developed breakthrough acoustic hardware but lacked a digital experience that demonstrated spatial sound visually.",
     approach:
-      "We engineered a bespoke WebGL-accelerated frequency field that lets creators sculpt 3D soundscapes using tactile gesture nodes. Every curve and dial responds with micro-haptic visual feedback.",
-    outcome:
-      "Over 85,000 professional audio engineers and sound designers onboarded within 90 days. Vesper earned consecutive design distinctions across Europe.",
+      "Figures by Nerdvana designed a bespoke WebGL sound wave visualizer responding dynamically to cursor movement, paired with a sub-second checkout experience.",
+    results: "Conversion increased by 142% within 60 days of launch, achieving an Awwwards Site of the Day.",
     metrics: [
-      { label: "Active Creators", value: "85K+" },
-      { label: "Retention Rate", value: "78%" },
-      { label: "Latency", value: "<4ms" },
-      { label: "Accolades", value: "Awwwards SOTD" },
+      { label: "Conversion Lift", value: "+142%" },
+      { label: "Session Duration", value: "4m 45s" },
+      { label: "AOV", value: "$320" },
+      { label: "Award", value: "Awwwards SOTD" },
     ],
+    technologyStack: ["Next.js 16", "Three.js / WebGL", "Tailwind CSS", "Shopify Headless"],
+    creativeStrategy: "Dark, tactile Swiss aesthetic with visceral acoustic vibrations.",
     gallery: [
       "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1200&q=85",
     ],
     testimonial: {
       quote:
-        "Working with Kontrast felt like collaborating with master watchmakers who also happen to be world-class software architects.",
+        "The digital flagship Figures built for us turned casual website visitors into die-hard audiophile brand advocates.",
       author: "Julian Meier",
-      role: "VP of Product, Vesper Soundworks",
+      role: "Head of Product, Vesper",
     },
     featured: true,
     order: 2,
@@ -171,34 +650,34 @@ export const projects: Project[] = [
     title: "Nerve Protocol",
     slug: "nerve-protocol",
     client: "Nerve Foundation",
+    industry: "Fintech & Web3 Infrastructure",
     year: "2024",
-    category: "Strategy",
-    services: ["Protocol Narrative", "Design Token Architecture", "Developer Portal"],
+    division: "Nerdvana Technologies",
+    category: "Technology",
+    services: ["Cloud & Infrastructure", "Reliability & Security", "Software Engineering"],
     coverImage: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=900&q=85",
     heroImage: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1800&q=85",
-    summary:
-      "Institutional-grade branding and documentation engine for zero-knowledge cryptographic state synchronization.",
-    challenge:
-      "Cryptographic infrastructure is frequently hindered by impenetrable technical jargon and chaotic visual noise, making enterprise adoption a struggle.",
+    summary: "Institutional-grade validator infrastructure, SRE observability, and developer SDK documentation.",
+    challenge: "Enterprise financial partners required guaranteed 99.99% network uptime and verified security posture.",
     approach:
-      "We distilled Nerve's breakthrough zero-knowledge verification down to clear, typographic clarity, interactive cryptographic proofs, and an effortless documentation experience.",
-    outcome:
-      "More than 420 institutional validator nodes and 60 decentralized applications integrated the protocol in Q3 alone.",
+      "Nerdvana Technologies implemented automated multi-region failover, automated penetration testing pipelines, and real-time observability.",
+    results: "Over $1.8B in total value secured across 400+ institutional validation nodes.",
     metrics: [
-      { label: "Total Value Locked", value: "$1.8B" },
-      { label: "Integrated DApps", value: "60+" },
-      { label: "SDK Downloads", value: "120K" },
-      { label: "Documentation CSAT", value: "98%" },
+      { label: "Value Locked", value: "$1.8B" },
+      { label: "Network Uptime", value: "99.99%" },
+      { label: "Validator Nodes", value: "400+" },
+      { label: "Security Score", value: "100/100" },
     ],
+    technologyStack: ["Kubernetes", "Terraform", "Rust", "Datadog", "Cloudflare Magic Transit"],
+    creativeStrategy: "Mathematical clarity with zero fluff.",
     gallery: [
-      "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=85",
       "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=85",
     ],
     testimonial: {
       quote:
-        "They took mathematically complex cryptography and rendered it elegant, trust-inducing, and instantly compelling to Fortune 500 partners.",
+        "Their infrastructure engineering is rock-solid. They are the only partner we trust with our mission-critical deployments.",
       author: "Dr. Kemi Adeleke",
-      role: "Founding Researcher, Nerve Protocol",
+      role: "Founding Researcher, Nerve",
     },
     featured: true,
     order: 3,
@@ -207,484 +686,97 @@ export const projects: Project[] = [
     id: "proj-4",
     title: "Kalon Living",
     slug: "kalon-living",
-    client: "Kalon Studios Copenhagen",
+    client: "Kalon Studios",
+    industry: "Luxury Architecture & Interiors",
     year: "2024",
-    category: "Digital Design",
-    services: ["E-Commerce Architecture", "Art Direction", "Headless Next.js", "Content Strategy"],
+    division: "Figures by Nerdvana",
+    category: "Branding",
+    services: ["Branding", "UI/UX", "Marketing & Growth"],
     coverImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85",
     heroImage: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1800&q=85",
-    summary:
-      "Minimalist architectural furniture flagship merging editorial storytelling with lightning-fast checkout.",
-    challenge:
-      "Kalon produces heirloom architectural furniture in Scandinavia, but their legacy storefront suffered from slow mobile speeds, low conversion on high-ticket SKUs, and fragmented branding.",
+    summary: "Complete rebrand and global growth marketing funnel for Scandinavian architectural furnishings.",
+    challenge: "High-ticket bespoke furniture was struggling with long digital sales cycles and unclear brand identity.",
     approach:
-      "We created a bespoke headless commerce experience with 3D product inspection, room dimension AR visualization, and seamless editorial lifestyle narratives.",
-    outcome:
-      "Global sales increased by 215%, with average order value (AOV) jumping from $1,400 to $2,950 within six months.",
+      "Figures by Nerdvana designed a warm, editorial visual identity and engineered an interactive spatial room visualizer paired with targeted paid campaigns.",
+    results: "Global sales surged 215%, with customer acquisition cost decreasing by 38%.",
     metrics: [
-      { label: "AOV Increase", value: "+110%" },
-      { label: "Mobile Conversion", value: "4.8%" },
-      { label: "Lighthouse Score", value: "99/100" },
-      { label: "International Sales", value: "+215%" },
+      { label: "Revenue Surge", value: "+215%" },
+      { label: "CAC Reduction", value: "-38%" },
+      { label: "Avg Order Value", value: "$2,950" },
+      { label: "Lighthouse", value: "99/100" },
     ],
+    technologyStack: ["Next.js 16", "Tailwind CSS", "Figma Design System", "Meta Ads API"],
+    creativeStrategy: "Warm editorial minimalism highlighting tactile natural timber and stone.",
     gallery: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
       "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85",
     ],
     testimonial: {
       quote:
-        "Our digital presence now commands the exact same reverence as our physical showroom in Copenhagen.",
+        "Figures by Nerdvana completely transformed our commercial trajectory. The new brand and web experience changed how our market views us.",
       author: "Astrid Lindholm",
-      role: "Creative Director, Kalon Living",
+      role: "Founder, Kalon Living",
     },
     featured: true,
     order: 4,
   },
-  {
-    id: "proj-5",
-    title: "Mono Horizon",
-    slug: "mono-horizon",
-    client: "Mono Mobility Group",
-    year: "2023",
-    category: "Motion & 3D",
-    services: ["In-Car HMI", "Kinetic Design System", "Brand World", "Motion Typography"],
-    coverImage: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=85",
-    heroImage: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=85",
-    summary:
-      "Next-generation digital cockpit typography and HUD interaction language for autonomous luxury electric vehicles.",
-    challenge:
-      "Legacy automotive interfaces clutter drivers with sensory overload. Mono needed a glanceable, distraction-free display system for Level 4 automated travel.",
-    approach:
-      "We created an adaptive typography framework that shifts weight and contrast dynamically based on vehicle velocity, ambient sunlight, and cognitive load.",
-    outcome:
-      "Adopted as the foundational interface across Mono's 2026 fleet production line, setting a new benchmark for automotive user safety.",
-    metrics: [
-      { label: "Glance Latency", value: "-45%" },
-      { label: "Production Fleet", value: "12,000 EVs" },
-      { label: "Design Patents", value: "4 Granted" },
-    ],
-    gallery: [
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=85",
-    ],
-    featured: false,
-    order: 5,
-  },
-  {
-    id: "proj-6",
-    title: "Strata Intelligence",
-    slug: "strata-intelligence",
-    client: "Strata Labs San Francisco",
-    year: "2023",
-    category: "Branding",
-    services: ["Brand Strategy", "Generative Identity", "Marketing Website", "Investor Deck"],
-    coverImage: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=900&q=85",
-    heroImage: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1800&q=85",
-    summary:
-      "Positioning and visual identity for enterprise synthetic data generation powering aerospace and medical diagnostics.",
-    challenge:
-      "Synthetic data was misunderstood by executive buyers as 'fake data'. Strata needed a position of supreme statistical fidelity and rigorous defense.",
-    approach:
-      "We coined 'Mathematical Veracity' as their guiding positioning and designed a layered topographical identity that maps multi-dimensional probability fields.",
-    outcome:
-      "Signed 8 enterprise contracts with Fortune 100 aerospace and defense contractors within the first 6 months of rollout.",
-    metrics: [
-      { label: "Enterprise ACV", value: "$480K" },
-      { label: "Sales Cycle", value: "-30 Days" },
-      { label: "Coverage", value: "WSJ, Forbes" },
-    ],
-    gallery: [
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=85",
-    ],
-    featured: false,
-    order: 6,
-  },
 ];
 
-export const services: ServiceItem[] = [
-  {
-    letter: "A /",
-    title: "Brand Identity",
-    shortDescription: "Architecting visual systems that imprint permanence and command respect.",
-    description:
-      "We build brands as living, dynamic systems designed to scale seamlessly across physical spaces, high-resolution screens, and cultural conversations.",
-    items: [
-      "Brand Positioning & Core Narrative",
-      "Visual Identity System & Dynamic Mark",
-      "Typography Hierarchy & Custom Letterforms",
-      "Color Architecture & Material Guidelines",
-      "Comprehensive Living Design System Library",
-      "Packaging, Spatial & Collateral Touchpoints",
-    ],
-    deliverables: [
-      "Brand Guideline Bible (Web & PDF)",
-      "Vector Asset Library & Token Sets",
-      "Font Licenses & Typographic Rules",
-      "Merchandise & Physical Collateral Specs",
-    ],
-  },
-  {
-    letter: "B /",
-    title: "Digital Design",
-    shortDescription: "Crafting digital flagships that convert traffic into loyal believers.",
-    description:
-      "Websites and platforms that marry ruthless engineering performance with cinematic aesthetics, ensuring every interaction feels weighted and intentional.",
-    items: [
-      "High-Conversion Flagship Website Design",
-      "Interaction Guidelines & Choreographed Motion",
-      "Design Systems & Component Libraries (Figma)",
-      "Fluid Multi-Device Responsive Architecture",
-      "WebGL, Canvas & 3D Interactive Experiences",
-      "Performance Audits & Conversion Optimization",
-    ],
-    deliverables: [
-      "Production-Ready Next.js & React Codebases",
-      "Production Figma Workspace & Component Kit",
-      "Motion Choreography Specs (GSAP/Lottie)",
-      "Headless CMS Integration & API Architecture",
-    ],
-  },
-  {
-    letter: "C /",
-    title: "Creative Direction",
-    shortDescription: "Directing cinematic narratives, campaign worlds, and photographic tone.",
-    description:
-      "We orchestrate the entire sensory world around your product, defining how it moves, how it speaks, and the emotions it evokes upon first encounter.",
-    items: [
-      "Campaign Concept & Creative Vision",
-      "Art Direction for Photography & Cinema",
-      "3D Product Visualizations & Kinetic Renders",
-      "Editorial Tone of Voice & Copywriting",
-      "Social & Launch Storyboard Direction",
-      "Exhibition & Event Stage Design",
-    ],
-    deliverables: [
-      "Campaign Treatment & Art Direction Decks",
-      "Production-Grade 4K Motion Assets",
-      "Voice & Tone Playbook for Editorial Teams",
-      "Launch Narrative Architecture & Rollout Plan",
-    ],
-  },
-  {
-    letter: "D /",
-    title: "Strategy & Consulting",
-    shortDescription: "Decisive market diagnosis, naming, and engineering roadmaps.",
-    description:
-      "Before writing a line of code or drawing a glyph, we dissect your market reality, strip away superfluous noise, and chart a defensible growth vector.",
-    items: [
-      "Competitive Landscape & Market Diagnosis",
-      "Product Naming & Messaging Frameworks",
-      "Audience Segmentation & Behavioral Mapping",
-      "Comprehensive Digital Product Audits",
-      "Executive Brand Alignment Workshops",
-      "Multi-Year Technology & Design Roadmaps",
-    ],
-    deliverables: [
-      "Strategic Diagnostic Brief & Position Paper",
-      "Messaging Matrix by Target Persona",
-      "UX/Conversion Audit & Prioritized Backlog",
-      "6-to-18 Month Product Rollout Roadmap",
-    ],
-  },
-];
-
-export const awards: Award[] = [
-  { id: "aw-1", name: "Awwwards Site of the Year Nominee", category: "Digital Craft & Innovation", count: "x3", year: "2025" },
-  { id: "aw-2", name: "FWA of the Day", category: "Interactive Web Experience", count: "x8", year: "2024–2025" },
-  { id: "aw-3", name: "Awwwards Site of the Day (SOTD)", category: "Design & Engineering", count: "x12", year: "2023–2025" },
-  { id: "aw-4", name: "Type Directors Club Certificate of Typographic Excellence", category: "Display Typography", count: "x2", year: "2024" },
-  { id: "aw-5", name: "Webby Award Honoree", category: "Corporate Communications & Identity", count: "x4", year: "2024" },
-  { id: "aw-6", name: "Red Dot Design Award", category: "Brands & Communication Design", count: "x2", year: "2023" },
-];
-
-export const testimonials: Testimonial[] = [
-  {
-    id: "test-1",
-    quote:
-      "Kontrast operates on a plane rare among creative agencies. They dissected our complex autonomous tech in two days, stripped away the jargon, and delivered a digital flagship that closed our $42M round. Absolutely lethal craft.",
-    name: "Elena Rostova",
-    role: "CEO & Founder",
-    company: "Aura Intelligence",
-    countryFlag: "🇺🇸",
-    order: 1,
-  },
-  {
-    id: "test-2",
-    quote:
-      "In six weeks, our international conversion doubled. The level of typographic rigor, motion fluidity, and uncompromising performance they engineered into Kalon Living made us the gold standard in Copenhagen.",
-    name: "Astrid Lindholm",
-    role: "Chief Creative Officer",
-    company: "Kalon Studios",
-    countryFlag: "🇩🇰",
-    order: 2,
-  },
-  {
-    id: "test-3",
-    quote:
-      "They don't deliver pretty mockups; they deliver high-performance production code that just works. Their blend of Swiss aesthetic discipline and bleeding-edge WebGL engineering is unmatched worldwide.",
-    name: "Julian Meier",
-    role: "Head of Product",
-    company: "Vesper Audio",
-    countryFlag: "🇨🇭",
-    order: 3,
-  },
-  {
-    id: "test-4",
-    quote:
-      "Building for institutional cryptographic adoption requires radical clarity and deep trust. Kontrast gave Nerve Protocol an institutional aura that opened boardroom doors across Wall Street and Silicon Valley.",
-    name: "Dr. Kemi Adeleke",
-    role: "Founding Researcher",
-    company: "Nerve Protocol",
-    countryFlag: "🇳🇬",
-    order: 4,
-  },
-  {
-    id: "test-5",
-    quote:
-      "Every deadline met. Every interaction thoughtful. Their team challenged our assumptions in the best possible way and pushed our brand to where it needed to be three years ahead of the competition.",
-    name: "Marcus Vance",
-    role: "Partner",
-    company: "Horizon Ventures",
-    countryFlag: "🇬🇧",
-    order: 5,
-  },
-];
 
 export const posts: Post[] = [
   {
     id: "post-1",
-    title: "Why Minimalist Digital Flagships Out-Convert Feature Bloat in 2026",
-    slug: "why-minimalist-digital-flagships-out-convert",
+    title: "Cloud & DevOps Architecture: Scaling Infrastructure without Bloat",
+    slug: "scaling-cloud-infrastructure-without-bloat",
     subtitle:
-      "In an era of cognitive overload, the agencies and brands that distill their proposition into singular editorial moments capture the market.",
-    date: "OCTOBER 24, 2026",
-    readTime: "5 MIN READ",
-    cover: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85",
+      "How Nerdvana Technologies designs GitOps pipelines, multi-cloud topologies, and Kubernetes clusters that cut operational expenditure by 40%.",
+    date: "OCTOBER 2026",
+    readTime: "6 MIN READ",
+    cover: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=85",
     author: {
-      name: "Darius Sterling",
-      role: "Principal & Creative Director",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=85",
+      name: "Tariq Adele",
+      role: "Head of Technology",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=85",
     },
-    tags: ["Strategy", "Conversion", "Design Philosophy"],
+    tags: ["Cloud", "DevOps", "Infrastructure"],
     content: `
-### The Tyranny of the Feature Grid
+### Beyond Infrastructure Sprawl
 
-For the last five years, B2B and consumer web design fell into an algorithmic trap: endless Bento grids, interchangeable gradients, and thirty-paragraph feature rundowns that tell visitors everything except why they should care.
+Engineering teams frequently scale compute resources as a blunt instrument to solve throughput bottlenecks, resulting in runaway AWS invoices and fragile deployment states.
 
-When everyone speaks at maximum volume, silence becomes deafening.
+At Nerdvana Technologies, our philosophy centers on surgical platform engineering: Terraform Infrastructure as Code, automated ephemeral testing environments, and strict FinOps telemetry.
 
-At Kontrast, our philosophy centers on radical editorial restraint. When a potential buyer lands on your digital flagship, they are not looking for an encyclopedic manual; they are seeking confidence. They want proof of craft, proof of scale, and an intuitive pathway to engage.
+### The Three Laws of Resilient Cloud Scaling
 
-\`\`\`
-Radical Clarity = (Total Sensory Noise / Defensible Value) × Precision of Motion
-\`\`\`
-
-### The Three Laws of Contemporary Editorial Conversion
-
-1. **Hierarchy as Speed:** If the user cannot grasp your tier-one proposition within 800 milliseconds, you have lost the narrative. Typography size and line-height are your primary navigation instruments.
-2. **Kinetic Friction:** Motion should never be ornamental. Smooth scroll-linked reveals and micro-interactions communicate weight, luxury, and digital integrity.
-3. **Low-Friction Conversions:** Replace cold, generic forms with contextual, sentence-style Mad-Libs dialogues that speak like a human conversation.
+1. **GitOps as Single Source of Truth:** No manual console clicks. Every container ingress rule, VPC peering connection, and IAM policy is version-controlled and verified via automated CI pipelines.
+2. **Container Density & Auto-Scaling:** Right-size Kubernetes pods based on observed P99 memory footprints rather than arbitrary resource requests.
+3. **Multi-Region Observability:** Establish centralized distributed tracing with Datadog and OpenTelemetry before introducing complex microservices.
     `,
     featured: true,
   },
   {
     id: "post-2",
-    title: "Engineering Sixty Frames Per Second Under Heavy WebGL & Motion",
-    slug: "engineering-60fps-under-heavy-motion",
+    title: "Why High-Performance Digital Flagships Out-Convert Generic SaaS Templates",
+    slug: "why-digital-flagships-out-convert",
     subtitle:
-      "How we orchestrate GSAP ScrollTrigger, Lenis smooth scrolling, and Next.js Turbopack without dropping a single frame.",
-    date: "OCTOBER 12, 2026",
-    readTime: "7 MIN READ",
+      "Figures by Nerdvana breaks down the intersection of sub-second load times, tactile motion design, and commercial conversion.",
+    date: "OCTOBER 2026",
+    readTime: "5 MIN READ",
     cover: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=85",
     author: {
-      name: "Tariq Adele",
-      role: "Head of Engineering",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=85",
+      name: "Darius Sterling",
+      role: "Creative Director",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=85",
     },
-    tags: ["Engineering", "Motion", "Performance"],
+    tags: ["Branding", "UI/UX", "Web"],
     content: `
-### The Illusion of Smoothness
+### The Homogeny Problem
 
-Building award-winning digital experiences often collides with strict performance budgets. Too many agency sites sacrifice Core Web Vitals at the altar of heavy animations, resulting in jank, overheating mobile batteries, and 5-second Largest Contentful Paint (LCP) times.
+Look across the modern B2B tech landscape: everyone uses the same Bento grid templates, the same sterile illustrations, and the same interchangeable corporate copy.
 
-Here is the exact playbook we enforce at Kontrast to guarantee a 95+ Lighthouse score while delivering visceral kinetic physics:
+When every business looks identical, buyers default to comparing price.
 
-### 1. Transform and Opacity Exclusively
-Never animate \`top\`, \`left\`, \`height\`, or \`margin\`. Force hardware acceleration via \`will-change: transform\` on active nodes and let the GPU handle matrix transforms.
-
-### 2. Lenis Scroll Synchronization
-Traditional smooth scroll libraries hijack native wheel events and break accessibility. Lenis normalizes scroll physics natively, delegating coordinates to requestAnimationFrame without introducing layout thrashing.
+A bespoke digital flagship engineered by Figures by Nerdvana establishes instant credibility, commands pricing authority, and guides visitors through intuitive, problem-led conversion pathways.
     `,
     featured: true,
   },
-  {
-    id: "post-3",
-    title: "Typography as Spatial Architecture: Choosing Type for the Screen",
-    slug: "typography-as-spatial-architecture",
-    subtitle:
-      "Why display grotesks and fluid clamp mathematics form the bedrock of high-end editorial experiences.",
-    date: "SEPTEMBER 28, 2026",
-    readTime: "6 MIN READ",
-    cover: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=85",
-    author: {
-      name: "Sophie Chen",
-      role: "Lead Typographer",
-      avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=85",
-    },
-    tags: ["Typography", "Design", "Craft"],
-    content: `
-### Beyond the Pixel Grid
-
-Typography is not merely text on a background; it is structural architecture. When you set a title at 18vw with a negative tracking of -0.04em, the negative space between characters forms physical rooms for the user's eye to traverse.
-    `,
-    featured: false,
-  },
 ];
-
-export const pricingPackages: PricingPackage[] = [
-  {
-    id: "pkg-foundation",
-    name: "Foundation",
-    tagline: "You've landed initial product-market fit and need an enterprise-grade brand presence.",
-    monthlyPrice: 7500,
-    originalMonthlyPrice: 9000,
-    yearlyDiscountPercent: 20,
-    setupFee: 4500,
-    features: [
-      "Complete Brand Identity & Vector Asset System",
-      "Bespoke High-Conversion Web Flagship (up to 6 core pages)",
-      "Next.js App Router & Tailwind Architecture",
-      "Headless CMS Integration (Sanity / Payload)",
-      "Interactive Micro-Motion & Choreographed Reveals",
-      "Full Mobile & Tablet Responsive Optimization",
-      "Lighthouse 90+ Guaranteed Core Web Vitals",
-      "4 Weeks Rapid Sprint to Launch",
-    ],
-  },
-  {
-    id: "pkg-accelerate",
-    name: "Accelerate",
-    tagline: "You're operating at rapid scale and need high-velocity design and engineering bandwidth.",
-    monthlyPrice: 14500,
-    originalMonthlyPrice: 17500,
-    yearlyDiscountPercent: 20,
-    setupFee: 6500,
-    highlighted: true,
-    badge: "MOST POPULAR",
-    features: [
-      "Everything in Foundation Tier",
-      "Multi-Page Interactive Digital Flagship (up to 14 pages)",
-      "Dedicated Senior Designer & Full-Stack Creative Technologist",
-      "Custom 3D / WebGL Visualizations & Interactive Shaders",
-      "Bespoke Design System & Figma Token Synchronizer",
-      "Continuous Conversion Rate Optimization & A/B Experiments",
-      "Priority 48-Hour Turnaround on Iterative Requests",
-      "Weekly Strategic Sync with Agency Principals",
-      "Resend Transactional Email & CRM Webhooks",
-    ],
-  },
-  {
-    id: "pkg-command",
-    name: "Command",
-    tagline: "You're no longer new; you dominate your category with custom digital flagships and constant innovation.",
-    monthlyPrice: 24000,
-    originalMonthlyPrice: 29000,
-    yearlyDiscountPercent: 20,
-    setupFee: 9500,
-    features: [
-      "Full Agency On-Demand Retainer Access",
-      "Unlimited Scoped Digital & Brand Work Streams",
-      "Bespoke Multi-Region Global Web Platforms",
-      "Custom Spatial Audio & Immersive Interactive Apps",
-      "Dedicated Creative Director, Tech Lead & Senior Team",
-      "Quarterly Onsite Innovation Sprints (NYC or Lagos)",
-      "24/7 SLA & Direct Executive Slack Channel",
-      "End-to-End Campaign Creative & Launch Rollouts",
-    ],
-  },
-];
-
-export const faqItems: FAQItem[] = [
-  {
-    id: "faq-1",
-    question: "How does a typical project start?",
-    answer:
-      "Every engagement kicks off with a mandatory 5-day Discovery & Diagnostic Sprint. We interview your founders, dissect your competitive positioning, review technical constraints, and deliver an unambiguous Scope of Work, visual moodboard, and architecture blueprint before production begins.",
-    order: 1,
-  },
-  {
-    id: "faq-2",
-    question: "What is the difference between your Strategy and Design offerings?",
-    answer:
-      "Strategy is deciding what to say, whom to say it to, and why they should care. Design is the surgical craft of executing that strategy through typography, motion, visual systems, and software. At Kontrast, we believe design without strategy is decorative, and strategy without design is invisible.",
-    order: 2,
-  },
-  {
-    id: "faq-3",
-    question: "What is your typical project timeline?",
-    answer:
-      "A focused brand identity or MVP digital flagship typically ships in 4 to 6 weeks. Comprehensive multi-platform web flagships with custom 3D motion, headless CMS, and extensive copywriting range between 8 to 12 weeks. We work in disciplined, sprint-based cycles with transparent weekly milestones.",
-    order: 3,
-  },
-  {
-    id: "faq-4",
-    question: "What if we don't know exactly what we need yet?",
-    answer:
-      "That is precisely where our Advisory Sprint comes in. Most founders approach us feeling the friction—poor conversion, investor hesitation, or an outdated identity—without knowing the exact tactical fix. We analyze your commercial goals and prescribe the leanest, highest-leverage path forward.",
-    order: 4,
-  },
-];
-
-export const partners: { name: string; symbol: string; sector: string }[] = [
-  { name: "AURA INTEL", symbol: "AUR", sector: "Humanoid Robotics" },
-  { name: "VESPER AUDIO", symbol: "VSP", sector: "Spatial Sound" },
-  { name: "NERVE LABS", symbol: "NRV", sector: "Cryptographic Infra" },
-  { name: "KALON NORDIC", symbol: "KLN", sector: "Architectural Living" },
-  { name: "STRATA CORP", symbol: "STR", sector: "Synthetic Intelligence" },
-  { name: "MONO MOBILITY", symbol: "MNO", sector: "Autonomous Vehicles" },
-  { name: "CHRONO VAULT", symbol: "CHR", sector: "Digital Wealth" },
-  { name: "SYNTH WAVE", symbol: "SYW", sector: "Generative Audio" },
-];
-
-export const processSteps: {
-  step: string;
-  title: string;
-  summary: string;
-  description: string;
-  deliverables: string[];
-}[] = [
-  {
-    step: "01",
-    title: "Discovery & Diagnosis",
-    summary: "Dissecting market positioning, audience psychology, and technical constraints.",
-    description:
-      "We begin by unearthing the unvarnished truth about your commercial landscape. Through executive alignment sessions, competitor audits, and data analysis, we pinpoint the singular narrative advantage that sets you apart.",
-    deliverables: ["Strategic Brief", "Competitor Matrix", "Visual Benchmarks", "Target Persona Models"],
-  },
-  {
-    step: "02",
-    title: "Strategy & Architecture",
-    summary: "Formulating the narrative core, information taxonomy, and technical blueprint.",
-    description:
-      "Before a pixel is moved, we establish the strategic backbone. We define brand positioning statements, wireframe the conversion pathways, and architect the Next.js and headless data model for effortless scalability.",
-    deliverables: ["Brand Narrative Deck", "Content Hierarchy", "Interactive Low-Fi Wireframes", "Tech Stack Architecture"],
-  },
-  {
-    step: "03",
-    title: "Design & Engineering",
-    summary: "Crafting bespoke typography, tactile micro-interactions, and resilient code.",
-    description:
-      "Here, surgical craft meets modern code. We choreograph fluid motion, model 3D assets, sculpt high-fashion typography, and write production-grade TypeScript with 60fps performance benchmarks.",
-    deliverables: ["High-Fidelity Component System", "Production Next.js Codebase", "GSAP Motion Specs", "Lighthouse 95+ Audit"],
-  },
-  {
-    step: "04",
-    title: "Launch & Beyond",
-    summary: "Stress-testing, global edge deployment, and post-launch conversion optimization.",
-    description:
-      "Launch is not the finish line; it is day zero. We conduct cross-browser stress tests, configure SEO and analytics funnels, and monitor conversion metrics to iterate with relentless speed.",
-    deliverables: ["Production Edge Deployment", "Analytics Dashboard & Event Funnels", "Staff CMS Training", "Post-Launch Growth Retainer"],
-  },
-];
-

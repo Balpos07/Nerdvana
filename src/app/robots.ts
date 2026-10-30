@@ -9,7 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
     ],
-    sitemap: "https://kontrast-agency.com/sitemap.xml",
+    sitemap: "https://nerdvana.global/sitemap.xml",
   };
 }
-

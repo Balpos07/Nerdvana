@@ -6,12 +6,12 @@ import { siteSettings } from "@/lib/cms/data";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: `Data privacy and protection commitments of ${siteSettings.fullName}.`,
+  description: `Data privacy and protection commitments of ${siteSettings.parentBrand}.`,
 };
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen">
+    <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen bg-[#0A0A0A]">
       <div className="max-w-[860px] mx-auto px-6 md:px-12">
         <div className="mb-8">
           <Link
@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div className="border-b border-[var(--line)] pb-8 mb-12">
-          <span className="section-label block mb-2 text-[var(--accent)]">PRIVACY & DATA</span>
+          <span className="section-label block mb-2 text-[var(--accent)]">PRIVACY & PROTECTION</span>
           <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[var(--fg)]">
             Privacy Policy
           </h1>
@@ -39,39 +39,27 @@ export default function PrivacyPolicyPage() {
               1. Information We Collect
             </h2>
             <p>
-              When you submit a project brief or newsletter subscription through our site, we collect your name, email address, company name, phone number, and project parameters. We do not sell, rent, or trade your personal data to any third party for commercial marketing.
+              When you submit a project brief or newsletter subscription through {siteSettings.parentBrand}, we collect your name, email, company name, country, and project requirements. We never sell, rent, or trade your contact data to third parties.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-bold uppercase text-[var(--fg)] mb-3">
-              2. How We Use Collected Data
+              2. Use of Information
             </h2>
             <p>
-              Your contact information is strictly utilized to evaluate your project inquiry, prepare strategic diagnostic proposals, correspond regarding ongoing project deliverables, and transmit requested studio dispatches.
+              Your brief details are utilized solely by our engineering and creative leads to evaluate your inquiry, prepare tailored scopes, and communicate regarding project deliverables.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-bold uppercase text-[var(--fg)] mb-3">
-              3. Analytics & Telemetry
+              3. Privacy Desk Contact
             </h2>
             <p>
-              We employ privacy-first analytics to evaluate general page performance, scroll depth, and interaction telemetry. No invasive cross-site tracking cookies are stored without your consent.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold uppercase text-[var(--fg)] mb-3">
-              4. Contact the Data Protection Desk
-            </h2>
-            <p>
-              If you wish to review, update, or purge your records from our systems, contact our studio privacy desk directly at{" "}
-              <a
-                href="mailto:privacy@kontrast-agency.com"
-                className="text-[var(--accent)] underline"
-              >
-                privacy@kontrast-agency.com
+              To request data updates or deletion, email our privacy desk directly at{" "}
+              <a href="mailto:privacy@nerdvana.global" className="text-[var(--accent)] underline">
+                privacy@nerdvana.global
               </a>
               .
             </p>
@@ -81,4 +69,3 @@ export default function PrivacyPolicyPage() {
     </div>
   );
 }
-

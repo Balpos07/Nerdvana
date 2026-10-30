@@ -14,7 +14,7 @@ interface WorkGalleryProps {
 export default function WorkGallery({ initialProjects }: WorkGalleryProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const categories = ["All", "Branding", "Digital Design", "Motion & 3D", "Strategy"];
+  const categories = ["All", "Technology", "Branding", "Web", "Creative"];
 
   const filteredProjects =
     selectedCategory === "All"

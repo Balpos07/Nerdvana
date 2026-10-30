@@ -13,7 +13,6 @@ export default function CustomCursor() {
   const cursorY = useSpring(0, { damping: 25, stiffness: 350 });
 
   useEffect(() => {
-    // Only enable on desktop pointer devices
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -76,19 +75,19 @@ export default function CustomCursor() {
     >
       <motion.div
         animate={{
-          width: cursorText ? 72 : hovered ? 44 : 10,
-          height: cursorText ? 72 : hovered ? 44 : 10,
-          backgroundColor: hovered ? "rgba(255, 62, 0, 0.9)" : "rgba(244, 242, 238, 0.8)",
+          width: cursorText ? 72 : hovered ? 42 : 10,
+          height: cursorText ? 72 : hovered ? 42 : 10,
+          backgroundColor: hovered ? "#b8ff00" : "#f5f5f2",
           borderColor: hovered ? "transparent" : "rgba(255, 255, 255, 0.3)",
         }}
         transition={{ type: "spring", stiffness: 350, damping: 25 }}
-        className="rounded-full flex items-center justify-center text-[10px] font-mono tracking-widest uppercase text-white font-bold backdrop-blur-xs shadow-lg"
+        className="rounded-full flex items-center justify-center text-[10px] font-mono tracking-widest uppercase text-[#0a0a0a] font-bold backdrop-blur-xs shadow-lg"
       >
         {cursorText && (
           <motion.span
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-white text-[11px] font-bold"
+            className="text-[#0a0a0a] text-[11px] font-black"
           >
             {cursorText}
           </motion.span>
@@ -97,4 +96,3 @@ export default function CustomCursor() {
     </motion.div>
   );
 }
-

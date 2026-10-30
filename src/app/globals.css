@@ -1,31 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0b0b0b;
-  --fg: #f4f2ee;
-  --muted: rgba(244, 242, 238, 0.55);
-  --muted-dim: rgba(244, 242, 238, 0.35);
-  --accent: #ff3e00;
-  --accent-hover: #ff5c26;
-  --line: rgba(244, 242, 238, 0.12);
-  --line-light: rgba(244, 242, 238, 0.06);
-  --card-bg: rgba(244, 242, 238, 0.03);
-  --card-hover: rgba(244, 242, 238, 0.06);
-  --surface: #141414;
+  --bg: #0a0a0a;
+  --fg: #f5f5f2;
+  --muted: rgba(245, 245, 242, 0.6);
+  --muted-dim: rgba(245, 245, 242, 0.35);
+  --accent: #b8ff00;
+  --accent-hover: #cdff33;
+  --accent-fg: #0a0a0a;
+  --line: rgba(245, 245, 242, 0.12);
+  --line-light: rgba(245, 245, 242, 0.06);
+  --card-bg: rgba(245, 245, 242, 0.03);
+  --card-hover: rgba(245, 245, 242, 0.06);
+  --surface: #121212;
+  --surface-raised: #181818;
 }
 
 [data-theme="light"] {
-  --bg: #f4f2ee;
-  --fg: #0b0b0b;
-  --muted: rgba(11, 11, 11, 0.55);
-  --muted-dim: rgba(11, 11, 11, 0.35);
-  --accent: #ff3e00;
-  --accent-hover: #e03600;
-  --line: rgba(11, 11, 11, 0.12);
-  --line-light: rgba(11, 11, 11, 0.06);
-  --card-bg: rgba(11, 11, 11, 0.03);
-  --card-hover: rgba(11, 11, 11, 0.06);
-  --surface: #eae7e2;
+  --bg: #f5f5f2;
+  --fg: #0a0a0a;
+  --muted: rgba(10, 10, 10, 0.6);
+  --muted-dim: rgba(10, 10, 10, 0.35);
+  --accent: #8ac200;
+  --accent-hover: #72a100;
+  --accent-fg: #0a0a0a;
+  --line: rgba(10, 10, 10, 0.12);
+  --line-light: rgba(10, 10, 10, 0.06);
+  --card-bg: rgba(10, 10, 10, 0.03);
+  --card-hover: rgba(10, 10, 10, 0.06);
+  --surface: #ebe8e3;
+  --surface-raised: #e0ddd7;
 }
 
 * {
@@ -73,12 +77,12 @@ body {
 /* Selection */
 ::selection {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--accent-fg);
 }
 
 /* Fluid wordmark clamp */
 .wordmark-hero {
-  font-size: clamp(3.75rem, 16vw, 19rem);
+  font-size: clamp(3.2rem, 15vw, 18rem);
   line-height: 0.85;
   letter-spacing: -0.04em;
   font-weight: 800;
@@ -86,7 +90,7 @@ body {
 }
 
 .wordmark-footer {
-  font-size: clamp(4rem, 17vw, 21rem);
+  font-size: clamp(3.5rem, 16vw, 19.5rem);
   line-height: 0.85;
   letter-spacing: -0.045em;
   font-weight: 800;
@@ -102,7 +106,7 @@ body {
   font-family: monospace;
 }
 
-/* Hide scrollbar for clean horizontal scrolls */
+/* Hide scrollbars */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -111,7 +115,7 @@ body {
   scrollbar-width: none;
 }
 
-/* Marquee infinite animation */
+/* Infinite Marquee */
 @keyframes marquee-left {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }

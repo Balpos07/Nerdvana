@@ -109,7 +109,7 @@ export default function CareerApplicationForm() {
           <Loader2 className="w-4 h-4 animate-spin" />
         ) : (
           <>
-            <Sparkles className="w-3.5 h-3.5" />
+            {/* <Sparkles className="w-3.5 h-3.5" /> */}
             <span>Submit Application</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </>
