@@ -65,7 +65,7 @@ export default function AboutPage() {
           <div className="p-8 md:p-12 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 text-[var(--accent)] text-xs font-mono font-bold uppercase mb-4">
-                <Cpu className="w-4 h-4" />
+                {/* <Cpu className="w-4 h-4" /> */}
                 <span>NERDVANA TECHNOLOGIES</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[var(--fg)] mb-4">

@@ -11,7 +11,9 @@ export default function CareerApplicationForm() {
     portfolio: "",
     note: "",
   });
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success">(
+    "idle",
+  );
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,16 +33,22 @@ export default function CareerApplicationForm() {
           Profile Received
         </h4>
         <p className="text-xs text-[var(--muted)] leading-relaxed">
-          Thank you, {formData.name}. Our talent partner reviews portfolios every Friday and will contact you directly.
+          Thank you, {formData.name}. Our talent partner reviews portfolios
+          every Friday and will contact you directly.
         </p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-xs font-mono">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-4 text-xs font-mono"
+    >
       <div>
-        <label className="block text-[var(--muted)] uppercase mb-1">Full Name *</label>
+        <label className="block text-[var(--muted)] uppercase mb-1">
+          Full Name *
+        </label>
         <input
           type="text"
           required
@@ -52,7 +60,9 @@ export default function CareerApplicationForm() {
       </div>
 
       <div>
-        <label className="block text-[var(--muted)] uppercase mb-1">Email Address *</label>
+        <label className="block text-[var(--muted)] uppercase mb-1">
+          Email Address *
+        </label>
         <input
           type="email"
           required
@@ -64,33 +74,49 @@ export default function CareerApplicationForm() {
       </div>
 
       <div>
-        <label className="block text-[var(--muted)] uppercase mb-1">Discipline</label>
+        <label className="block text-[var(--muted)] uppercase mb-1">
+          Discipline
+        </label>
         <select
           value={formData.role}
           onChange={(e) => setFormData({ ...formData, role: e.target.value })}
           className="w-full bg-[var(--bg)] border border-[var(--line)] px-3 py-2 text-[var(--fg)] uppercase focus:outline-none focus:border-[var(--accent)]"
         >
-          <option value="Engineering">Engineering / WebGL</option>
-          <option value="Brand Design">Brand & Visual Systems</option>
-          <option value="Motion & 3D">Motion & 3D Visuals</option>
-          <option value="Strategy">Strategy & Architecture</option>
+          <option value="Engineering" className="bg-[#F5F5F2] text-[#0A0A0A]">
+            Engineering / WebGL
+          </option>
+          <option value="Brand Design" className="bg-[#F5F5F2] text-[#0A0A0A]">
+            Brand & Visual Systems
+          </option>
+          <option value="Motion & 3D" className="bg-[#F5F5F2] text-[#0A0A0A]">
+            Motion & 3D Visuals
+          </option>
+          <option value="Strategy" className="bg-[#F5F5F2] text-[#0A0A0A]">
+            Strategy & Architecture
+          </option>
         </select>
       </div>
 
       <div>
-        <label className="block text-[var(--muted)] uppercase mb-1">Portfolio or GitHub URL *</label>
+        <label className="block text-[var(--muted)] uppercase mb-1">
+          Portfolio or GitHub URL *
+        </label>
         <input
           type="url"
           required
           placeholder="HTTPS://..."
           value={formData.portfolio}
-          onChange={(e) => setFormData({ ...formData, portfolio: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, portfolio: e.target.value })
+          }
           className="w-full bg-[var(--bg)] border border-[var(--line)] px-3 py-2 text-[var(--fg)] focus:outline-none focus:border-[var(--accent)]"
         />
       </div>
 
       <div>
-        <label className="block text-[var(--muted)] uppercase mb-1">A brief note</label>
+        <label className="block text-[var(--muted)] uppercase mb-1">
+          A brief note
+        </label>
         <textarea
           rows={3}
           placeholder="What kind of problems excite you most?"
@@ -118,4 +144,3 @@ export default function CareerApplicationForm() {
     </form>
   );
 }
-

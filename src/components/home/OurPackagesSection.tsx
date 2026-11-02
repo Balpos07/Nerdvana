@@ -51,6 +51,9 @@ export default function OurPackagesSection() {
         </div>
 
         {/* Category Filter Pills */}
+        <div className="mb-4 p-4 rounded-xs border border-dashed border-[var(--line)] bg-[var(--surface)] text-xs font-mono text-[var(--muted)]">
+          SAMPLE DATA — Package names, scope, inclusions, add-ons and prices are not final. Replace all sample commercial terms before launch.
+        </div>
         <div className="flex flex-wrap items-center gap-2 pb-12">
           {categories.map((cat) => (
             <button
@@ -104,7 +107,7 @@ export default function OurPackagesSection() {
                     STARTING FROM
                   </span>
                   <div className="text-3xl md:text-4xl font-mono font-black text-[var(--fg)] mt-1">
-                    {pkg.startingPrice}
+                    SAMPLE {pkg.startingPrice}
                   </div>
                   <p className="text-[11px] font-mono text-[var(--muted)] mt-2">
                     <strong className="text-[var(--fg)]">Ideal for:</strong> {pkg.idealFor}
@@ -186,4 +189,3 @@ export default function OurPackagesSection() {
     </section>
   );
 }
-

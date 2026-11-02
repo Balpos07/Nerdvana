@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowUpRight, ShieldCheck, Zap, Layers, Scale, Compass } from "lucide-react";
-import { whyNerdvana, siteSettings } from "@/lib/cms/data";
+import { whyNerdvana } from "@/lib/cms/data";
 
 export default function WhyNerdvanaSection() {
   const icons = [Layers, Zap, Compass, ShieldCheck, Scale];
@@ -26,16 +26,6 @@ export default function WhyNerdvanaSection() {
               </p>
             </div>
 
-            <div className="flex items-center gap-6 font-mono text-xs text-[var(--muted)]">
-              <div>
-                <strong className="text-[var(--accent)] text-lg block">{siteSettings.stats.clientSatisfaction}</strong>
-                <span>CLIENT RETENTION</span>
-              </div>
-              <div>
-                <strong className="text-[var(--accent)] text-lg block">{siteSettings.stats.uptimeSLA}</strong>
-                <span>INFRASTRUCTURE SLA</span>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -79,4 +69,3 @@ export default function WhyNerdvanaSection() {
     </section>
   );
 }
-

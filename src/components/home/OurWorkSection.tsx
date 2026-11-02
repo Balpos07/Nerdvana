@@ -31,7 +31,7 @@ export default function OurWorkSection() {
                 Our Work
               </h2>
               <p className="text-sm md:text-base text-[var(--muted)] mt-2">
-                Work we&apos;re proud of. Real capabilities, scalable code, and measurable commercial results.
+                Selected work areas. Replace sample portfolio entries with verified client work before launch.
               </p>
             </div>
 
@@ -76,6 +76,9 @@ export default function OurWorkSection() {
                 className="group flex flex-col justify-between border border-[var(--line)] p-6 md:p-8 rounded-xs bg-[var(--surface)] hover:border-[var(--accent)]/50 transition-all"
               >
                 <div>
+                  <div className="mb-4 border-2 border-dashed border-[var(--line)] px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-[var(--muted)]">
+                    [Placeholder: replace with real client proof]
+                  </div>
                   {/* Visual */}
                   <Link
                     href={`/work/${proj.slug}`}
@@ -113,10 +116,10 @@ export default function OurWorkSection() {
                     {proj.metrics.slice(0, 2).map((m, idx) => (
                       <div key={idx} className="flex flex-col">
                         <span className="text-xl font-mono font-black text-[var(--accent)]">
-                          {m.value}
+                          TBD
                         </span>
                         <span className="text-[10px] font-mono uppercase text-[var(--muted)]">
-                          {m.label}
+                          VERIFIED METRIC REQUIRED
                         </span>
                       </div>
                     ))}
@@ -151,4 +154,3 @@ export default function OurWorkSection() {
     </section>
   );
 }
-

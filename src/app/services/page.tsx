@@ -43,7 +43,7 @@ export default function ServicesPage() {
           <div className="p-8 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
               <div className="flex items-center gap-2 text-[var(--accent)] text-xs font-mono font-bold uppercase mb-2">
-                <Cpu className="w-4 h-4" />
+                {/* <Cpu className="w-4 h-4" /> */}
                 <span>DIVISION 01 // NERDVANA TECHNOLOGIES</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-[var(--fg)]">

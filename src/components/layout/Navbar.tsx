@@ -4,7 +4,15 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight, ChevronDown, Cpu, Sparkles, Layers } from "lucide-react";
+import {
+  Menu,
+  X,
+  ArrowUpRight,
+  ChevronDown,
+  Cpu,
+  Sparkles,
+  Layers,
+} from "lucide-react";
 import OfficeClock from "../ui/OfficeClock";
 import { siteSettings, serviceDivisions } from "@/lib/cms/data";
 
@@ -104,6 +112,17 @@ export default function Navbar() {
                 <button
                   className="flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-[var(--fg)] hover:text-[var(--accent)] transition-colors py-2 focus:outline-none"
                   aria-expanded={servicesMenuOpen}
+                  aria-haspopup="menu"
+                  onClick={() => setServicesMenuOpen((open) => !open)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Escape") {
+                      setServicesMenuOpen(false);
+                    }
+                    if (event.key === "ArrowDown") {
+                      event.preventDefault();
+                      setServicesMenuOpen(true);
+                    }
+                  }}
                 >
                   <span>Services</span>
                   <ChevronDown
@@ -121,18 +140,17 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.98 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full -left-20 w-[640px] p-6 rounded-sm bg-[#121212] border border-[var(--line)] shadow-2xl z-50 text-[var(--fg)]"
+                      className="absolute top-full -left-20 w-[640px] p-6 rounded-sm bg-[#F5F5F2] border border-black/20 shadow-2xl z-50 text-[#0A0A0A]"
                     >
-                      <div className="grid grid-cols-2 gap-6 divide-x divide-[var(--line)]">
+                      <div className="grid grid-cols-2 gap-6 divide-x divide-black/10">
                         {/* Division 1: Nerdvana Technologies */}
                         <div className="pr-4">
-                          <div className="flex items-center gap-2 mb-2 text-[var(--accent)]">
-                            <Cpu className="w-4 h-4" />
+                          <div className="flex items-center gap-2 mb-2 text-[#0A0A0A]">
                             <h4 className="text-xs font-bold font-mono uppercase tracking-wider">
                               Nerdvana Technologies
                             </h4>
                           </div>
-                          <p className="text-[11px] text-[var(--muted)] mb-3">
+                          <p className="text-[11px] text-black/60 mb-3">
                             Technology that moves businesses forward.
                           </p>
                           <ul className="space-y-2">
@@ -140,7 +158,7 @@ export default function Navbar() {
                               <li key={s.title}>
                                 <Link
                                   href={`/services#${s.title.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
-                                  className="text-xs font-medium text-[var(--fg)] hover:text-[var(--accent)] transition-colors flex items-center justify-between group"
+                                  className="text-xs font-medium text-[#0A0A0A] hover:text-[#5F8000] transition-colors flex items-center justify-between group"
                                 >
                                   <span>{s.title}</span>
                                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -152,13 +170,12 @@ export default function Navbar() {
 
                         {/* Division 2: Figures by Nerdvana */}
                         <div className="pl-6">
-                          <div className="flex items-center gap-2 mb-2 text-[#F5F5F2]">
-                            {/* <Sparkles className="w-4 h-4 text-[var(--accent)]" /> */}
+                          <div className="flex items-center gap-2 mb-2 text-[#0A0A0A]">
                             <h4 className="text-xs font-bold font-mono uppercase tracking-wider">
                               Figures by Nerdvana
                             </h4>
                           </div>
-                          <p className="text-[11px] text-[var(--muted)] mb-3">
+                          <p className="text-[11px] text-black/60 mb-3">
                             Brands, experiences & marketing that move people.
                           </p>
                           <ul className="space-y-2">
@@ -166,7 +183,7 @@ export default function Navbar() {
                               <li key={s.title}>
                                 <Link
                                   href={`/services#${s.title.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
-                                  className="text-xs font-medium text-[var(--fg)] hover:text-[var(--accent)] transition-colors flex items-center justify-between group"
+                                  className="text-xs font-medium text-[#0A0A0A] hover:text-[#5F8000] transition-colors flex items-center justify-between group"
                                 >
                                   <span>{s.title}</span>
                                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -230,7 +247,11 @@ export default function Navbar() {
               className="p-2 text-[var(--fg)] hover:text-[var(--accent)] transition-colors focus:outline-none"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -240,7 +261,10 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
+            initial={{
+              opacity: 0,
+              clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+            }}
             animate={{
               opacity: 1,
               clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",

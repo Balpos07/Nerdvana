@@ -63,6 +63,9 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
 
         {/* Title Bar */}
         <div className="border-b border-[var(--line)] pb-12 mb-12">
+          <div className="mb-8 border-2 border-dashed border-[var(--line)] px-4 py-3 text-xs font-mono uppercase tracking-wider text-[var(--muted)]">
+            [Placeholder: replace with real client proof]
+          </div>
           <div className="flex items-center gap-2 mb-3">
             <span className="section-label text-[var(--accent)]">CASE STUDY //</span>
             <span className="px-3 py-1 rounded-full bg-[var(--surface)] text-[10px] font-mono text-[var(--accent)] uppercase border border-[var(--line)]">
@@ -122,10 +125,10 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
                 className="p-5 md:p-6 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between"
               >
                 <span className="text-2xl md:text-3xl font-black font-mono text-[var(--accent)] mb-2">
-                  {m.value}
+                  TBD
                 </span>
                 <span className="text-[11px] font-mono uppercase tracking-wider text-[var(--muted)]">
-                  {m.label}
+                  VERIFIED METRIC REQUIRED
                 </span>
               </div>
             ))}
@@ -161,7 +164,7 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
                 Commercial Impact
               </h3>
               <p className="text-sm md:text-base text-[var(--muted)] leading-relaxed">
-                {project.results}
+                Verified commercial results must be documented and approved before this section is published.
               </p>
             </div>
 
@@ -203,22 +206,15 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
         </div>
 
         {/* Testimonial Quote */}
-        {project.testimonial && (
-          <div className="p-8 md:p-14 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-20">
+        <div className="p-8 md:p-14 rounded-xs border-2 border-dashed border-[var(--line)] bg-[var(--surface)] mb-20">
             <Quote className="w-10 h-10 text-[var(--accent)]/40 mb-6" />
-            <blockquote className="text-2xl md:text-3xl font-bold text-[var(--fg)] tracking-tight mb-8">
-              &ldquo;{project.testimonial.quote}&rdquo;
-            </blockquote>
-            <div className="border-t border-[var(--line)] pt-4">
-              <p className="font-extrabold uppercase text-sm text-[var(--fg)]">
-                {project.testimonial.author}
-              </p>
-              <p className="text-xs font-mono text-[var(--muted)]">
-                {project.testimonial.role}
-              </p>
-            </div>
+            <p className="text-2xl md:text-3xl font-bold text-[var(--fg)] tracking-tight mb-3">
+              [Placeholder: replace with real client proof]
+            </p>
+            <p className="text-sm text-[var(--muted)]">
+              No testimonial is displayed until a real, attributed quote and publication approval are available.
+            </p>
           </div>
-        )}
 
         {/* Next Case Study */}
         <div className="border-t border-[var(--line)] pt-16 flex flex-col sm:flex-row sm:items-center justify-between gap-6">

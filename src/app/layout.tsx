@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import LenisProvider from "@/components/providers/LenisProvider";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Preloader from "@/components/ui/Preloader";
+import CookieConsent from "@/components/ui/CookieConsent";
 import { siteSettings } from "@/lib/cms/data";
 
 const inter = Inter({
@@ -119,6 +120,7 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-1 w-full">{children}</main>
           <Footer />
+          <CookieConsent />
         </LenisProvider>
       </body>
     </html>
