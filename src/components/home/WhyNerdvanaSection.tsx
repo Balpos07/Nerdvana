@@ -1,12 +1,14 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import { ArrowUpRight, ShieldCheck, Zap, Layers, Scale, Compass } from "lucide-react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { ShieldCheck, Zap, Layers, Scale, Compass } from "lucide-react";
 import { whyNerdvana } from "@/lib/cms/data";
+import { CardReveal, MaskReveal, Magnetic } from "@/components/ui/MotionEffects";
 
 export default function WhyNerdvanaSection() {
   const icons = [Layers, Zap, Compass, ShieldCheck, Scale];
+  const [activePillar, setActivePillar] = useState(0);
 
   return (
     <section className="py-24 md:py-36 bg-[#0A0A0A] border-b border-[var(--line)]">
@@ -18,9 +20,11 @@ export default function WhyNerdvanaSection() {
           </span>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[var(--fg)]">
-                Why Nerdvana
-              </h2>
+              <MaskReveal>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[var(--fg)]">
+                  Why Nerdvana
+                </h2>
+              </MaskReveal>
               <p className="text-sm md:text-base text-[var(--muted)] max-w-xl mt-3">
                 Businesses lose months coordinating fragmented agencies. We bring engineering discipline, creative storytelling, and growth infrastructure under one roof.
               </p>
@@ -33,14 +37,39 @@ export default function WhyNerdvanaSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {whyNerdvana.map((pillar, idx) => {
             const Icon = icons[idx % icons.length];
+            const isActive = activePillar === idx;
             return (
-              <div
+              <CardReveal
                 key={pillar.title}
-                className="p-8 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between group hover:border-[var(--accent)] transition-all duration-300"
+                delay={idx * 0.07}
+                className="h-full"
               >
+              <motion.div
+                onMouseEnter={() => setActivePillar(idx)}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className={`relative h-full overflow-hidden p-8 rounded-xs border flex flex-col justify-between group transition-colors duration-300 ${
+                  isActive
+                    ? "border-[var(--accent)] bg-[var(--surface-raised)] shadow-[0_18px_50px_rgba(184,255,0,0.08)]"
+                    : "border-[var(--line)] bg-[var(--surface)] hover:border-[var(--accent)]"
+                }`}
+              >
+                <motion.div
+                  className="absolute bottom-0 left-0 h-1 bg-[var(--accent)] origin-left"
+                  initial={false}
+                  animate={{ width: isActive ? "100%" : "0%" }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                />
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <Icon className="w-8 h-8 text-[var(--accent)]" />
+                    <Magnetic strength={10}>
+                      <motion.div
+                        animate={isActive ? { rotate: 360 } : { rotate: 0 }}
+                        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        <Icon className="w-8 h-8 text-[var(--accent)]" />
+                      </motion.div>
+                    </Magnetic>
                     <span className="font-mono text-xs text-[var(--muted)]">
                       PILLAR 0{idx + 1}
                     </span>
@@ -61,7 +90,8 @@ export default function WhyNerdvanaSection() {
                   <span>VERIFIED CAPABILITY</span>
                   <span className="text-[var(--accent)]">● ACTIVE</span>
                 </div>
-              </div>
+              </motion.div>
+              </CardReveal>
             );
           })}
         </div>

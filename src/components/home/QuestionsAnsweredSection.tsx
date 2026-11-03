@@ -105,7 +105,7 @@ export default function QuestionsAnsweredSection() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden"
                     >
                       <p className="text-sm md:text-base text-[var(--muted)] leading-relaxed pt-4 pr-12 max-w-3xl">
@@ -122,4 +122,3 @@ export default function QuestionsAnsweredSection() {
     </section>
   );
 }
-

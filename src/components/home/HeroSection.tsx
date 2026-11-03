@@ -4,8 +4,9 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { heroProjects, siteSettings } from "@/lib/cms/data";
+import { Magnetic, ParallaxMedia } from "@/components/ui/MotionEffects";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -30,7 +31,7 @@ export default function HeroSection() {
       <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12">
         {/* Giant Uppercase Brand Wordmark */}
         <div className="w-full border-b border-[var(--line)] pb-6 md:pb-10 overflow-hidden">
-          <div className="flex justify-between items-center text-center">
+          <div className="wordmark-footer wordmark-footer--animated flex justify-between items-center text-center overflow-hidden">
             {letters.map((char, index) => (
               <motion.span
                 key={index}
@@ -41,7 +42,13 @@ export default function HeroSection() {
                   delay: index * 0.04,
                   ease: [0.33, 1, 0.68, 1],
                 }}
-                className="wordmark-hero inline-block font-black select-none text-[#F5F5F2] hover:text-[var(--accent)] transition-colors duration-500"
+                whileHover={{
+                  y: "-0.035em",
+                  rotate: index % 2 === 0 ? -2 : 2,
+                  color: "var(--accent)",
+                  transition: { duration: 0.25 },
+                }}
+                className="wordmark-brand-inline wordmark-hero--animated inline-block origin-bottom select-none"
               >
                 {char}
               </motion.span>
@@ -71,6 +78,7 @@ export default function HeroSection() {
 
           <div className="lg:col-span-3 flex flex-col sm:flex-row lg:flex-col items-start lg:items-end justify-between gap-4 pt-2">
             {/* Primary CTA: Get Started */}
+            <Magnetic>
             <Link
               href="/contacts"
               className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[var(--accent)] text-[var(--accent-fg)] font-black text-xs uppercase tracking-wider hover:bg-[var(--accent-hover)] transition-all shadow-lg group"
@@ -79,6 +87,7 @@ export default function HeroSection() {
               <span>Get Started</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </Link>
+            </Magnetic>
 
             {/* Secondary CTA: Explore Our Work */}
             <Link
@@ -106,41 +115,48 @@ export default function HeroSection() {
               }}
               className="group relative"
             >
+              <Magnetic className="w-full">
               <Link
                 href={`/work/${project.slug}`}
                 className="block relative aspect-[3/4] w-full overflow-hidden rounded-xs bg-[#121212] border border-[var(--line)]"
                 data-cursor-text="VIEW"
               >
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter grayscale-[25%] group-hover:grayscale-0"
-                  priority={idx < 2}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-
-                {/* Overlay Details */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5 flex flex-col justify-end text-white">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--accent)] mb-1">
-                    {project.division}
-                  </span>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="text-sm md:text-base font-bold tracking-tight">
-                        {project.title}
-                      </h3>
-                      <p className="text-[11px] text-[var(--muted)]">
-                        {project.category}
-                      </p>
+                <ParallaxMedia
+                  className="absolute inset-0"
+                  backgroundSpeed={0.3}
+                  foreground={
+                    <div className="absolute inset-x-0 bottom-0 p-4 md:p-5 flex flex-col justify-end text-white">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent -z-10" />
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--accent)] mb-1">
+                        {project.division}
+                      </span>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="text-sm md:text-base font-bold tracking-tight">
+                            {project.title}
+                          </h3>
+                          <p className="text-[11px] text-white/60">
+                            {project.category}
+                          </p>
+                        </div>
+                        <div className="w-7 h-7 rounded-full bg-[var(--accent)] text-[#0A0A0A] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                          <ArrowUpRight className="w-4 h-4" />
+                        </div>
+                      </div>
                     </div>
-                    <div className="w-7 h-7 rounded-full bg-[var(--accent)] text-[#0A0A0A] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <ArrowUpRight className="w-4 h-4" />
-                    </div>
-                  </div>
-                </div>
+                  }
+                >
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter grayscale-[25%] group-hover:grayscale-0"
+                    priority={idx < 2}
+                  />
+                </ParallaxMedia>
               </Link>
+              </Magnetic>
             </motion.div>
           ))}
         </div>

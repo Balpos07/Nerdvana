@@ -3,6 +3,7 @@
 import React from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { whatNerdvanaDoes } from "@/lib/cms/data";
+import { CardReveal, LineReveal, MaskReveal } from "@/components/ui/MotionEffects";
 
 export default function WhatNerdvanaDoes() {
   return (
@@ -14,14 +15,14 @@ export default function WhatNerdvanaDoes() {
             01 // PROPOSITION
           </span>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-            <div>
+            <MaskReveal>
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[var(--fg)]">
-                {whatNerdvanaDoes.headline}
+                <LineReveal text={whatNerdvanaDoes.headline} />
               </h2>
               <p className="text-base md:text-lg text-[var(--muted)] max-w-2xl mt-4 leading-relaxed">
                 {whatNerdvanaDoes.descriptor}
               </p>
-            </div>
+            </MaskReveal>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--line)] bg-white text-xs font-mono text-[var(--fg)]">
               <span>END-TO-END DELIVERY CYCLE</span>
             </div>
@@ -31,9 +32,10 @@ export default function WhatNerdvanaDoes() {
         {/* 6-Stage Sequential Timeline: Imagine → Build → Launch → Automate → Market → Scale */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
           {whatNerdvanaDoes.stages.map((stage, idx) => (
-            <div
+            <CardReveal
               key={stage.label}
               className="relative p-6 min-h-[260px] rounded-sm border border-black/20 bg-white flex flex-col justify-between group hover:border-black hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(10,10,10,0.08)] transition-all duration-300"
+              delay={idx * 0.07}
             >
               <div>
                 <div className="flex items-center justify-between mb-5">
@@ -56,7 +58,7 @@ export default function WhatNerdvanaDoes() {
                 <CheckCircle2 className="w-4 h-4 text-[var(--fg)]" />
                 <span>PHASE READY</span>
               </div>
-            </div>
+            </CardReveal>
           ))}
         </div>
       </div>

@@ -1,6 +1,14 @@
 @import "tailwindcss";
 
 :root {
+  /* Nerdvana motion tokens */
+  --motion-micro: 180ms;
+  --motion-standard: 400ms;
+  --motion-reveal: 700ms;
+  --motion-page: 600ms;
+  --motion-ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-lenis-lerp: 0.09;
+
   --bg: #f5f5f2;
   --fg: #0a0a0a;
   --muted: rgba(10, 10, 10, 0.6);
@@ -103,6 +111,14 @@ body {
   text-transform: uppercase;
 }
 
+.wordmark-brand-inline {
+  font-family: inherit;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  -webkit-text-fill-color: currentColor;
+}
+
 .wordmark-footer {
   font-size: clamp(3.5rem, 16vw, 19.5rem);
   line-height: 0.85;
@@ -112,6 +128,120 @@ body {
   color: #0a0a0a;
   -webkit-text-fill-color: #0a0a0a;
   background: none;
+}
+
+.wordmark-hero--animated {
+  cursor: default;
+  color: #f5f5f2;
+  text-shadow: 0 0 0 transparent;
+  transition: text-shadow 350ms ease;
+}
+
+.wordmark-hero--animated:hover {
+  text-shadow: 0 0 28px rgba(184, 255, 0, 0.12);
+}
+
+.wordmark-footer--animated {
+  width: 100%;
+  overflow: hidden;
+  perspective: 800px;
+}
+
+.brand-nav__mask {
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.brand-nav__name {
+  display: inline-block;
+  font-size: 1.25rem;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  transition: transform 450ms cubic-bezier(0.33, 1, 0.68, 1), color 300ms ease;
+}
+
+.brand-nav:hover .brand-nav__name {
+  transform: translateY(-2px) skewX(-3deg);
+  color: var(--accent);
+}
+
+.live-office-clocks {
+  transition: border-color 300ms ease, transform 300ms cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.live-office-clocks:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+.text-roll {
+  position: relative;
+  display: inline-block;
+  height: 1.25em;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.text-roll__track {
+  display: block;
+  transition: transform var(--motion-standard) var(--motion-ease-premium);
+}
+
+.text-roll__item {
+  display: block;
+  height: 1.25em;
+}
+
+:hover > .text-roll__track,
+.text-roll:hover .text-roll__track {
+  transform: translateY(-50%);
+}
+
+.motion-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 38s linear infinite;
+  will-change: transform;
+}
+
+.motion-marquee__group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.motion-marquee:hover .motion-marquee__track {
+  animation-play-state: paused;
+}
+
+.motion-field {
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-width: 1px;
+  box-shadow: none;
+}
+
+.motion-field:focus {
+  border-bottom-color: var(--accent);
+  box-shadow: 0 1px 0 var(--accent);
+}
+
+@media (min-width: 768px) {
+  .brand-nav__name {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .wordmark-hero {
+    font-size: clamp(2.5rem, 14vw, 5rem);
+  }
+
+  .wordmark-footer {
+    font-size: clamp(2.7rem, 14vw, 5rem);
+  }
 }
 
 /* Editorial section labels */
@@ -176,6 +306,14 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .motion-marquee__track {
+    animation: none !important;
+    transform: none !important;
+  }
+  [style*="position: sticky"],
+  .md\:sticky {
+    position: static !important;
   }
 }
 

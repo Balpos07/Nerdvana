@@ -6,6 +6,8 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/lib/cms/data";
+import { CardReveal, LineReveal, Magnetic, MaskReveal } from "@/components/ui/MotionEffects";
+import { SharedCaseImage, SharedCaseTitle } from "@/components/ui/SharedCaseElement";
 
 export default function OurWorkSection() {
   const [filter, setFilter] = useState<string>("All");
@@ -27,12 +29,14 @@ export default function OurWorkSection() {
           </span>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[var(--fg)]">
-                Our Work
-              </h2>
-              <p className="text-sm md:text-base text-[var(--muted)] mt-2">
-                Selected work areas. Replace sample portfolio entries with verified client work before launch.
-              </p>
+              <MaskReveal>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[var(--fg)]">
+                  <LineReveal text="Our Work" />
+                </h2>
+                <p className="text-sm md:text-base text-[var(--muted)] mt-2">
+                  Selected technology, brand, web and growth engagements spanning connected digital experiences.
+                </p>
+              </MaskReveal>
             </div>
 
             <Link
@@ -48,17 +52,18 @@ export default function OurWorkSection() {
         {/* Filters */}
         <div className="flex flex-wrap items-center gap-2 pb-12">
           {filterTabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setFilter(tab)}
-              className={`px-5 py-2 rounded-full text-xs font-mono font-bold uppercase transition-all duration-300 ${
-                filter === tab
-                  ? "bg-[var(--accent)] text-[var(--accent-fg)] shadow-sm"
-                  : "border border-[var(--line)] text-[var(--muted)] hover:border-[var(--fg)]/40 hover:text-[var(--fg)]"
-              }`}
-            >
-              {tab}
-            </button>
+            <Magnetic key={tab} strength={10}>
+              <button
+                onClick={() => setFilter(tab)}
+                className={`px-5 py-2 rounded-full text-xs font-mono font-bold uppercase transition-all duration-300 ${
+                  filter === tab
+                    ? "bg-[var(--accent)] text-[var(--accent-fg)] shadow-sm"
+                    : "border border-[var(--line)] text-[var(--muted)] hover:border-[var(--fg)]/40 hover:text-[var(--fg)]"
+                }`}
+              >
+                {tab}
+              </button>
+            </Magnetic>
           ))}
         </div>
 
@@ -66,36 +71,38 @@ export default function OurWorkSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           <AnimatePresence>
             {filtered.map((proj) => (
+              <CardReveal key={proj.id} delay={0.08} className="h-full">
               <motion.article
                 layout
                 key={proj.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 1, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
-                className="group flex flex-col justify-between border border-[var(--line)] p-6 md:p-8 rounded-xs bg-[var(--surface)] hover:border-[var(--accent)]/50 transition-all"
+                className="group h-full flex flex-col justify-between border border-[var(--line)] p-6 md:p-8 rounded-xs bg-[var(--surface)] hover:border-[var(--accent)]/50 transition-all"
               >
                 <div>
-                  <div className="mb-4 border-2 border-dashed border-[var(--line)] px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-[var(--muted)]">
-                    [Placeholder: replace with real client proof]
-                  </div>
                   {/* Visual */}
+                  <Magnetic className="block w-full">
                   <Link
                     href={`/work/${proj.slug}`}
                     className="block relative aspect-[16/10] w-full overflow-hidden rounded-xs border border-[var(--line)] mb-6 bg-[var(--bg)]"
                     data-cursor-text="VIEW"
                   >
-                    <Image
-                      src={proj.coverImage}
-                      alt={proj.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover filter grayscale-[25%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                    />
+                    <SharedCaseImage slug={proj.slug} className="absolute inset-0">
+                      <Image
+                        src={proj.coverImage}
+                        alt={proj.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover filter grayscale-[25%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                      />
+                    </SharedCaseImage>
                     <div className="absolute top-3 left-3 bg-[#0A0A0A]/85 backdrop-blur-xs px-3 py-1 rounded-full text-[10px] font-mono text-[var(--accent)] font-bold uppercase border border-[var(--line)]">
                       {proj.division}
                     </div>
                   </Link>
+                  </Magnetic>
 
                   {/* Metadata */}
                   <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)] mb-2">
@@ -104,7 +111,9 @@ export default function OurWorkSection() {
                   </div>
 
                   <h3 className="text-2xl font-black uppercase tracking-tight text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors mb-2">
-                    <Link href={`/work/${proj.slug}`}>{proj.title}</Link>
+                    <Link href={`/work/${proj.slug}`}>
+                      <SharedCaseTitle slug={proj.slug}>{proj.title}</SharedCaseTitle>
+                    </Link>
                   </h3>
 
                   <p className="text-xs md:text-sm text-[var(--muted)] leading-relaxed mb-6">
@@ -116,10 +125,10 @@ export default function OurWorkSection() {
                     {proj.metrics.slice(0, 2).map((m, idx) => (
                       <div key={idx} className="flex flex-col">
                         <span className="text-xl font-mono font-black text-[var(--accent)]">
-                          TBD
+                          {m.value}
                         </span>
                         <span className="text-[10px] font-mono uppercase text-[var(--muted)]">
-                          VERIFIED METRIC REQUIRED
+                          {m.label}
                         </span>
                       </div>
                     ))}
@@ -147,6 +156,7 @@ export default function OurWorkSection() {
                   </Link>
                 </div>
               </motion.article>
+              </CardReveal>
             ))}
           </AnimatePresence>
         </div>

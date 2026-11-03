@@ -1,15 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, AnimatePresence, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { processSteps } from "@/lib/cms/data";
 
 export default function ProcessSection() {
   const [activeStep, setActiveStep] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 55%", "end 45%"],
+  });
+  const progressX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (reduceMotion) return;
+    const nextStep = Math.max(0, Math.min(processSteps.length - 1, Math.floor(latest * processSteps.length)));
+    setActiveStep((current) => current === nextStep ? current : nextStep);
+  });
 
   return (
-    <section id="process" className="py-24 md:py-36 bg-[#0A0A0A] border-b border-[var(--line)]">
+    <section ref={sectionRef} id="process" className="py-24 md:py-36 bg-[#0A0A0A] border-b border-[var(--line)]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="pb-12 border-b border-[var(--line)]">
@@ -33,8 +46,7 @@ export default function ProcessSection() {
               <div className="w-32 h-1.5 bg-[var(--line)] rounded-full overflow-hidden">
                 <motion.div
                   className="h-full bg-[var(--accent)]"
-                  animate={{ width: `${((activeStep + 1) / 6) * 100}%` }}
-                  transition={{ duration: 0.3 }}
+                  style={{ scaleX: progressX, transformOrigin: "0 50%" }}
                 />
               </div>
             </div>
@@ -67,7 +79,7 @@ export default function ProcessSection() {
         </div>
 
         {/* Active Step Details Stage */}
-        <div className="py-12 md:py-16">
+        <div className="py-12 md:py-16 md:sticky md:top-24">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeStep}

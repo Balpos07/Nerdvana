@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { ArrowUpRight, HelpCircle, ArrowRight } from "lucide-react";
 import { curiousProblems } from "@/lib/cms/data";
+import { CardReveal, Magnetic, MaskReveal } from "@/components/ui/MotionEffects";
 
 export default function CuriousSection() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
@@ -18,10 +20,18 @@ export default function CuriousSection() {
           </span>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[var(--fg)] flex items-center gap-3">
-                <span>Curious?</span>
-                <HelpCircle className="w-8 h-8 text-[var(--accent)]" />
-              </h2>
+              <MaskReveal>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[var(--fg)] flex items-center gap-3">
+                  <span>Curious?</span>
+                  <motion.span
+                    animate={{ rotate: [0, 8, 0, -8, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="inline-flex"
+                  >
+                    <HelpCircle className="w-8 h-8 text-[var(--accent)]" />
+                  </motion.span>
+                </h2>
+              </MaskReveal>
               <p className="text-base md:text-xl text-[var(--muted)] max-w-xl mt-3">
                 Maybe you&apos;re not sure what you need yet. <strong className="text-[var(--fg)]">Start with the problem.</strong>
               </p>
@@ -37,22 +47,33 @@ export default function CuriousSection() {
           {curiousProblems.map((item, idx) => {
             const isHovered = hoveredIdx === idx;
             return (
-              <div
+              <CardReveal
                 key={item.id}
+                delay={idx * 0.06}
+                className="h-full"
+              >
+              <motion.div
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
-                className={`p-8 rounded-xs border transition-all duration-300 flex flex-col justify-between ${
+                whileHover={{ y: -7 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className={`relative h-full p-8 rounded-xs border overflow-hidden flex flex-col justify-between ${
                   isHovered
-                    ? "border-[var(--accent)] bg-[var(--surface-raised)] -translate-y-1 shadow-xl"
+                    ? "border-[var(--accent)] bg-[var(--surface-raised)] shadow-xl"
                     : "border-[var(--line)] bg-[var(--surface)]"
                 }`}
               >
+                <motion.div
+                  className="absolute -right-16 -top-16 w-40 h-40 rounded-full bg-[var(--accent)]/10 blur-2xl pointer-events-none"
+                  animate={isHovered ? { scale: 1.5, x: -12 } : { scale: 1, x: 0 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                />
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="font-mono text-xs font-bold text-[var(--accent)]">
                       PROBLEM // 0{idx + 1}
                     </span>
-                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-[var(--card-bg)] text-[var(--muted)] border border-[var(--line)]">
+                    <span className="relative text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-[var(--card-bg)] text-[var(--muted)] border border-[var(--line)]">
                       {item.division}
                     </span>
                   </div>
@@ -77,6 +98,7 @@ export default function CuriousSection() {
                   </div>
                 </div>
 
+                <Magnetic strength={10}>
                 <Link
                   href={item.targetHref}
                   className="inline-flex items-center justify-between w-full pt-4 border-t border-[var(--line)] text-xs font-mono font-bold uppercase tracking-wider text-[var(--accent)] hover:underline"
@@ -84,7 +106,9 @@ export default function CuriousSection() {
                   <span>{item.ctaText}</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
-              </div>
+                </Magnetic>
+              </motion.div>
+              </CardReveal>
             );
           })}
         </div>
@@ -92,4 +116,3 @@ export default function CuriousSection() {
     </section>
   );
 }
-

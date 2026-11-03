@@ -3,9 +3,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, CheckCircle2, Quote, Cpu, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Quote } from "lucide-react";
 import { getProjectBySlug, getAllProjects } from "@/lib/cms/sanityClient";
 import { siteSettings } from "@/lib/cms/data";
+import { SharedCaseImage, SharedCaseTitle } from "@/components/ui/SharedCaseElement";
 
 interface CaseStudyProps {
   params: Promise<{ slug: string }>;
@@ -63,9 +64,6 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
 
         {/* Title Bar */}
         <div className="border-b border-[var(--line)] pb-12 mb-12">
-          <div className="mb-8 border-2 border-dashed border-[var(--line)] px-4 py-3 text-xs font-mono uppercase tracking-wider text-[var(--muted)]">
-            [Placeholder: replace with real client proof]
-          </div>
           <div className="flex items-center gap-2 mb-3">
             <span className="section-label text-[var(--accent)]">CASE STUDY //</span>
             <span className="px-3 py-1 rounded-full bg-[var(--surface)] text-[10px] font-mono text-[var(--accent)] uppercase border border-[var(--line)]">
@@ -73,9 +71,11 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-[var(--fg)] mb-8">
-            {project.title}
-          </h1>
+          <SharedCaseTitle slug={project.slug} className="mb-8">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-[var(--fg)]">
+              {project.title}
+            </h1>
+          </SharedCaseTitle>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-[var(--line)] text-xs font-mono uppercase">
             <div>
@@ -99,14 +99,16 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
 
         {/* Hero Image */}
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xs border border-[var(--line)] mb-16 md:mb-24 bg-[var(--surface)]">
-          <Image
-            src={project.heroImage}
-            alt={project.title}
-            fill
-            sizes="100vw"
-            className="object-cover"
-            priority
-          />
+          <SharedCaseImage slug={project.slug} className="absolute inset-0">
+            <Image
+              src={project.heroImage}
+              alt={project.title}
+              fill
+              sizes="100vw"
+              className="object-cover"
+              priority
+            />
+          </SharedCaseImage>
         </div>
 
         {/* Summary & Metrics */}
@@ -125,10 +127,10 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
                 className="p-5 md:p-6 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between"
               >
                 <span className="text-2xl md:text-3xl font-black font-mono text-[var(--accent)] mb-2">
-                  TBD
+                  {m.value}
                 </span>
                 <span className="text-[11px] font-mono uppercase tracking-wider text-[var(--muted)]">
-                  VERIFIED METRIC REQUIRED
+                  {m.label}
                 </span>
               </div>
             ))}
@@ -164,7 +166,7 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
                 Commercial Impact
               </h3>
               <p className="text-sm md:text-base text-[var(--muted)] leading-relaxed">
-                Verified commercial results must be documented and approved before this section is published.
+                {project.results}
               </p>
             </div>
 
@@ -206,15 +208,18 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
         </div>
 
         {/* Testimonial Quote */}
-        <div className="p-8 md:p-14 rounded-xs border-2 border-dashed border-[var(--line)] bg-[var(--surface)] mb-20">
+        {project.testimonial ? (
+          <div className="p-8 md:p-14 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-20">
             <Quote className="w-10 h-10 text-[var(--accent)]/40 mb-6" />
             <p className="text-2xl md:text-3xl font-bold text-[var(--fg)] tracking-tight mb-3">
-              [Placeholder: replace with real client proof]
+              &ldquo;{project.testimonial.quote}&rdquo;
             </p>
             <p className="text-sm text-[var(--muted)]">
-              No testimonial is displayed until a real, attributed quote and publication approval are available.
+              <span className="font-bold text-[var(--fg)]">{project.testimonial.author}</span>
+              {" "}— {project.testimonial.role}
             </p>
           </div>
+        ) : null}
 
         {/* Next Case Study */}
         <div className="border-t border-[var(--line)] pt-16 flex flex-col sm:flex-row sm:items-center justify-between gap-6">

@@ -5,14 +5,11 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowUpRight,
-  CheckCircle2,
   AlertCircle,
   Loader2,
-  Sparkles,
   RefreshCcw,
 } from "lucide-react";
 import confetti from "canvas-confetti";
-import { siteSettings } from "@/lib/cms/data";
 
 interface ContactFormData {
   name: string;
@@ -202,7 +199,12 @@ export default function LetsTalkSection() {
                 className="p-8 md:p-16 border border-[var(--accent)] bg-[var(--surface)] rounded-xs text-center max-w-2xl mx-auto"
               >
                 <div className="w-16 h-16 rounded-full bg-[var(--accent)] text-[#0A0A0A] flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle2 className="w-9 h-9" />
+                  <svg viewBox="0 0 24 24" className="w-9 h-9" fill="none" aria-hidden="true">
+                    <motion.circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5"
+                      initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }} />
+                    <motion.path d="M7.5 12.2l2.8 2.8 6.4-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
+                      initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 0.25, duration: 0.45, ease: [0.16, 1, 0.3, 1] }} />
+                  </svg>
                 </div>
                 <h3 className="text-3xl font-extrabold uppercase tracking-tight text-[var(--fg)] mb-3">
                   Project Brief Received
@@ -299,7 +301,7 @@ export default function LetsTalkSection() {
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
-                      className="w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] px-4 py-3 text-sm text-[var(--fg)] uppercase rounded-xs focus:outline-none"
+                      className="motion-field w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] px-4 py-3 text-sm text-[var(--fg)] uppercase rounded-xs focus:outline-none"
                     />
                     {errors.name && (
                       <p className="text-rose-400 text-xs font-mono mt-1">
@@ -319,7 +321,7 @@ export default function LetsTalkSection() {
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      className="w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] px-4 py-3 text-sm text-[var(--fg)] uppercase rounded-xs focus:outline-none"
+                      className="motion-field w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] px-4 py-3 text-sm text-[var(--fg)] uppercase rounded-xs focus:outline-none"
                     />
                     {errors.email && (
                       <p className="text-rose-400 text-xs font-mono mt-1">
@@ -339,7 +341,7 @@ export default function LetsTalkSection() {
                       onChange={(e) =>
                         setFormData({ ...formData, company: e.target.value })
                       }
-                      className="w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] px-4 py-3 text-sm text-[var(--fg)] uppercase rounded-xs focus:outline-none"
+                      className="motion-field w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] px-4 py-3 text-sm text-[var(--fg)] uppercase rounded-xs focus:outline-none"
                     />
                     {errors.company && (
                       <p className="text-rose-400 text-xs font-mono mt-1">
@@ -359,7 +361,7 @@ export default function LetsTalkSection() {
                       onChange={(e) =>
                         setFormData({ ...formData, country: e.target.value })
                       }
-                      className="w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] px-4 py-3 text-sm text-[var(--fg)] uppercase rounded-xs focus:outline-none"
+                      className="motion-field w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] px-4 py-3 text-sm text-[var(--fg)] uppercase rounded-xs focus:outline-none"
                     />
                     {errors.country && (
                       <p className="text-rose-400 text-xs font-mono mt-1">
@@ -381,7 +383,7 @@ export default function LetsTalkSection() {
                     onChange={(e) =>
                       setFormData({ ...formData, description: e.target.value })
                     }
-                    className="w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] px-4 py-3 text-sm text-[var(--fg)] rounded-xs focus:outline-none resize-none"
+                    className="motion-field w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] px-4 py-3 text-sm text-[var(--fg)] rounded-xs focus:outline-none resize-none"
                   />
                   {errors.description && (
                     <p className="text-rose-400 text-xs font-mono mt-1">
@@ -401,7 +403,7 @@ export default function LetsTalkSection() {
                       onChange={(e) =>
                         setFormData({ ...formData, budget: e.target.value })
                       }
-                      className="w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] px-4 py-3 text-sm text-[var(--fg)] rounded-xs focus:outline-none cursor-pointer"
+                      className="motion-field w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] px-4 py-3 text-sm text-[var(--fg)] rounded-xs focus:outline-none cursor-pointer"
                     >
                       {budgetOptions.map((opt) => (
                         <option
@@ -424,7 +426,7 @@ export default function LetsTalkSection() {
                       onChange={(e) =>
                         setFormData({ ...formData, timeline: e.target.value })
                       }
-                      className="w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] px-4 py-3 text-sm text-[var(--fg)] rounded-xs focus:outline-none cursor-pointer"
+                      className="motion-field w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] px-4 py-3 text-sm text-[var(--fg)] rounded-xs focus:outline-none cursor-pointer"
                     >
                       {timelineOptions.map((opt) => (
                         <option

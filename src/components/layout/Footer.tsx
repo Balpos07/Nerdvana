@@ -3,7 +3,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, CheckCircle2, AlertCircle, Loader2, MessageSquare } from "lucide-react";
+import { motion } from "framer-motion";
 import { siteSettings } from "@/lib/cms/data";
+import { Marquee } from "@/components/ui/MotionEffects";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -51,7 +53,7 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div>
               <span className="section-label block mb-3 text-[var(--accent)]">
-                {siteSettings.agencyName} // {siteSettings.tagline}
+                {siteSettings.agencyName}{" // "}{siteSettings.tagline}
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[var(--fg)] max-w-2xl">
                 {siteSettings.heroHeadline}
@@ -234,13 +236,42 @@ export default function Footer() {
         </div>
 
         {/* Giant Scaled Wordmark */}
+        <Marquee className="mb-6 border-y border-[var(--line)] py-3 text-[11px] font-mono uppercase tracking-[0.22em] text-[var(--muted)]">
+          <span className="whitespace-nowrap px-8">Technology + Creativity + Growth</span>
+          <span className="whitespace-nowrap px-8 text-[var(--accent)]">Build better</span>
+          <span className="whitespace-nowrap px-8">NERDVANA</span>
+        </Marquee>
         <div className="pt-10 select-none text-center">
-          <h2
-            className="wordmark-footer font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-[#F5F5F2] via-[#F5F5F2]/40 to-transparent hover:text-[var(--accent)] transition-colors duration-500 cursor-default"
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.35 }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.055 } },
+            }}
+            className="wordmark-footer wordmark-brand-inline wordmark-footer--animated flex justify-between items-center cursor-default"
             aria-label={siteSettings.agencyName}
           >
-            {siteSettings.agencyName}
-          </h2>
+            {siteSettings.agencyName.split("").map((letter, index) => (
+              <motion.span
+                key={`${letter}-${index}`}
+                variants={{
+                  hidden: { y: "110%", rotate: 5, opacity: 0 },
+                  visible: {
+                    y: "0%",
+                    rotate: 0,
+                    opacity: 1,
+                    transition: { duration: 0.85, ease: [0.33, 1, 0.68, 1] },
+                  },
+                }}
+                whileHover={{ y: "-0.04em", color: "var(--accent)" }}
+                className="inline-block origin-bottom"
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </motion.h2>
         </div>
       </div>
     </footer>

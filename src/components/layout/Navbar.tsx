@@ -2,19 +2,16 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
   X,
   ArrowUpRight,
   ChevronDown,
-  Cpu,
-  Sparkles,
-  Layers,
 } from "lucide-react";
 import OfficeClock from "../ui/OfficeClock";
 import { siteSettings, serviceDivisions } from "@/lib/cms/data";
+import { TextRoll } from "@/components/ui/MotionEffects";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -22,7 +19,6 @@ export default function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [servicesMenuOpen, setServicesMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,11 +48,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY, mobileMenuOpen]);
 
-  useEffect(() => {
-    setMobileMenuOpen(false);
-    setServicesMenuOpen(false);
-  }, [pathname]);
-
   const navLinks = [
     { label: "Work", href: "/work" },
     { label: "Packages", href: "/#packages" },
@@ -67,6 +58,22 @@ export default function Navbar() {
 
   return (
     <>
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+        className="fixed bottom-4 right-4 z-[45] hidden sm:flex items-center gap-5 px-4 py-2.5 rounded-full border border-[var(--line)] bg-[var(--bg)]/90 shadow-[0_10px_40px_rgba(0,0,0,0.12)] backdrop-blur-md live-office-clocks"
+        aria-label="Live office clocks"
+      >
+        {siteSettings.offices.map((office) => (
+          <OfficeClock
+            key={office.name}
+            label={office.label}
+            timezone={office.timezone}
+          />
+        ))}
+      </motion.div>
+
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           visible ? "translate-y-0" : "-translate-y-full"
@@ -80,25 +87,18 @@ export default function Navbar() {
           {/* Left: Brand Wordmark */}
           <Link
             href="/"
-            className="group flex items-baseline gap-1.5"
+            className="group flex items-baseline gap-1.5 brand-nav"
             data-cursor-text="HOME"
           >
-            <span className="text-xl md:text-2xl font-black tracking-tighter text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors">
-              {siteSettings.agencyName}
+            <span className="brand-nav__mask">
+              <span className="brand-nav__name">{siteSettings.agencyName}</span>
             </span>
-            <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />
+            <motion.span
+              animate={{ scale: [1, 1.35, 1], opacity: [1, 0.55, 1] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+              className="w-2 h-2 rounded-full bg-[var(--accent)]"
+            />
           </Link>
-
-          {/* Center: Live Office Clocks (Desktop) */}
-          <div className="hidden xl:flex items-center gap-6 px-4 py-1.5 rounded-full border border-[var(--line)] bg-[var(--card-bg)]">
-            {siteSettings.offices.map((office) => (
-              <OfficeClock
-                key={office.name}
-                label={office.label}
-                timezone={office.timezone}
-              />
-            ))}
-          </div>
 
           {/* Right: Desktop Navigation Links & Mega Menu */}
           <div className="hidden md:flex items-center gap-7">
@@ -124,7 +124,7 @@ export default function Navbar() {
                     }
                   }}
                 >
-                  <span>Services</span>
+                  <TextRoll>Services</TextRoll>
                   <ChevronDown
                     className={`w-3.5 h-3.5 transition-transform duration-200 ${
                       servicesMenuOpen ? "rotate-180 text-[var(--accent)]" : ""
@@ -136,15 +136,20 @@ export default function Navbar() {
                 <AnimatePresence>
                   {servicesMenuOpen && (
                     <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.98 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 10, scale: 0.98 }}
-                      transition={{ duration: 0.2 }}
+                      initial={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
+                      animate={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
+                      exit={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
+                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                       className="absolute top-full -left-20 w-[640px] p-6 rounded-sm bg-[#F5F5F2] border border-black/20 shadow-2xl z-50 text-[#0A0A0A]"
                     >
                       <div className="grid grid-cols-2 gap-6 divide-x divide-black/10">
                         {/* Division 1: Nerdvana Technologies */}
-                        <div className="pr-4">
+                        <motion.div
+                          initial={{ opacity: 0, y: 12 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.08, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                          className="pr-4"
+                        >
                           <div className="flex items-center gap-2 mb-2 text-[#0A0A0A]">
                             <h4 className="text-xs font-bold font-mono uppercase tracking-wider">
                               Nerdvana Technologies
@@ -166,10 +171,15 @@ export default function Navbar() {
                               </li>
                             ))}
                           </ul>
-                        </div>
+                        </motion.div>
 
                         {/* Division 2: Figures by Nerdvana */}
-                        <div className="pl-6">
+                        <motion.div
+                          initial={{ opacity: 0, y: 12 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.16, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                          className="pl-6"
+                        >
                           <div className="flex items-center gap-2 mb-2 text-[#0A0A0A]">
                             <h4 className="text-xs font-bold font-mono uppercase tracking-wider">
                               Figures by Nerdvana
@@ -191,7 +201,7 @@ export default function Navbar() {
                               </li>
                             ))}
                           </ul>
-                        </div>
+                        </motion.div>
                       </div>
 
                       <div className="mt-5 pt-4 border-t border-[var(--line)] flex items-center justify-between text-[11px] font-mono">
@@ -218,7 +228,7 @@ export default function Navbar() {
                   href={link.href}
                   className="text-xs font-semibold uppercase tracking-wider text-[var(--fg)] hover:text-[var(--accent)] transition-colors"
                 >
-                  {link.label}
+                  <TextRoll>{link.label}</TextRoll>
                 </Link>
               ))}
             </nav>

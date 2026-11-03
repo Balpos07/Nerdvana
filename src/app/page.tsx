@@ -12,6 +12,7 @@ import ProofTestimonialsSection from "@/components/home/ProofTestimonialsSection
 import QuestionsAnsweredSection from "@/components/home/QuestionsAnsweredSection";
 import LetsTalkSection from "@/components/home/LetsTalkSection";
 import { siteSettings } from "@/lib/cms/data";
+import { ScrollProgressBar } from "@/components/ui/MotionEffects";
 
 export const metadata: Metadata = {
   title: `${siteSettings.agencyName} — ${siteSettings.tagline}`,
@@ -42,6 +43,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="flex flex-col w-full bg-[#0A0A0A]">
+      <ScrollProgressBar />
       {/* 1. Hero: Build better. Grow faster. Stand out. */}
       <HeroSection />
 
