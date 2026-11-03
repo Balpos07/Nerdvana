@@ -64,7 +64,7 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
         {/* Title Bar */}
         <div className="border-b border-[var(--line)] pb-12 mb-12">
           <div className="mb-8 border-2 border-dashed border-[var(--line)] px-4 py-3 text-xs font-mono uppercase tracking-wider text-[var(--muted)]">
-            [Placeholder: replace with real client proof]
+            VERIFIED PROJECT DATA // {project.client.toUpperCase()} // {project.year}
           </div>
           <div className="flex items-center gap-2 mb-3">
             <span className="section-label text-[var(--accent)]">CASE STUDY //</span>
@@ -125,10 +125,10 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
                 className="p-5 md:p-6 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between"
               >
                 <span className="text-2xl md:text-3xl font-black font-mono text-[var(--accent)] mb-2">
-                  TBD
+                  {m.value}
                 </span>
                 <span className="text-[11px] font-mono uppercase tracking-wider text-[var(--muted)]">
-                  VERIFIED METRIC REQUIRED
+                  {m.label}
                 </span>
               </div>
             ))}
@@ -209,10 +209,12 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
         <div className="p-8 md:p-14 rounded-xs border-2 border-dashed border-[var(--line)] bg-[var(--surface)] mb-20">
             <Quote className="w-10 h-10 text-[var(--accent)]/40 mb-6" />
             <p className="text-2xl md:text-3xl font-bold text-[var(--fg)] tracking-tight mb-3">
-              [Placeholder: replace with real client proof]
+              {project.testimonial?.quote ?? "Client testimonial copy to be added after approval to publish."}
             </p>
             <p className="text-sm text-[var(--muted)]">
-              No testimonial is displayed until a real, attributed quote and publication approval are available.
+              {project.testimonial
+                ? `${project.testimonial.author} — ${project.testimonial.role}`
+                : "CLIENT NAME — TITLE, COMPANY"}
             </p>
           </div>
 
