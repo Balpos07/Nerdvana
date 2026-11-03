@@ -587,8 +587,6 @@ export const projects: Project[] = [
     results:
       "Aura onboarded 3 Fortune 500 manufacturing pilots and closed an oversubscribed $42M funding round with 99.999% uptime.",
     metrics: [
-      { label: "Telemetry Latency", value: "<8ms" },
-      { label: "System Uptime", value: "99.999%" },
       { label: "Series B Raised", value: "$42M" },
       { label: "Edge Nodes", value: "1,200+" },
     ],

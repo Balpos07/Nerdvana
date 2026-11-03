@@ -66,7 +66,7 @@ export default function ContactsPage() {
                     href={`https://wa.me/${office.whatsapp}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-1.5 text-[var(--accent)] hover:underline"
+                    className="flex items-center gap-1.5 text-[var(--muted)] hover:underline"
                   >
                     <MessageSquare className="w-3.5 h-3.5" />
                     <span>WhatsApp Direct</span>

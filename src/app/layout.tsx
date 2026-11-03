@@ -7,6 +7,7 @@ import LenisProvider from "@/components/providers/LenisProvider";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Preloader from "@/components/ui/Preloader";
 import CookieConsent from "@/components/ui/CookieConsent";
+import OfficeClock from "@/components/ui/OfficeClock";
 import { siteSettings } from "@/lib/cms/data";
 
 const inter = Inter({
@@ -23,6 +24,15 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nerdvana.global"),
+  icons: {
+    icon: [
+      {
+        url: "/assest/nerdvana-logo.jpeg",
+        type: "image/jpeg",
+      },
+    ],
+    apple: "/assest/nerdvana-logo.jpeg",
+  },
   title: {
     default: `${siteSettings.agencyName} — ${siteSettings.tagline}`,
     template: `%s | ${siteSettings.agencyName}`,
@@ -119,6 +129,17 @@ export default function RootLayout({
           <CustomCursor />
           <Navbar />
           <main className="flex-1 w-full">{children}</main>
+          <div className="office-clock-dock fixed bottom-5 right-5 z-[60] hidden overflow-hidden sm:block rounded-sm border border-[var(--line)] bg-[var(--bg)]/95 px-4 py-3 shadow-lg backdrop-blur-md">
+            <div className="office-clock-track">
+              {[...siteSettings.offices, ...siteSettings.offices].map((office, index) => (
+                <OfficeClock
+                  key={`${office.name}-${index}`}
+                  label={office.label}
+                  timezone={office.timezone}
+                />
+              ))}
+            </div>
+          </div>
           <Footer />
           <CookieConsent />
         </LenisProvider>

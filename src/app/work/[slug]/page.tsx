@@ -64,6 +64,12 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
 
         {/* Title Bar */}
         <div className="border-b border-[var(--line)] pb-12 mb-12">
+<<<<<<< HEAD
+=======
+          <div className="mb-8 border-2 border-dashed border-[var(--line)] px-4 py-3 text-xs font-mono uppercase tracking-wider text-[var(--muted)]">
+            VERIFIED PROJECT DATA // {project.client.toUpperCase()} // {project.year}
+          </div>
+>>>>>>> 00433f0ce0e32820a32cd4e9c83b61e11fd3cf89
           <div className="flex items-center gap-2 mb-3">
             <span className="section-label text-[var(--accent)]">CASE STUDY //</span>
             <span className="px-3 py-1 rounded-full bg-[var(--surface)] text-[10px] font-mono text-[var(--accent)] uppercase border border-[var(--line)]">
@@ -212,11 +218,20 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
           <div className="p-8 md:p-14 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-20">
             <Quote className="w-10 h-10 text-[var(--accent)]/40 mb-6" />
             <p className="text-2xl md:text-3xl font-bold text-[var(--fg)] tracking-tight mb-3">
+<<<<<<< HEAD
               &ldquo;{project.testimonial.quote}&rdquo;
             </p>
             <p className="text-sm text-[var(--muted)]">
               <span className="font-bold text-[var(--fg)]">{project.testimonial.author}</span>
               {" "}— {project.testimonial.role}
+=======
+              {project.testimonial?.quote ?? "Client testimonial copy to be added after approval to publish."}
+            </p>
+            <p className="text-sm text-[var(--muted)]">
+              {project.testimonial
+                ? `${project.testimonial.author} — ${project.testimonial.role}`
+                : "CLIENT NAME — TITLE, COMPANY"}
+>>>>>>> 00433f0ce0e32820a32cd4e9c83b61e11fd3cf89
             </p>
           </div>
         ) : null}
