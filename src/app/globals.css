@@ -5,8 +5,8 @@
   --fg: #0a0a0a;
   --muted: rgba(10, 10, 10, 0.6);
   --muted-dim: rgba(10, 10, 10, 0.35);
-  --accent: #b8ff00;
-  --accent-hover: #a6e600;
+  --accent: #B8FF00;
+  --accent-hover: #B8FF00;
   --accent-fg: #0a0a0a;
   --line: rgba(10, 10, 10, 0.12);
   --line-light: rgba(10, 10, 10, 0.06);
@@ -21,8 +21,8 @@
   --fg: #0a0a0a;
   --muted: rgba(10, 10, 10, 0.6);
   --muted-dim: rgba(10, 10, 10, 0.35);
-  --accent: #b8ff00;
-  --accent-hover: #a6e600;
+  --accent: #B8FF00;
+  --accent-hover: #B8FF00;
   --accent-fg: #0a0a0a;
   --line: rgba(10, 10, 10, 0.12);
   --line-light: rgba(10, 10, 10, 0.06);
@@ -32,19 +32,26 @@
   --surface-raised: #deded8;
 }
 
-/* Legacy literal classes are remapped so every page and section uses the new main palette. */
+/* Preserve the original light-theme remapping for black section backgrounds. */
 [class*="bg-[#0A0A0A]"] {
-  background-color: #f5f5f2 !important;
-}
-[class*="text-[#F5F5F2]"] {
-  color: #0a0a0a !important;
+  background-color: #F5F5F2 !important;
 }
 [class*="bg-[#0a0a0a]"] {
-  background-color: #f5f5f2 !important;
+  background-color: #F5F5F2 !important;
 }
-[class*="text-[#0a0a0a]"] {
-  color: #0a0a0a !important;
+
+/* Curious cards use a deliberate black surface and off-white text. */
+.curious-card {
+  background-color: #0A0A0A !important;
+  border-color: rgba(245, 245, 242, 0.16);
+  color: #F5F5F2;
 }
+
+.curious-resolution {
+  background-color: #0A0A0A;
+  border-color: rgba(245, 245, 242, 0.18);
+}
+
 
 * {
   box-sizing: border-box;
@@ -168,6 +175,68 @@ body {
   animation-play-state: paused;
 }
 
+.delivery-marquee {
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+}
+
+.delivery-marquee-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: delivery-marquee 36s linear infinite;
+  will-change: transform;
+}
+
+.delivery-marquee:hover .delivery-marquee-track {
+  animation-play-state: paused;
+}
+
+.office-clock-dock {
+  width: 270px;
+}
+
+.office-clock-track {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  width: max-content;
+  animation: office-clock-right 18s linear infinite;
+  will-change: transform;
+}
+
+.office-clock-dock:hover .office-clock-track {
+  animation-play-state: paused;
+}
+
+@keyframes office-clock-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.delivery-card {
+  transition: border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+}
+
+.delivery-card:hover {
+  border-color: var(--fg);
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(10, 10, 10, 0.08);
+}
+
+@keyframes delivery-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 12px));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -179,15 +248,32 @@ body {
   }
 }
 
-/* Buttons: professional, high-contrast Nerdvana brand palette */
-a[class*="rounded-full"],
-button[class*="rounded-full"] {
-  background-color: var(--accent) !important;
-  color: var(--accent-fg) !important;
-  border-color: rgba(10, 10, 10, 0.18) !important;
+body {
+  font-family: var(--font-inter), Arial, sans-serif;
 }
 
-a[class*="rounded-full"] *,
-button[class*="rounded-full"] * {
-  color: inherit !important;
+h1,
+h2,
+h3,
+.wordmark-hero {
+  font-family: var(--font-display), var(--font-inter), Arial, sans-serif;
+}
+
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3 {
+  text-wrap: balance;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: hover) {
+  a,
+  button {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
 }

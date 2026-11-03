@@ -31,9 +31,9 @@ export default function OfficeClock({ timezone, label }: OfficeClockProps) {
   }, [timezone]);
 
   return (
-    <div className="inline-flex items-center gap-1.5 font-mono text-[11px] tracking-wider text-[var(--muted)]">
-      <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
-      <span className="font-semibold text-[var(--fg)]">{label}</span>
+    <div className="office-clock flex shrink-0 items-center gap-2 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--muted)]">
+      <span className="w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--accent)] animate-pulse" />
+      <span className="font-bold text-[var(--fg)]">{label}</span>
       <span className="opacity-70">{time || "--:--"}</span>
     </div>
   );

@@ -77,7 +77,7 @@ export default function CustomCursor() {
         animate={{
           width: cursorText ? 72 : hovered ? 42 : 10,
           height: cursorText ? 72 : hovered ? 42 : 10,
-          backgroundColor: hovered ? "#b8ff00" : "#f5f5f2",
+          backgroundColor: hovered ? "#B8FF00" : "#f5f5f2",
           borderColor: hovered ? "transparent" : "rgba(255, 255, 255, 0.3)",
         }}
         transition={{ type: "spring", stiffness: 350, damping: 25 }}

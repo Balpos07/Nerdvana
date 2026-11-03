@@ -129,7 +129,7 @@ export default function CareerApplicationForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full mt-2 py-3 rounded-full bg-[var(--accent)] text-white font-bold uppercase tracking-wider text-xs hover:bg-[var(--accent-hover)] transition-all flex items-center justify-center gap-2"
+        className="w-full mt-2 py-3 rounded-full bg-[var(--accent)] text-[var(--accent-fg)] font-bold uppercase tracking-wider text-xs hover:bg-[var(--accent-hover)] transition-all flex items-center justify-center gap-2"
       >
         {status === "submitting" ? (
           <Loader2 className="w-4 h-4 animate-spin" />

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
@@ -13,7 +13,6 @@ import {
   Sparkles,
   Layers,
 } from "lucide-react";
-import OfficeClock from "../ui/OfficeClock";
 import { siteSettings, serviceDivisions } from "@/lib/cms/data";
 
 export default function Navbar() {
@@ -89,17 +88,6 @@ export default function Navbar() {
             <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />
           </Link>
 
-          {/* Center: Live Office Clocks (Desktop) */}
-          <div className="hidden xl:flex items-center gap-6 px-4 py-1.5 rounded-full border border-[var(--line)] bg-[var(--card-bg)]">
-            {siteSettings.offices.map((office) => (
-              <OfficeClock
-                key={office.name}
-                label={office.label}
-                timezone={office.timezone}
-              />
-            ))}
-          </div>
-
           {/* Right: Desktop Navigation Links & Mega Menu */}
           <div className="hidden md:flex items-center gap-7">
             <nav className="flex items-center gap-6">
@@ -158,7 +146,7 @@ export default function Navbar() {
                               <li key={s.title}>
                                 <Link
                                   href={`/services#${s.title.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
-                                  className="text-xs font-medium text-[#0A0A0A] hover:text-[#5F8000] transition-colors flex items-center justify-between group"
+                                  className="text-xs font-medium text-[#0A0A0A] hover:text-[var(--accent)] transition-colors flex items-center justify-between group"
                                 >
                                   <span>{s.title}</span>
                                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -183,7 +171,7 @@ export default function Navbar() {
                               <li key={s.title}>
                                 <Link
                                   href={`/services#${s.title.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
-                                  className="text-xs font-medium text-[#0A0A0A] hover:text-[#5F8000] transition-colors flex items-center justify-between group"
+                                  className="text-xs font-medium text-[#0A0A0A] hover:text-[var(--accent)] transition-colors flex items-center justify-between group"
                                 >
                                   <span>{s.title}</span>
                                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -281,8 +269,8 @@ export default function Navbar() {
                 GLOBAL AGENCY DIVISIONS
               </span>
               <div className="flex flex-col gap-2 font-mono text-xs text-[var(--muted)]">
-                <div>• NERDVANA TECHNOLOGIES (IT & Software)</div>
-                <div>• FIGURES BY NERDVANA (Branding & Creative)</div>
+                <div>â€¢ NERDVANA TECHNOLOGIES (IT & Software)</div>
+                <div>â€¢ FIGURES BY NERDVANA (Branding & Creative)</div>
               </div>
             </div>
 
@@ -315,14 +303,14 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-full inline-flex items-center justify-center gap-3 py-4 rounded-full bg-[var(--accent)] text-[var(--accent-fg)] font-black uppercase tracking-wider text-sm shadow-xl"
                 >
-                  <span>Get Started — Let&apos;s Talk</span>
+                  <span>Get Started â€” Let&apos;s Talk</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </div>
             </nav>
 
             <div className="border-t border-[var(--line)] pt-5 flex items-center justify-between text-xs text-[var(--muted)] font-mono">
-              <span>© 2026 {siteSettings.agencyName}</span>
+              <span>Â© 2026 {siteSettings.agencyName}</span>
               <div className="flex gap-3">
                 {siteSettings.socials.slice(0, 3).map((s) => (
                   <a key={s.name} href={s.url} target="_blank" rel="noreferrer">
@@ -337,3 +325,4 @@ export default function Navbar() {
     </>
   );
 }
+

@@ -41,10 +41,10 @@ export default function CuriousSection() {
                 key={item.id}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
-                className={`p-8 rounded-xs border transition-all duration-300 flex flex-col justify-between ${
+                className={`curious-card p-8 rounded-xs border transition-all duration-300 flex flex-col justify-between ${
                   isHovered
-                    ? "border-[var(--accent)] bg-[var(--surface-raised)] -translate-y-1 shadow-xl"
-                    : "border-[var(--line)] bg-[var(--surface)]"
+                    ? "border-[var(--accent)] bg-[#0A0A0A] -translate-y-1 shadow-xl"
+                    : "border-[#F5F5F2]/16 bg-[#0A0A0A]"
                 }`}
               >
                 <div>
@@ -52,26 +52,26 @@ export default function CuriousSection() {
                     <span className="font-mono text-xs font-bold text-[var(--accent)]">
                       PROBLEM // 0{idx + 1}
                     </span>
-                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-[var(--card-bg)] text-[var(--muted)] border border-[var(--line)]">
+                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-[#F5F5F2]/10 text-[#F5F5F2] border border-[#F5F5F2]/16">
                       {item.division}
                     </span>
                   </div>
 
                   {/* Problem statement */}
-                  <h3 className="text-xl md:text-2xl font-extrabold uppercase tracking-tight text-[var(--fg)] mb-4">
+                  <h3 className="text-xl md:text-2xl font-extrabold uppercase tracking-tight text-[#F5F5F2] mb-4">
                     &ldquo;{item.problem}&rdquo;
                   </h3>
 
                   {/* Solution resolution */}
-                  <div className="p-4 rounded-xs bg-[#0A0A0A] border border-[var(--line)] mb-6">
+                  <div className="curious-resolution p-4 rounded-xs border mb-6">
                     <span className="text-[10px] font-mono uppercase text-[var(--accent)] block mb-1">
                       NERDVANA RESOLUTION
                     </span>
-                    <p className="text-sm font-bold text-[var(--fg)] flex items-center gap-2">
+                    <p className="text-sm font-bold text-[#F5F5F2] flex items-center gap-2">
                       <ArrowRight className="w-4 h-4 text-[var(--accent)] shrink-0" />
                       <span>{item.solution}</span>
                     </p>
-                    <span className="text-[11px] font-mono text-[var(--muted)] mt-2 block">
+                    <span className="text-[11px] font-mono text-[#F5F5F2]/72 mt-2 block">
                       Powered by {item.capability}
                     </span>
                   </div>
