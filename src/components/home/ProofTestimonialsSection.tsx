@@ -81,7 +81,7 @@ export default function ProofTestimonialsSection() {
           className="mx-auto max-w-5xl rounded-xs border border-[var(--line)] bg-[var(--surface)] p-7 md:p-10 lg:p-12 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
         >
           <div className="flex items-center justify-between gap-4 pb-5 border-b border-[var(--line)]">
-            <span className="text-[10px] font-mono uppercase tracking-[0.14em] text-[var(--accent)]">
+            <span className="text-[10px] font-mono uppercase tracking-[0.14em] text-[var(--muted)]">
               {project.division}
             </span>
             <span className="text-[10px] font-mono text-[var(--muted)]">{project.year}</span>
@@ -97,7 +97,7 @@ export default function ProofTestimonialsSection() {
               {project.testimonial.author} — {project.testimonial.role}
             </p>
 
-            <div className="mt-10 grid grid-cols-2 gap-px border border-[var(--line)] bg-[var(--line)] sm:max-w-2xl">
+            {/* <div className="mt-10 grid grid-cols-2 gap-px border border-[var(--line)] bg-[var(--line)] sm:max-w-2xl">
               {project.metrics.slice(0, 2).map((metric) => (
                 <div key={metric.label} className="bg-[#0A0A0A] p-4 md:p-5">
                   <span className="block text-2xl md:text-3xl font-black font-mono text-[var(--accent)]">
@@ -108,7 +108,7 @@ export default function ProofTestimonialsSection() {
                   </span>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </article>
       </div>

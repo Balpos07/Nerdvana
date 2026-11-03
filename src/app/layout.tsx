@@ -24,6 +24,15 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nerdvana.global"),
+  icons: {
+    icon: [
+      {
+        url: "/assest/nerdvana-logo.jpeg",
+        type: "image/jpeg",
+      },
+    ],
+    apple: "/assest/nerdvana-logo.jpeg",
+  },
   title: {
     default: `${siteSettings.agencyName} — ${siteSettings.tagline}`,
     template: `%s | ${siteSettings.agencyName}`,

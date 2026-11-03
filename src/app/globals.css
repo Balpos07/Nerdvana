@@ -52,6 +52,41 @@
   border-color: rgba(245, 245, 242, 0.18);
 }
 
+.curious-phase {
+  background-color: #0A0A0A !important;
+  border-color: rgba(10, 10, 10, 0.15);
+  color: #F5F5F2;
+}
+
+.curious-phase:hover {
+  border-color: var(--accent) !important;
+}
+
+.curious-phase-active {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent-fg);
+}
+
+.curious-phase-label {
+  color: var(--accent);
+}
+
+.curious-phase-active .curious-phase-label {
+  color: var(--accent-fg);
+}
+
+/* Process cards follow the same deliberate dark surface used by Curious. */
+.process-card {
+  background-color: #0A0A0A !important;
+  border-color: rgba(245, 245, 242, 0.16);
+  color: #F5F5F2;
+}
+
+.process-card-current {
+  border-color: var(--accent) !important;
+}
+
 
 * {
   box-sizing: border-box;

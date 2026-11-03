@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -82,10 +83,14 @@ export default function Navbar() {
             className="group flex items-baseline gap-1.5"
             data-cursor-text="HOME"
           >
-            <span className="text-xl md:text-2xl font-black tracking-tighter text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors">
-              {siteSettings.agencyName}
-            </span>
-            <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />
+            <Image
+              src="/assest/nerdvana-logo.jpeg"
+              alt={siteSettings.agencyName}
+              width={400}
+              height={360}
+              priority
+              className="h-10 w-auto rounded-sm object-contain md:h-12"
+            />
           </Link>
 
           {/* Right: Desktop Navigation Links & Mega Menu */}
@@ -325,4 +330,3 @@ export default function Navbar() {
     </>
   );
 }
-

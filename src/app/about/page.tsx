@@ -64,7 +64,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-20 border-b border-[var(--line)] mb-20">
           <div className="p-8 md:p-12 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-2 text-[var(--accent)] text-xs font-mono font-bold uppercase mb-4">
+              <div className="flex items-center gap-2 text-[var(--muted)] text-xs font-mono font-bold uppercase mb-4">
                 {/* <Cpu className="w-4 h-4" /> */}
                 <span>NERDVANA TECHNOLOGIES</span>
               </div>
@@ -77,7 +77,7 @@ export default function AboutPage() {
             </div>
             <Link
               href="/services#technologies"
-              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-[var(--accent)] hover:underline"
+              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-[var(--muted)] hover:underline"
             >
               <span>Explore Technology Capabilities</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -86,7 +86,7 @@ export default function AboutPage() {
 
           <div className="p-8 md:p-12 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-2 text-[#F5F5F2] text-xs font-mono font-bold uppercase mb-4">
+              <div className="flex items-center gap-2 text-[var(--muted)] text-xs font-mono font-bold uppercase mb-4">
                 {/* <Sparkles className="w-4 h-4 text-[var(--accent)]" /> */}
                 <span>FIGURES BY NERDVANA</span>
               </div>
@@ -99,7 +99,7 @@ export default function AboutPage() {
             </div>
             <Link
               href="/services#figures"
-              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-[var(--accent)] hover:underline"
+              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-[var(--muted)] hover:underline"
             >
               <span>Explore Creative & Marketing</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -124,7 +124,7 @@ export default function AboutPage() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono text-[var(--accent)] font-bold">
+                    <span className="text-xs font-mono text-[var(--muted)] font-bold">
                       {office.label}
                     </span>
                     <OfficeClock label={office.label} timezone={office.timezone} />
@@ -138,7 +138,7 @@ export default function AboutPage() {
                 </div>
                 <div className="pt-4 border-t border-[var(--line)] flex items-center justify-between text-xs font-mono text-[var(--muted)]">
                   <span>TEL: {office.phone}</span>
-                  <span className="text-emerald-400">● ACTIVE OPERATION</span>
+                  <span className="text-[var(--muted)]">● ACTIVE OPERATION</span>
                 </div>
               </div>
             ))}
@@ -165,7 +165,7 @@ export default function AboutPage() {
                     sizes="(max-width: 640px) 100vw, 25vw"
                     className="object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                   />
-                  <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-[#0A0A0A]/80 text-[10px] font-mono text-[var(--accent)]">
+                  <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-[#B8FF00]/80 text-[10px] font-mono text-[var(--fg)]">
                     {member.division}
                   </div>
                 </div>

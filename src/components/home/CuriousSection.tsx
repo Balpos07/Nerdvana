@@ -1,18 +1,78 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, HelpCircle, ArrowRight } from "lucide-react";
 import { curiousProblems } from "@/lib/cms/data";
 
 export default function CuriousSection() {
-  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const phaseLabels = [
+    "Convert",
+    "Rebrand",
+    "Optimize",
+    "Automate",
+    "Build",
+    "Grow",
+  ];
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    let frameId = 0;
+    const updateActivePhase = () => {
+      frameId = 0;
+      const rect = section.getBoundingClientRect();
+      const scrollDistance = Math.max(section.offsetHeight - window.innerHeight, 1);
+      const progress = Math.min(Math.max(-rect.top / scrollDistance, 0), 1);
+      setActiveIndex(Math.min(
+        curiousProblems.length - 1,
+        Math.floor(progress * curiousProblems.length),
+      ));
+    };
+
+    const requestUpdate = () => {
+      if (!frameId) frameId = window.requestAnimationFrame(updateActivePhase);
+    };
+
+    updateActivePhase();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      if (frameId) window.cancelAnimationFrame(frameId);
+    };
+  }, []);
+
+  const selectPhase = (index: number) => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    setActiveIndex(index);
+    const rect = section.getBoundingClientRect();
+    const scrollDistance = Math.max(section.offsetHeight - window.innerHeight, 1);
+    const progress = index / curiousProblems.length;
+    const target = window.scrollY + rect.top + scrollDistance * progress;
+
+    window.scrollTo({ top: target, behavior: "smooth" });
+  };
+
+  const activeProblem = curiousProblems[activeIndex];
 
   return (
-    <section id="curious" className="py-24 md:py-36 bg-[#0A0A0A] border-b border-[var(--line)]">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+    <section
+      ref={sectionRef}
+      id="curious"
+      className="relative h-[600svh] border-b border-[var(--line)] bg-[#0A0A0A]"
+    >
+      <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden">
+        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-10 md:py-16">
         {/* Section Header */}
-        <div className="border-b border-[var(--line)] pb-12 mb-12">
+        <div className="border-b border-[var(--line)] pb-6 md:pb-8 mb-5 md:mb-8">
           <span className="section-label block mb-3 text-[var(--accent)]">
             05 // PROBLEM-FIRST DIAGNOSIS
           </span>
@@ -27,69 +87,87 @@ export default function CuriousSection() {
               </p>
             </div>
             <div className="text-xs font-mono text-[var(--muted)]">
-              SELECT A BOTTLENECK BELOW TO MAP THE SOLUTION →
+              SCROLL OR SELECT A PHASE →
             </div>
           </div>
         </div>
 
-        {/* 6 Problem-Led Diagnostic Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Clickable six-phase selector */}
+        <div
+          role="tablist"
+          aria-label="Problem diagnosis phases"
+          className="grid grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3 mb-5 md:mb-8"
+        >
           {curiousProblems.map((item, idx) => {
-            const isHovered = hoveredIdx === idx;
+            const isActive = activeIndex === idx;
             return (
-              <div
+              <button
                 key={item.id}
-                onMouseEnter={() => setHoveredIdx(idx)}
-                onMouseLeave={() => setHoveredIdx(null)}
-                className={`curious-card p-8 rounded-xs border transition-all duration-300 flex flex-col justify-between ${
-                  isHovered
-                    ? "border-[var(--accent)] bg-[#0A0A0A] -translate-y-1 shadow-xl"
-                    : "border-[#F5F5F2]/16 bg-[#0A0A0A]"
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                aria-controls="curious-active-panel"
+                onClick={() => selectPhase(idx)}
+                className={`curious-phase min-h-14 md:min-h-16 rounded-xs border p-3 text-left transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] ${
+                  isActive
+                    ? "curious-phase-active shadow-lg"
+                    : "hover:-translate-y-0.5"
                 }`}
               >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="font-mono text-xs font-bold text-[var(--accent)]">
-                      PROBLEM // 0{idx + 1}
-                    </span>
-                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-[#F5F5F2]/10 text-[#F5F5F2] border border-[#F5F5F2]/16">
-                      {item.division}
-                    </span>
-                  </div>
-
-                  {/* Problem statement */}
-                  <h3 className="text-xl md:text-2xl font-extrabold uppercase tracking-tight text-[#F5F5F2] mb-4">
-                    &ldquo;{item.problem}&rdquo;
-                  </h3>
-
-                  {/* Solution resolution */}
-                  <div className="curious-resolution p-4 rounded-xs border mb-6">
-                    <span className="text-[10px] font-mono uppercase text-[var(--accent)] block mb-1">
-                      NERDVANA RESOLUTION
-                    </span>
-                    <p className="text-sm font-bold text-[#F5F5F2] flex items-center gap-2">
-                      <ArrowRight className="w-4 h-4 text-[var(--accent)] shrink-0" />
-                      <span>{item.solution}</span>
-                    </p>
-                    <span className="text-[11px] font-mono text-[#F5F5F2]/72 mt-2 block">
-                      Powered by {item.capability}
-                    </span>
-                  </div>
-                </div>
-
-                <Link
-                  href={item.targetHref}
-                  className="inline-flex items-center justify-between w-full pt-4 border-t border-[var(--line)] text-xs font-mono font-bold uppercase tracking-wider text-[var(--accent)] hover:underline"
-                >
-                  <span>{item.ctaText}</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </Link>
-              </div>
+                <span className="curious-phase-label block font-mono text-[10px] md:text-xs font-black uppercase tracking-wider mb-1">
+                  Phase 0{idx + 1}
+                </span>
+                <span className="block text-[11px] md:text-sm font-extrabold uppercase leading-tight line-clamp-2">
+                  {phaseLabels[idx]}
+                </span>
+              </button>
             );
           })}
+        </div>
+
+        {/* Active phase stage */}
+        <article
+          id="curious-active-panel"
+          role="tabpanel"
+          key={activeProblem.id}
+          className="curious-card grid grid-cols-1 lg:grid-cols-[1.15fr_.85fr] rounded-xs border p-5 md:p-8 lg:p-10"
+        >
+          <div className="flex flex-col justify-between lg:pr-10">
+            <div>
+              <span className="font-mono text-xs font-bold text-[var(--accent)]">
+                PROBLEM // 0{activeIndex + 1}
+              </span>
+              <h3 className="mt-3 max-w-2xl text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-[#F5F5F2]">
+                &ldquo;{activeProblem.problem}&rdquo;
+              </h3>
+            </div>
+            <Link
+              href={activeProblem.targetHref}
+              className="mt-6 inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[var(--accent)] hover:underline"
+            >
+              <span>{activeProblem.ctaText}</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="curious-resolution mt-6 lg:mt-0 rounded-xs border p-5 md:p-6">
+            <span className="text-[10px] font-mono uppercase text-[var(--accent)] block mb-2">
+              NERDVANA RESOLUTION
+            </span>
+            <p className="text-base md:text-lg font-bold text-[#F5F5F2] flex items-start gap-2">
+              <ArrowRight className="mt-0.5 w-4 h-4 text-[var(--accent)] shrink-0" />
+              <span>{activeProblem.solution}</span>
+            </p>
+            <span className="text-[11px] font-mono text-[#F5F5F2]/72 mt-3 block">
+              Powered by {activeProblem.capability}
+            </span>
+            <span className="mt-6 block text-[10px] font-mono uppercase tracking-wider text-[#F5F5F2]/50">
+              {activeProblem.division}
+            </span>
+          </div>
+        </article>
         </div>
       </div>
     </section>
   );
 }
-
