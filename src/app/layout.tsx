@@ -27,11 +27,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/assest/nerdvana-logo.jpeg",
+        url: "/assest/nerdvana-logo-black.svg",
         type: "image/jpeg",
       },
     ],
-    apple: "/assest/nerdvana-logo.jpeg",
+    apple: "/assest/nerdvana-logo-black.svg",
   },
   title: {
     default: `${siteSettings.agencyName} — ${siteSettings.tagline}`,
@@ -98,12 +98,14 @@ export default function RootLayout({
       {
         "@type": "Organization",
         name: "Nerdvana Technologies",
-        description: "Cloud, DevOps, Software Engineering, AI & Automation, Reliability & Security",
+        description:
+          "Cloud, DevOps, Software Engineering, AI & Automation, Reliability & Security",
       },
       {
         "@type": "Organization",
         name: "Figures by Nerdvana",
-        description: "Branding, UI/UX, Web Design & Development, Creative Production, Marketing & Growth",
+        description:
+          "Branding, UI/UX, Web Design & Development, Creative Production, Marketing & Growth",
       },
     ],
     address: siteSettings.offices.map((office) => ({
@@ -116,7 +118,10 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
+    >
       <head>
         <script
           type="application/ld+json"
@@ -131,13 +136,15 @@ export default function RootLayout({
           <main className="flex-1 w-full">{children}</main>
           <div className="office-clock-dock fixed bottom-5 right-5 z-[60] hidden overflow-hidden sm:block rounded-sm border border-[var(--line)] bg-[var(--bg)]/95 px-4 py-3 shadow-lg backdrop-blur-md">
             <div className="office-clock-track">
-              {[...siteSettings.offices, ...siteSettings.offices].map((office, index) => (
-                <OfficeClock
-                  key={`${office.name}-${index}`}
-                  label={office.label}
-                  timezone={office.timezone}
-                />
-              ))}
+              {[...siteSettings.offices, ...siteSettings.offices].map(
+                (office, index) => (
+                  <OfficeClock
+                    key={`${office.name}-${index}`}
+                    label={office.label}
+                    timezone={office.timezone}
+                  />
+                ),
+              )}
             </div>
           </div>
           <Footer />

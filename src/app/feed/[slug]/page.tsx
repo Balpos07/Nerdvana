@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -35,7 +35,25 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   };
 }
 
-export default async function PostPage({ params }: PostPageProps) {
+export default function PostPage({ params }: PostPageProps) {
+  return (
+    <Suspense
+      fallback={
+        <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen">
+          <div className="max-w-[1040px] mx-auto px-6 md:px-12 animate-pulse">
+            <div className="h-4 w-32 rounded bg-[var(--surface)] mb-8" />
+            <div className="h-16 max-w-2xl rounded bg-[var(--surface)] mb-8" />
+            <div className="h-40 w-full rounded bg-[var(--surface)]" />
+          </div>
+        </div>
+      }
+    >
+      <PostContent params={params} />
+    </Suspense>
+  );
+}
+
+async function PostContent({ params }: PostPageProps) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 
@@ -161,4 +179,3 @@ export default async function PostPage({ params }: PostPageProps) {
     </article>
   );
 }
-

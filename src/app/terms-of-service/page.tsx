@@ -66,7 +66,7 @@ export default function TermsOfServicePage() {
               4. Governing Law
             </h2>
             <p>
-              These terms are governed in accordance with the laws of the State of New York and the Federal Republic of Nigeria.
+              These terms are governed in accordance with the laws of the Federal Republic of Nigeria.
             </p>
           </section>
         </div>

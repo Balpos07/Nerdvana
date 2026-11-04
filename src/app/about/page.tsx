@@ -107,16 +107,16 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Global Twin Studios */}
+        {/* Lagos Office */}
         <div className="pb-20 border-b border-[var(--line)] mb-20">
           <span className="section-label block mb-3 text-[var(--accent)]">
-            GLOBAL REACH // DUAL OPERATIONAL HUBS
+            NIGERIA // PRIMARY OFFICE
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[var(--fg)] mb-8">
-            New York & Lagos
+            Lagos
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8">
             {siteSettings.offices.map((office) => (
               <div
                 key={office.name}
@@ -130,7 +130,7 @@ export default function AboutPage() {
                     <OfficeClock label={office.label} timezone={office.timezone} />
                   </div>
                   <h3 className="text-2xl font-black uppercase tracking-tight text-[var(--fg)] mb-2">
-                    {office.name} STUDIO
+                    {office.name} OFFICE
                   </h3>
                   <p className="text-xs md:text-sm text-[var(--muted)] leading-relaxed mb-4">
                     {office.address}
@@ -186,4 +186,3 @@ export default function AboutPage() {
     </div>
   );
 }
-

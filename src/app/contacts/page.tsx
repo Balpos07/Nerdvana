@@ -18,7 +18,7 @@ export default function ContactsPage() {
         {/* Header */}
         <div className="border-b border-[var(--line)] pb-12 mb-16">
           <span className="section-label block mb-3 text-[var(--accent)]">
-            CONNECT // GLOBAL OFFICES
+            CONNECT // OFFICE
           </span>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-[var(--fg)]">
@@ -30,8 +30,8 @@ export default function ContactsPage() {
           </div>
         </div>
 
-        {/* Global Hubs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-16 border-b border-[var(--line)] mb-16">
+        {/* Lagos Office */}
+        <div className="grid grid-cols-1 gap-8 pb-16 border-b border-[var(--line)] mb-16">
           {siteSettings.offices.map((office) => (
             <div
               key={office.name}
@@ -46,7 +46,7 @@ export default function ContactsPage() {
                 </div>
                 <h3 className="text-2xl font-bold uppercase tracking-tight text-[var(--fg)] mb-2 flex items-center gap-2">
                   <MapPin className="w-5 h-5 text-[var(--accent)]" />
-                  <span>{office.name} STUDIO</span>
+                  <span>{office.name} OFFICE</span>
                 </h3>
                 <p className="text-sm text-[var(--muted)] leading-relaxed mb-6">
                   {office.address}

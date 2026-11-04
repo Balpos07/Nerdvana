@@ -46,7 +46,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#0A0A0A] text-[#F5F5F2] border-t border-[var(--line)] pt-20 md:pt-32 pb-8 overflow-hidden">
+    <footer className="footer-shell w-full border-t border-[var(--line)] pt-20 md:pt-32 pb-8 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* Top Header Statement */}
         <div className="pb-16 border-b border-[var(--line)] mb-16">
@@ -135,25 +135,19 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 3: Contact & Global Studios */}
+          {/* Col 3: Contact */}
           <div className="md:col-span-2">
             <span className="section-label mb-4 block text-[var(--accent)]">CONTACT</span>
             <div className="space-y-4 text-xs font-mono">
               <div>
                 <span className="text-[var(--muted)] block">EMAIL</span>
-                <a href="mailto:hello@nerdvana.global" className="hover:text-[var(--accent)] transition-colors">
+                <a href="mailto:hello@nerdvana.global" className="text-[var(--fg)] hover:text-[var(--accent)] transition-colors">
                   hello@nerdvana.global
                 </a>
               </div>
               <div>
-                <span className="text-[var(--muted)] block">PHONE</span>
-                <a href="tel:+12128904102" className="hover:text-[var(--accent)] transition-colors">
-                  +1 (212) 890-4102
-                </a>
-              </div>
-              <div>
                 <span className="text-[var(--muted)] block">LAGOS DESK</span>
-                <a href="tel:+23418809214" className="hover:text-[var(--accent)] transition-colors">
+                <a href="tel:+23418809214" className="text-[var(--fg)] hover:text-[var(--accent)] transition-colors">
                   +234 (1) 880-9214
                 </a>
               </div>

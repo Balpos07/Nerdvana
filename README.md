@@ -12,8 +12,7 @@
 **Core Brand Statement:**  
 > *"Nerdvana is a global technology and creative agency crafting bold brands, digital experiences and powerful technology solutions through clarity, innovation and timeless craft. We help ambitious businesses build better, move faster and show the world who they are."*
 
-**Global Hubs:**  
-- **NEW YORK, US** (SoHo)
+**Office:**  
 - **LAGOS, NG** (Lekki Phase 1)
 
 ---
@@ -80,7 +79,7 @@ NERDVANA
 - `/work` — Portfolio index with filters & case studies
 - `/work/[slug]` — In-depth case study template with challenges, approaches, and tech stacks
 - `/about` — Parent brand story, manifesto, and leadership team
-- `/contacts` — Direct studio desks (New York & Lagos), WhatsApp, and brief form
+- `/contacts` — Lagos office desk, WhatsApp, and brief form
 - `/terms-of-service` — Terms of engagement
 - `/privacy-policy` — Data privacy policy
 - `/cookie-policy` — Cookie policy

@@ -97,7 +97,7 @@ export default function CuriousSection() {
               </p>
             </div>
             <div className="text-xs font-mono text-[var(--muted)]">
-              SCROLL OR SELECT A PHASE →
+              SCROLL OR SELECT A PHASE â†’
             </div>
           </div>
         </div>
@@ -111,71 +111,7 @@ export default function CuriousSection() {
           {curiousProblems.map((item, idx) => {
             const isActive = activeIndex === idx;
             return (
-<<<<<<< HEAD
-              <CardReveal
-                key={item.id}
-                delay={idx * 0.06}
-                className="h-full"
-              >
-              <motion.div
-                onMouseEnter={() => setHoveredIdx(idx)}
-                onMouseLeave={() => setHoveredIdx(null)}
-                whileHover={{ y: -7 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className={`relative h-full p-8 rounded-xs border overflow-hidden flex flex-col justify-between ${
-                  isHovered
-                    ? "border-[var(--accent)] bg-[var(--surface-raised)] shadow-xl"
-                    : "border-[var(--line)] bg-[var(--surface)]"
-                }`}
-              >
-                <motion.div
-                  className="absolute -right-16 -top-16 w-40 h-40 rounded-full bg-[var(--accent)]/10 blur-2xl pointer-events-none"
-                  animate={isHovered ? { scale: 1.5, x: -12 } : { scale: 1, x: 0 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                />
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="font-mono text-xs font-bold text-[var(--accent)]">
-                      PROBLEM // 0{idx + 1}
-                    </span>
-                    <span className="relative text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-[var(--card-bg)] text-[var(--muted)] border border-[var(--line)]">
-                      {item.division}
-                    </span>
-                  </div>
-
-                  {/* Problem statement */}
-                  <h3 className="text-xl md:text-2xl font-extrabold uppercase tracking-tight text-[var(--fg)] mb-4">
-                    &ldquo;{item.problem}&rdquo;
-                  </h3>
-
-                  {/* Solution resolution */}
-                  <div className="p-4 rounded-xs bg-[#0A0A0A] border border-[var(--line)] mb-6">
-                    <span className="text-[10px] font-mono uppercase text-[var(--accent)] block mb-1">
-                      NERDVANA RESOLUTION
-                    </span>
-                    <p className="text-sm font-bold text-[var(--fg)] flex items-center gap-2">
-                      <ArrowRight className="w-4 h-4 text-[var(--accent)] shrink-0" />
-                      <span>{item.solution}</span>
-                    </p>
-                    <span className="text-[11px] font-mono text-[var(--muted)] mt-2 block">
-                      Powered by {item.capability}
-                    </span>
-                  </div>
-                </div>
-
-                <Magnetic strength={10}>
-                <Link
-                  href={item.targetHref}
-                  className="inline-flex items-center justify-between w-full pt-4 border-t border-[var(--line)] text-xs font-mono font-bold uppercase tracking-wider text-[var(--accent)] hover:underline"
-                >
-                  <span>{item.ctaText}</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </Link>
-                </Magnetic>
-              </motion.div>
-              </CardReveal>
-=======
-              <button
+<button
                 key={item.id}
                 type="button"
                 role="tab"
@@ -195,7 +131,6 @@ export default function CuriousSection() {
                   {phaseLabels[idx]}
                 </span>
               </button>
->>>>>>> 00433f0ce0e32820a32cd4e9c83b61e11fd3cf89
             );
           })}
         </div>

@@ -1,15 +1,10 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Menu,
-  X,
-  ArrowUpRight,
-  ChevronDown,
-} from "lucide-react";
+import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
 import { siteSettings, serviceDivisions } from "@/lib/cms/data";
 import { TextRoll } from "@/components/ui/MotionEffects";
 
@@ -58,22 +53,6 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-        className="fixed bottom-4 right-4 z-[45] hidden sm:flex items-center gap-5 px-4 py-2.5 rounded-full border border-[var(--line)] bg-[var(--bg)]/90 shadow-[0_10px_40px_rgba(0,0,0,0.12)] backdrop-blur-md live-office-clocks"
-        aria-label="Live office clocks"
-      >
-        {siteSettings.offices.map((office) => (
-          <OfficeClock
-            key={office.name}
-            label={office.label}
-            timezone={office.timezone}
-          />
-        ))}
-      </motion.div>
-
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           visible ? "translate-y-0" : "-translate-y-full"
@@ -90,23 +69,13 @@ export default function Navbar() {
             className="group flex items-baseline gap-1.5 brand-nav"
             data-cursor-text="HOME"
           >
-<<<<<<< HEAD
-            <span className="brand-nav__mask">
-              <span className="brand-nav__name">{siteSettings.agencyName}</span>
-            </span>
-            <motion.span
-              animate={{ scale: [1, 1.35, 1], opacity: [1, 0.55, 1] }}
-              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-              className="w-2 h-2 rounded-full bg-[var(--accent)]"
-=======
             <Image
-              src="/assest/nerdvana-logo.jpeg"
+              src="/assest/nerdvana-logo-black.svg"
               alt={siteSettings.agencyName}
               width={400}
               height={360}
               priority
               className="h-10 w-auto rounded-sm object-contain md:h-12"
->>>>>>> 00433f0ce0e32820a32cd4e9c83b61e11fd3cf89
             />
           </Link>
 
@@ -157,7 +126,11 @@ export default function Navbar() {
                         <motion.div
                           initial={{ opacity: 0, y: 12 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.08, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                          transition={{
+                            delay: 0.08,
+                            duration: 0.4,
+                            ease: [0.16, 1, 0.3, 1],
+                          }}
                           className="pr-4"
                         >
                           <div className="flex items-center gap-2 mb-2 text-[#0A0A0A]">
@@ -187,7 +160,11 @@ export default function Navbar() {
                         <motion.div
                           initial={{ opacity: 0, y: 12 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.16, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                          transition={{
+                            delay: 0.16,
+                            duration: 0.4,
+                            ease: [0.16, 1, 0.3, 1],
+                          }}
                           className="pl-6"
                         >
                           <div className="flex items-center gap-2 mb-2 text-[#0A0A0A]">

@@ -22,7 +22,7 @@ export default function WorkPage() {
               Our Work
             </h1>
             <p className="text-sm md:text-base text-[var(--muted)] max-w-md">
-              Work we&apos;re proud of. Real software engineering, resilient cloud architectures, and iconic digital flagships built from our New York and Lagos studios.
+              Work we&apos;re proud of. Real software engineering, resilient cloud architectures, and iconic digital flagships built from our Lagos studio.
             </p>
           </div>
         </div>

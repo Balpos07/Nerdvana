@@ -29,40 +29,7 @@ export default function WhatNerdvanaDoes() {
           </div>
         </div>
 
-<<<<<<< HEAD
-        {/* 6-Stage Sequential Timeline: Imagine → Build → Launch → Automate → Market → Scale */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
-          {whatNerdvanaDoes.stages.map((stage, idx) => (
-            <CardReveal
-              key={stage.label}
-              className="relative p-6 min-h-[260px] rounded-sm border border-black/20 bg-white flex flex-col justify-between group hover:border-black hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(10,10,10,0.08)] transition-all duration-300"
-              delay={idx * 0.07}
-            >
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <span className="font-mono text-sm font-black text-[var(--fg)] tracking-wider">
-                    0{idx + 1}
-                  </span>
-                  {idx < 5 && (
-                    <ArrowRight className="w-4 h-4 text-[var(--fg)] opacity-45 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  )}
-                </div>
-                <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-[var(--fg)] mb-3">
-                  {stage.label}
-                </h3>
-                <p className="text-sm text-black/65 leading-relaxed">
-                  {stage.description}
-                </p>
-              </div>
-
-              <div className="pt-4 mt-6 border-t border-black/15 flex items-center gap-2 text-[11px] font-mono font-bold text-[var(--fg)] uppercase tracking-wider">
-                <CheckCircle2 className="w-4 h-4 text-[var(--fg)]" />
-                <span>PHASE READY</span>
-              </div>
-            </CardReveal>
-          ))}
-=======
-        {/* Continuous 6-stage delivery motion */}
+{/* Continuous 6-stage delivery motion */}
         <div className="delivery-marquee overflow-hidden" aria-label="Nerdvana delivery stages">
           <div className="delivery-marquee-track">
             {[...whatNerdvanaDoes.stages, ...whatNerdvanaDoes.stages].map((stage, idx) => {
@@ -97,7 +64,6 @@ export default function WhatNerdvanaDoes() {
               );
             })}
           </div>
->>>>>>> 00433f0ce0e32820a32cd4e9c83b61e11fd3cf89
         </div>
       </div>
     </section>

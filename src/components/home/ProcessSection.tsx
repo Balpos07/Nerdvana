@@ -1,61 +1,14 @@
 "use client";
 
-<<<<<<< HEAD
-import React, { useRef, useState } from "react";
-import { motion, AnimatePresence, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from "framer-motion";
-=======
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
->>>>>>> 00433f0ce0e32820a32cd4e9c83b61e11fd3cf89
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { processSteps } from "@/lib/cms/data";
 
 export default function ProcessSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeStep, setActiveStep] = useState(0);
-  const sectionRef = useRef<HTMLElement>(null);
-  const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 55%", "end 45%"],
-  });
-  const progressX = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (reduceMotion) return;
-    const nextStep = Math.max(0, Math.min(processSteps.length - 1, Math.floor(latest * processSteps.length)));
-    setActiveStep((current) => current === nextStep ? current : nextStep);
-  });
-
-<<<<<<< HEAD
-  return (
-    <section ref={sectionRef} id="process" className="py-24 md:py-36 bg-[#0A0A0A] border-b border-[var(--line)]">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-        {/* Section Header */}
-        <div className="pb-12 border-b border-[var(--line)]">
-          <span className="section-label block mb-3 text-[var(--accent)]">
-            07 // METHODOLOGY
-          </span>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[var(--fg)]">
-                Our Process
-              </h2>
-              <p className="text-sm md:text-base text-[var(--muted)] max-w-lg mt-2">
-                Great work starts with understanding the problem. A battle-tested 6-step lifecycle from first diagnosis to continuous scale.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <span className="font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
-                STEP {processSteps[activeStep].number} OF 06
-              </span>
-              <div className="w-32 h-1.5 bg-[var(--line)] rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full bg-[var(--accent)]"
-                  style={{ scaleX: progressX, transformOrigin: "0 50%" }}
-                />
-=======
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -133,7 +86,6 @@ export default function ProcessSection() {
                     transition={{ duration: 0.3 }}
                   />
                 </div>
->>>>>>> 00433f0ce0e32820a32cd4e9c83b61e11fd3cf89
               </div>
             </div>
           </div>
@@ -170,23 +122,7 @@ export default function ProcessSection() {
             })}
           </div>
 
-<<<<<<< HEAD
-        {/* Active Step Details Stage */}
-        <div className="py-12 md:py-16 md:sticky md:top-24">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeStep}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.35 }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
-            >
-              <div className="lg:col-span-5">
-                <span className="text-7xl md:text-9xl font-black text-[var(--muted)]/20 font-mono block select-none">
-                  {processSteps[activeStep].number}
-=======
-          <motion.article
+<motion.article
             id="process-active-panel"
             role="tabpanel"
             key={step.number}
@@ -199,7 +135,6 @@ export default function ProcessSection() {
               <div>
                 <span className="block text-6xl md:text-8xl font-black text-[#F5F5F2]/15 font-mono select-none">
                   {step.number}
->>>>>>> 00433f0ce0e32820a32cd4e9c83b61e11fd3cf89
                 </span>
                 <h3 className="mt-2 text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-[#F5F5F2]">
                   {step.title}
