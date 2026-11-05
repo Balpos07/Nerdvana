@@ -45,7 +45,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "Work", href: "/work" },
-    { label: "Packages", href: "/#packages" },
+    { label: "Packages", href: "/packages" },
     { label: "Curious?", href: "/#curious" },
     { label: "Process", href: "/#process" },
     { label: "About", href: "/about" },
@@ -58,7 +58,7 @@ export default function Navbar() {
           visible ? "translate-y-0" : "-translate-y-full"
         } ${
           scrolled
-            ? "bg-[#0A0A0A]/90 backdrop-blur-md border-b border-[var(--line)] py-3.5"
+            ? "bg-[#F5F5F2]/95 backdrop-blur-md border-b border-black/10 py-3.5 text-[#0A0A0A]"
             : "bg-transparent py-5"
         }`}
       >
@@ -89,7 +89,7 @@ export default function Navbar() {
                 onMouseLeave={() => setServicesMenuOpen(false)}
               >
                 <button
-                  className="flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-[var(--fg)] hover:text-[var(--accent)] transition-colors py-2 focus:outline-none"
+                  className="flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-[#0A0A0A] hover:text-[#557800] transition-colors py-2 focus:outline-none"
                   aria-expanded={servicesMenuOpen}
                   aria-haspopup="menu"
                   onClick={() => setServicesMenuOpen((open) => !open)}
@@ -106,7 +106,7 @@ export default function Navbar() {
                   <TextRoll>Services</TextRoll>
                   <ChevronDown
                     className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      servicesMenuOpen ? "rotate-180 text-[var(--accent)]" : ""
+                      servicesMenuOpen ? "rotate-180 text-[#557800]" : ""
                     }`}
                   />
                 </button>
@@ -146,7 +146,7 @@ export default function Navbar() {
                               <li key={s.title}>
                                 <Link
                                   href={`/services#${s.title.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
-                                  className="text-xs font-medium text-[#0A0A0A] hover:text-[var(--accent)] transition-colors flex items-center justify-between group"
+                                  className="text-xs font-medium text-[#0A0A0A] hover:text-[#557800] transition-colors flex items-center justify-between group"
                                 >
                                   <span>{s.title}</span>
                                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -180,7 +180,7 @@ export default function Navbar() {
                               <li key={s.title}>
                                 <Link
                                   href={`/services#${s.title.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
-                                  className="text-xs font-medium text-[#0A0A0A] hover:text-[var(--accent)] transition-colors flex items-center justify-between group"
+                                  className="text-xs font-medium text-[#0A0A0A] hover:text-[#557800] transition-colors flex items-center justify-between group"
                                 >
                                   <span>{s.title}</span>
                                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -197,7 +197,7 @@ export default function Navbar() {
                         </span>
                         <Link
                           href="/services"
-                          className="text-[var(--accent)] font-bold hover:underline flex items-center gap-1"
+                          className="text-[#557800] font-bold hover:underline flex items-center gap-1"
                         >
                           <span>Explore All Capabilities</span>
                           <ArrowUpRight className="w-3.5 h-3.5" />
@@ -213,7 +213,7 @@ export default function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-xs font-semibold uppercase tracking-wider text-[var(--fg)] hover:text-[var(--accent)] transition-colors"
+                  className="text-xs font-semibold uppercase tracking-wider text-[#0A0A0A] hover:text-[#557800] transition-colors"
                 >
                   <TextRoll>{link.label}</TextRoll>
                 </Link>
@@ -241,7 +241,7 @@ export default function Navbar() {
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[var(--fg)] hover:text-[var(--accent)] transition-colors focus:outline-none"
+              className="p-2 text-[#0A0A0A] hover:text-[#557800] transition-colors focus:outline-none"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? (
@@ -271,7 +271,7 @@ export default function Navbar() {
               clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
             }}
             transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-40 bg-[#0A0A0A] text-[#F5F5F2] flex flex-col justify-between px-6 pt-24 pb-10 overflow-y-auto"
+            className="mobile-nav-shell fixed inset-0 z-40 flex flex-col justify-between px-6 pt-24 pb-10 overflow-y-auto"
           >
             <div className="border-b border-[var(--line)] pb-5">
               <span className="section-label mb-2 block text-[var(--accent)]">
@@ -288,7 +288,7 @@ export default function Navbar() {
               <Link
                 href="/services"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-3xl font-extrabold uppercase tracking-tight text-[var(--fg)] hover:text-[var(--accent)] transition-colors flex items-center justify-between"
+                className="text-3xl font-extrabold uppercase tracking-tight text-[#F5F5F2] hover:text-[#B8FF00] transition-colors flex items-center justify-between"
               >
                 <span>Our Services</span>
                 <ArrowUpRight className="w-6 h-6 text-[var(--accent)]" />
@@ -299,7 +299,7 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-3xl font-extrabold uppercase tracking-tight text-[var(--fg)] hover:text-[var(--accent)] transition-colors flex items-center justify-between"
+                  className="text-3xl font-extrabold uppercase tracking-tight text-[#F5F5F2] hover:text-[#B8FF00] transition-colors flex items-center justify-between"
                 >
                   <span>{link.label}</span>
                   <ArrowUpRight className="w-6 h-6 text-[var(--accent)]" />
