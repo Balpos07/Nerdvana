@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Cpu, Sparkles, Check, Plus, Minus } from "lucide-react";
+import { ArrowUpRight, Check, Plus, Minus } from "lucide-react";
 import { serviceDivisions } from "@/lib/cms/data";
 
 export default function ServicesSection() {
@@ -34,7 +34,6 @@ export default function ServicesSection() {
             <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-full border border-[var(--line)] bg-[var(--surface)]">
               {serviceDivisions.map((div, idx) => {
                 const isActive = activeDivisionIdx === idx;
-                const isTech = idx === 0;
                 return (
                   <button
                     key={div.name}
@@ -100,7 +99,7 @@ export default function ServicesSection() {
                 >
                   <div className="flex items-start gap-4 md:gap-8">
                     <span className="font-mono text-sm font-bold text-[var(--accent)] pt-1">
-                      0{index + 1} //
+                      {`0${index + 1} //`}
                     </span>
                     <div>
                       <h4 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors">
