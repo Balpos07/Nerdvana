@@ -1,10 +1,9 @@
 import React from "react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Cpu, Sparkles, Layers, ShieldCheck, Zap, Globe, Users } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import OfficeClock from "@/components/ui/OfficeClock";
-import { siteSettings, serviceDivisions } from "@/lib/cms/data";
+import { siteSettings } from "@/lib/cms/data";
 
 export const metadata: Metadata = {
   title: "About Nerdvana — Technology. Creativity. Growth.",
@@ -15,32 +14,28 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   const leadership = [
     {
-      name: "Tariq Adele",
-      role: "Head of Technology & SRE",
+      name: "CEO",
+      role: "Chief Executive Officer",
       division: "Nerdvana Technologies",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=85",
-      bio: "Over 12 years architecting high-throughput cloud infrastructure, Kubernetes platforms, and resilient software backends.",
+      bio: "Leadership details incoming.",
     },
     {
-      name: "Darius Sterling",
-      role: "Creative Director",
+      name: "COO",
+      role: "Chief Operating Officer",
       division: "Figures by Nerdvana",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=85",
-      bio: "Pioneering visual identity systems, motion typography, and award-winning digital flagships for venture-backed founders.",
+      bio: "Leadership details incoming.",
     },
     {
-      name: "Sophie Chen",
-      role: "Director of Brand Strategy",
+      name: "CFO",
+      role: "Chief Financial Officer",
       division: "Figures by Nerdvana",
-      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=85",
-      bio: "Specializing in commercial market diagnosis, messaging frameworks, and full-funnel growth engines.",
+      bio: "Leadership details incoming.",
     },
     {
-      name: "Kaelen Voss",
-      role: "Principal Platform Architect",
+      name: "Manager",
+      role: "Manager",
       division: "Nerdvana Technologies",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=85",
-      bio: "Engineering custom AI agent pipelines, Terraform IaC, and microsecond edge telemetry pipelines.",
+      bio: "Leadership details incoming.",
     },
   ];
 
@@ -151,21 +146,20 @@ export default function AboutPage() {
             FELLOWSHIP // LEADERSHIP
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[var(--fg)] mb-12">
-            The Principals
+            Leadership Team
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {leadership.map((member) => (
               <div key={member.name} className="group">
-                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xs border border-[var(--line)] mb-4 bg-[var(--surface)]">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 25vw"
-                    className="object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                  />
-                  <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-[#B8FF00]/80 text-[10px] font-mono text-[var(--fg)]">
+                <div className="relative flex aspect-[3/4] w-full items-end overflow-hidden rounded-xs border border-[var(--line)] mb-4 bg-[var(--surface)] p-5">
+                  <span className="absolute right-5 top-5 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--muted)]">
+                    Portrait incoming
+                  </span>
+                  <span className="text-[clamp(3rem,8vw,5rem)] font-black leading-none tracking-[-0.08em] text-[var(--fg)]/15">
+                    {member.name}
+                  </span>
+                  <div className="absolute bottom-3 left-3 px-2 py-0.5 rounded-full bg-[#B8FF00]/80 text-[10px] font-mono text-[var(--fg)]">
                     {member.division}
                   </div>
                 </div>
