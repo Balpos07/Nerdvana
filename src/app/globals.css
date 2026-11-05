@@ -310,6 +310,20 @@ body {
   font-family: monospace;
 }
 
+/* Darker green for readable accent text/icons on light surfaces. */
+.surface-panel {
+  --surface-accent: #557800;
+}
+
+.surface-panel [class*="text-[var(--accent)]"],
+.surface-panel [class*="text-[var(--accent)]"] svg {
+  color: var(--surface-accent) !important;
+}
+
+[class*="bg-[var(--surface)]"] [class*="text-[var(--accent)]"] {
+  color: #557800 !important;
+}
+
 /* Hide scrollbars */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

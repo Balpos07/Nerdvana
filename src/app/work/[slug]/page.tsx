@@ -13,8 +13,8 @@ interface CaseStudyProps {
 }
 
 export async function generateStaticParams() {
-  const allProjects = await getAllProjects();
-  return allProjects.map((p) => ({ slug: p.slug }));
+  // TODO: Replace with verified project slugs before enabling case-study routes.
+  return [{ slug: "coming-soon" }];
 }
 
 export async function generateMetadata({ params }: CaseStudyProps): Promise<Metadata> {

@@ -3,12 +3,15 @@ import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import WhatNerdvanaDoes from "@/components/home/WhatNerdvanaDoes";
 import ServicesSection from "@/components/home/ServicesSection";
-import OurWorkSection from "@/components/home/OurWorkSection";
-import OurPackagesSection from "@/components/home/OurPackagesSection";
+// TODO: Re-enable when verified portfolio content is available.
+// import OurWorkSection from "@/components/home/OurWorkSection";
+// TODO: Re-enable when pricing has been approved.
+// import OurPackagesSection from "@/components/home/OurPackagesSection";
 import CuriousSection from "@/components/home/CuriousSection";
 import WhyNerdvanaSection from "@/components/home/WhyNerdvanaSection";
 import ProcessSection from "@/components/home/ProcessSection";
-import ProofTestimonialsSection from "@/components/home/ProofTestimonialsSection";
+// TODO: Re-enable when approved client testimonials are available.
+// import ProofTestimonialsSection from "@/components/home/ProofTestimonialsSection";
 import QuestionsAnsweredSection from "@/components/home/QuestionsAnsweredSection";
 import LetsTalkSection from "@/components/home/LetsTalkSection";
 import { siteSettings } from "@/lib/cms/data";
@@ -22,14 +25,6 @@ export const metadata: Metadata = {
     description: siteSettings.coreBrandStatement,
     url: "https://nerdvana.global",
     siteName: siteSettings.agencyName,
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=85",
-        width: 1200,
-        height: 630,
-        alt: `${siteSettings.agencyName} — ${siteSettings.tagline}`,
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
@@ -53,11 +48,11 @@ export default function HomePage() {
       {/* 3. Our Services: Nerdvana Technologies & Figures by Nerdvana */}
       <ServicesSection />
 
-      {/* 4. Our Work: Work we're proud of */}
-      <OurWorkSection />
+      {/* 4. Portfolio: commented until verified projects and assets are available.
+          <OurWorkSection /> */}
 
-      {/* 5. Our Packages: Packaged offerings */}
-      <OurPackagesSection />
+      {/* 5. Packages: commented until pricing and scopes are approved.
+          <OurPackagesSection /> */}
 
       {/* 6. Curious?: Problem-led diagnosis */}
       <CuriousSection />
@@ -68,8 +63,8 @@ export default function HomePage() {
       {/* 8. Our Process: 6-step lifecycle */}
       <ProcessSection />
 
-      {/* 9. Proof & Testimonials */}
-      <ProofTestimonialsSection />
+      {/* 9. Proof & Testimonials: commented until approved client proof is available.
+          <ProofTestimonialsSection /> */}
 
       {/* 10. Questions Answered: FAQ with categories */}
       <QuestionsAnsweredSection />

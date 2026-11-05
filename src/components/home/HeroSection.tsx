@@ -1,12 +1,10 @@
 "use client";
 
 import React, { useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 import { ArrowUpRight } from "lucide-react";
-import { heroProjects, siteSettings } from "@/lib/cms/data";
-import { Magnetic, ParallaxMedia } from "@/components/ui/MotionEffects";
+import { siteSettings } from "@/lib/cms/data";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLElement>(null);
@@ -54,15 +52,17 @@ export default function HeroSection() {
                 Start a project
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
+              {/* TODO: Re-enable "Selected work" after verified portfolio projects exist.
               <Link
                 href="#work"
                 className="inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-[var(--fg)] transition-colors"
               >
                 Selected work
-              </Link>
+              </Link> */}
             </div>
           </div>
 
+{/* TODO: Portfolio thumbnails are commented until verified project assets are available.
 <div className="hidden md:grid col-span-7 lg:col-start-6 col-end-13 grid-cols-4 gap-3 lg:gap-4">
             {heroProjects.map((project, idx) => (
               <Link
@@ -89,7 +89,7 @@ export default function HeroSection() {
                 </div>
               </Link>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

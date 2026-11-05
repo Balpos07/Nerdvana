@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { ArrowUpRight, Mail, Phone, MapPin, MessageSquare } from "lucide-react";
+import { Phone, MapPin, MessageSquare } from "lucide-react";
 import LetsTalkSection from "@/components/home/LetsTalkSection";
 import OfficeClock from "@/components/ui/OfficeClock";
 import { siteSettings } from "@/lib/cms/data";
@@ -35,7 +35,7 @@ export default function ContactsPage() {
           {siteSettings.offices.map((office) => (
             <div
               key={office.name}
-              className="p-8 border border-[var(--line)] bg-[var(--surface)] rounded-xs flex flex-col justify-between"
+              className="surface-panel p-8 border border-[var(--line)] bg-[var(--surface)] rounded-xs flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">

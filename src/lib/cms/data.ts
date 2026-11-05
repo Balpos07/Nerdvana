@@ -432,6 +432,8 @@ export const processSteps: ProcessStep[] = [
   },
 ];
 
+// TODO: Restore only after every package, scope, and price is verified.
+/* 
 export const packages: PackageItem[] = [
   {
     id: "pkg-branding",
@@ -550,6 +552,9 @@ export const packages: PackageItem[] = [
     ],
   },
 ];
+*/
+
+export const packages: PackageItem[] = [];
 
 export const faqCategories: FAQCategoryItem[] = [
   {
@@ -602,6 +607,8 @@ export const faqCategories: FAQCategoryItem[] = [
   },
 ];
 
+// TODO: Restore only after verified project names and approved images exist.
+/*
 export const heroProjects = [
   {
     id: "hp-1",
@@ -644,7 +651,11 @@ export const heroProjects = [
     offset: "20px",
   },
 ];
+*/
 
+export const heroProjects = [];
+
+/*
 export const projects: Project[] = [
   {
     id: "proj-1",
@@ -851,6 +862,9 @@ export const projects: Project[] = [
     order: 4,
   },
 ];
+*/
+
+export const projects: Project[] = [];
 
 export const posts: Post[] = [
   {
