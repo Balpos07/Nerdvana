@@ -117,7 +117,7 @@ export default function ServicesPage() {
         <div id="figures" className="mb-24 pt-8 border-t border-[var(--line)]">
           <div className="p-8 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
-              <div className="flex items-center gap-2 text-[#F5F5F2] text-xs font-mono font-bold uppercase mb-2">
+              <div className="flex items-center gap-2 text-[var(--muted)] text-xs font-mono font-bold uppercase mb-2">
                 {/* <Sparkles className="w-4 h-4 text-[var(--accent)]" /> */}
                 <span>DIVISION 02 // FIGURES BY NERDVANA</span>
               </div>
