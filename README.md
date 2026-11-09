@@ -101,3 +101,27 @@ npm run dev
 npm run build
 npm run start
 ```
+
+## Contact form setup
+
+The project brief form is stored in Supabase and rate-limited through a
+database function. Email notifications are sent through Resend.
+
+1. Create a Supabase project and run
+   `supabase/migrations/20261109000000_contact_submissions.sql` in its SQL
+   Editor.
+2. Copy `.env.example` to `.env.local` and set `SUPABASE_URL` and
+   `SUPABASE_SERVICE_ROLE_KEY` using values from the Supabase project settings.
+   The service role key must remain server-side; never expose it with a
+   `NEXT_PUBLIC_` prefix.
+3. Verify a sending domain in Resend, then set `RESEND_API_KEY`,
+   `RESEND_FROM_EMAIL`, and `CONTACT_NOTIFICATION_EMAIL`.
+4. Restart the Next.js server after changing environment variables.
+
+Contact submissions are saved even when Resend is unavailable. In that case,
+the form confirms the brief was saved and tells the visitor to email the team
+for urgent requests; the API logs the notification failure with the submission
+ID. The rate limiter allows five submissions per IP per hour and retains only
+a keyed hash of the client address. Configure the deployment proxy to set
+`x-real-ip` or `x-forwarded-for` correctly for rate limiting to identify
+visitors reliably.

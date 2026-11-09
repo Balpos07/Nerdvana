@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
               1. Information We Collect
             </h2>
             <p>
-              When you submit a project brief or newsletter subscription through {siteSettings.parentBrand}, we collect your name, email, company name, country, and project requirements. We never sell, rent, or trade your contact data to third parties.
+              When you submit a project brief or newsletter subscription through {siteSettings.parentBrand}, we collect the information you provide, such as your name, email, company, country, and project requirements. Project briefs are stored with our database provider, and an email notification containing the brief may be processed by our email provider. We also use a keyed, non-reversible hash of the request IP address to limit spam; we do not store the raw address with the brief. We never sell, rent, or trade your contact data.
             </p>
           </section>
 
@@ -48,7 +48,7 @@ export default function PrivacyPolicyPage() {
               2. Use of Information
             </h2>
             <p>
-              Your brief details are utilized solely by our engineering and creative leads to evaluate your inquiry, prepare tailored scopes, and communicate regarding project deliverables.
+              Your brief details are used by our engineering and creative leads to evaluate your inquiry, prepare tailored scopes, and communicate regarding project deliverables. Our database and email providers process information on our behalf to store briefs and deliver notifications.
             </p>
           </section>
 

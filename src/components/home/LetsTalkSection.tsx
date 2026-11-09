@@ -119,7 +119,8 @@ export default function LetsTalkSection() {
           email: formData.email,
           company: formData.company,
           country: formData.country,
-          intent: `${formData.services.join(", ")}: ${formData.description}`,
+          services: formData.services,
+          description: formData.description,
           budget: formData.budget,
           timeframe: formData.timeline,
           honeypot: formData.honeypot,
@@ -128,6 +129,7 @@ export default function LetsTalkSection() {
 
       const data = await res.json();
       if (res.ok) {
+        setServerMessage(data.message);
         setStatus("success");
         try {
           confetti({
@@ -210,16 +212,8 @@ export default function LetsTalkSection() {
                   Project Brief Received
                 </h3>
                 <p className="text-sm md:text-base text-[var(--muted)] leading-relaxed mb-8">
-                  Thank you,{" "}
-                  <strong className="text-[var(--fg)]">{formData.name}</strong>.
-                  Our technology and creative principals have received your
-                  brief for{" "}
-                  <strong className="text-[var(--fg)]">
-                    {formData.company}
-                  </strong>{" "}
-                  and will follow up at{" "}
-                  <strong className="text-[var(--fg)]">{formData.email}</strong>{" "}
-                  within 24 hours.
+                  {serverMessage ||
+                    `Thank you, ${formData.name}. Your brief for ${formData.company} has been received.`}
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <button
