@@ -1,65 +1,23 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { processSteps } from "@/lib/cms/data";
 
 export default function ProcessSection() {
-  const sectionRef = useRef<HTMLElement>(null);
   const [activeStep, setActiveStep] = useState(0);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    let frameId = 0;
-    const updateActiveStep = () => {
-      frameId = 0;
-      const rect = section.getBoundingClientRect();
-      const scrollDistance = Math.max(section.offsetHeight - window.innerHeight, 1);
-      const progress = Math.min(Math.max(-rect.top / scrollDistance, 0), 1);
-      setActiveStep(Math.min(
-        processSteps.length - 1,
-        Math.floor(progress * processSteps.length),
-      ));
-    };
-
-    const requestUpdate = () => {
-      if (!frameId) frameId = window.requestAnimationFrame(updateActiveStep);
-    };
-
-    updateActiveStep();
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
-
-    return () => {
-      window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
-      if (frameId) window.cancelAnimationFrame(frameId);
-    };
-  }, []);
-
-  const selectStep = (index: number) => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    setActiveStep(index);
-    const rect = section.getBoundingClientRect();
-    const scrollDistance = Math.max(section.offsetHeight - window.innerHeight, 1);
-    const target = window.scrollY + rect.top + scrollDistance * (index / processSteps.length);
-    window.scrollTo({ top: target, behavior: "smooth" });
-  };
+  const selectStep = (index: number) => setActiveStep(index);
 
   const step = processSteps[activeStep];
 
   return (
     <section
-      ref={sectionRef}
       id="process"
-      className="relative h-[600svh] border-b border-[var(--line)] bg-[#0A0A0A]"
+      className="relative border-b border-[var(--line)] bg-[#0A0A0A]"
     >
-      <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden">
+      <div className="flex min-h-[100svh] items-center">
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-10 md:py-16">
           <div className="border-b border-[var(--line)] pb-6 md:pb-8 mb-5 md:mb-8">
             <span className="section-label block mb-3 text-[var(--accent)]">

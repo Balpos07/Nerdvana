@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, HelpCircle, ArrowRight } from "lucide-react";
@@ -8,7 +8,6 @@ import { curiousProblems } from "@/lib/cms/data";
 import { CardReveal, Magnetic, MaskReveal } from "@/components/ui/MotionEffects";
 
 export default function CuriousSection() {
-  const sectionRef = useRef<HTMLElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const phaseLabels = [
     "Convert",
@@ -19,59 +18,16 @@ export default function CuriousSection() {
     "Grow",
   ];
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    let frameId = 0;
-    const updateActivePhase = () => {
-      frameId = 0;
-      const rect = section.getBoundingClientRect();
-      const scrollDistance = Math.max(section.offsetHeight - window.innerHeight, 1);
-      const progress = Math.min(Math.max(-rect.top / scrollDistance, 0), 1);
-      setActiveIndex(Math.min(
-        curiousProblems.length - 1,
-        Math.floor(progress * curiousProblems.length),
-      ));
-    };
-
-    const requestUpdate = () => {
-      if (!frameId) frameId = window.requestAnimationFrame(updateActivePhase);
-    };
-
-    updateActivePhase();
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
-
-    return () => {
-      window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
-      if (frameId) window.cancelAnimationFrame(frameId);
-    };
-  }, []);
-
-  const selectPhase = (index: number) => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    setActiveIndex(index);
-    const rect = section.getBoundingClientRect();
-    const scrollDistance = Math.max(section.offsetHeight - window.innerHeight, 1);
-    const progress = index / curiousProblems.length;
-    const target = window.scrollY + rect.top + scrollDistance * progress;
-
-    window.scrollTo({ top: target, behavior: "smooth" });
-  };
+  const selectPhase = (index: number) => setActiveIndex(index);
 
   const activeProblem = curiousProblems[activeIndex];
 
   return (
     <section
-      ref={sectionRef}
       id="curious"
-      className="relative h-[600svh] border-b border-[var(--line)] bg-[#0A0A0A]"
+      className="relative border-b border-[var(--line)] bg-[#0A0A0A]"
     >
-      <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden">
+      <div className="flex min-h-[100svh] items-center">
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-10 md:py-16">
         {/* Section Header */}
         <div className="border-b border-[var(--line)] pb-6 md:pb-8 mb-5 md:mb-8">
@@ -97,7 +53,7 @@ export default function CuriousSection() {
               </p>
             </div>
             <div className="text-xs font-mono text-[var(--muted)]">
-              SCROLL OR SELECT A PHASE â†’
+              SELECT A PHASE
             </div>
           </div>
         </div>

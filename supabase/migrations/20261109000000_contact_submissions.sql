@@ -47,7 +47,8 @@ begin
     or p_window_seconds < 1
     or p_window_seconds > 86400
   then
-    raise exception 'Invalid contact rate limit parameters';
+    raise exception 'Invalid contact rate limit parameters',
+      p_ip_hash, p_limit, p_window_seconds;
   end if;
 
   delete from public.contact_rate_limits

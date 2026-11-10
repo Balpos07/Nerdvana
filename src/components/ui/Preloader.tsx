@@ -10,11 +10,11 @@ export default function Preloader() {
   useEffect(() => {
     const progressTimer = setInterval(() => {
       setProgress((current) => Math.min(current + 4, 100));
-    }, 200);
+    }, 80);
 
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 2000);
 
     return () => {
       clearInterval(progressTimer);
