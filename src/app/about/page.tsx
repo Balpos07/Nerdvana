@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  /*
   const leadership = [
     {
       name: "CEO",
@@ -38,6 +39,7 @@ export default function AboutPage() {
       bio: "Leadership details incoming.",
     },
   ];
+  */
 
   return (
     <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen bg-[#0A0A0A]">
@@ -149,6 +151,10 @@ export default function AboutPage() {
             Leadership Team
           </h2>
 
+          <p className="mt-4 text-sm md:text-base text-[var(--muted)]">
+            Leadership profiles are coming soon.
+          </p>
+          {/*
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {leadership.map((member) => (
               <div key={member.name} className="group">
@@ -175,6 +181,7 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
+          */}
         </div>
       </div>
     </div>

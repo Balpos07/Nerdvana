@@ -398,23 +398,6 @@ body {
   animation-play-state: paused;
 }
 
-.delivery-marquee {
-  width: 100%;
-  mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
-}
-
-.delivery-marquee-track {
-  display: flex;
-  gap: 24px;
-  width: max-content;
-  animation: delivery-marquee 36s linear infinite;
-  will-change: transform;
-}
-
-.delivery-marquee:hover .delivery-marquee-track {
-  animation-play-state: paused;
-}
-
 .office-clock-dock {
   width: 270px;
 }
@@ -438,25 +421,6 @@ body {
   }
   to {
     transform: translateX(0);
-  }
-}
-
-.delivery-card {
-  transition: border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
-}
-
-.delivery-card:hover {
-  border-color: var(--fg);
-  transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(10, 10, 10, 0.08);
-}
-
-@keyframes delivery-marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-50% - 12px));
   }
 }
 
