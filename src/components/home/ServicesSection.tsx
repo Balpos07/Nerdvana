@@ -31,7 +31,7 @@ export default function ServicesSection() {
             </div>
 
             {/* Division Switcher Buttons */}
-            <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-full border border-[var(--line)] bg-[var(--surface)]">
+            <div className="grid w-full grid-cols-2 items-center gap-1 p-1.5 rounded-full border border-[var(--line)] bg-[var(--surface)] sm:w-auto">
               {serviceDivisions.map((div, idx) => {
                 const isActive = activeDivisionIdx === idx;
                 return (
@@ -41,7 +41,7 @@ export default function ServicesSection() {
                       setActiveDivisionIdx(idx);
                       setExpandedServiceIdx(0);
                     }}
-                    className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase transition-all duration-300 ${
+                    className={`flex min-w-0 items-center justify-center gap-2 px-2 py-2.5 rounded-full text-[9px] sm:px-5 sm:text-xs font-mono font-bold uppercase leading-tight text-center transition-all duration-300 ${
                       isActive
                         ? "bg-[var(--accent)] text-[var(--accent-fg)] shadow-md"
                         : "text-[var(--muted)] hover:text-[var(--fg)]"
