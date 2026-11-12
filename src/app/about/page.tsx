@@ -12,34 +12,28 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  /*
-  const leadership = [
+  const principles = [
     {
-      name: "CEO",
-      role: "Chief Executive Officer",
-      division: "Nerdvana Technologies",
-      bio: "Leadership details incoming.",
+      title: "Technology + Creativity",
+      description:
+        "Technical depth and creative craft work together to make ambitious businesses more visible, stronger, and easier to trust.",
     },
     {
-      name: "COO",
-      role: "Chief Operating Officer",
-      division: "Figures by Nerdvana",
-      bio: "Leadership details incoming.",
+      title: "Strategy + Execution",
+      description:
+        "We help define the direction and stay close to delivery so strategy turns into real outcomes, not only recommendations.",
     },
     {
-      name: "CFO",
-      role: "Chief Financial Officer",
-      division: "Figures by Nerdvana",
-      bio: "Leadership details incoming.",
+      title: "One Connected Partner",
+      description:
+        "Technology, brand, design, and growth functions stay connected under one company to reduce fragmentation and improve speed.",
     },
     {
-      name: "Manager",
-      role: "Manager",
-      division: "Nerdvana Technologies",
-      bio: "Leadership details incoming.",
+      title: "Built to Scale",
+      description:
+        "Every solution is designed with future growth in mind, helping businesses evolve without rebuilding from scratch.",
     },
   ];
-  */
 
   return (
     <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen bg-[#0A0A0A]">
@@ -142,46 +136,34 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Leadership Team */}
+        {/* Why Nerdvana */}
         <div className="pb-20">
           <span className="section-label block mb-3 text-[var(--accent)]">
-            FELLOWSHIP // LEADERSHIP
+            PHILOSOPHY // WHY NERDVANA
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[var(--fg)] mb-12">
-            Leadership Team
+            Why businesses work with us
           </h2>
 
-          <p className="mt-4 text-sm md:text-base text-[var(--muted)]">
-            Leadership profiles are coming soon.
-          </p>
-          {/*
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {leadership.map((member) => (
-              <div key={member.name} className="group">
-                <div className="relative flex aspect-[3/4] w-full items-end overflow-hidden rounded-xs border border-[var(--line)] mb-4 bg-[var(--surface)] p-5">
-                  <span className="absolute right-5 top-5 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--muted)]">
-                    Portrait incoming
-                  </span>
-                  <span className="text-[clamp(3rem,8vw,5rem)] font-black leading-none tracking-[-0.08em] text-[var(--fg)]/15">
-                    {member.name}
-                  </span>
-                  <div className="absolute bottom-3 left-3 px-2 py-0.5 rounded-full bg-[#B8FF00]/80 text-[10px] font-mono text-[var(--fg)]">
-                    {member.division}
-                  </div>
-                </div>
-                <h3 className="text-lg font-bold uppercase tracking-tight text-[var(--fg)]">
-                  {member.name}
-                </h3>
-                <p className="text-xs text-[var(--accent)] font-mono mb-2">
-                  {member.role}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {principles.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-xs border border-[var(--line)] bg-[var(--surface)] p-6 md:p-8"
+              >
+                <p className="text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-[var(--accent)] mb-4">
+                  {item.title}
                 </p>
-                <p className="text-xs text-[var(--muted)] leading-relaxed">
-                  {member.bio}
+                <p className="text-sm md:text-base text-[var(--muted)] leading-relaxed">
+                  {item.description}
                 </p>
               </div>
             ))}
           </div>
-          */}
+
+          <p className="mt-8 text-sm md:text-base text-[var(--muted)]">
+            Leadership profiles, bios, and team details will be added once approved by the client and internal leadership team.
+          </p>
         </div>
       </div>
     </div>
