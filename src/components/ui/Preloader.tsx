@@ -22,7 +22,7 @@ export default function Preloader() {
     };
   }, []);
 
-  const letters = "NERDVANA".split("");
+  const letters = "nerdvana".split("");
 
   return (
     <AnimatePresence>
@@ -45,8 +45,8 @@ export default function Preloader() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="absolute left-6 right-6 top-6 flex items-center justify-between border-t border-[#F5F5F2]/20 pt-3 origin-left sm:left-10 sm:right-10 sm:top-10"
           >
-            <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#F5F5F2]/55">
-              NERDVANA
+            <span className="font-mono text-[10px] tracking-[0.16em] text-[#F5F5F2]/55">
+              nerdvana
             </span>
             <motion.span
               animate={{ opacity: [0.35, 1, 0.35] }}
@@ -86,7 +86,7 @@ export default function Preloader() {
                     delay: 0.12 + index * 0.055,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="text-[clamp(3rem,14vw,10rem)] font-black leading-none tracking-[-0.085em] text-[#F5F5F2]"
+                  className="text-[clamp(3.5rem,16vw,12rem)] font-black leading-none tracking-[-0.075em] text-[#F5F5F2]"
                 >
                   {char}
                 </motion.span>

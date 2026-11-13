@@ -27,14 +27,14 @@ export default function CuriousSection() {
       id="curious"
       className="relative border-b border-[var(--line)] bg-[#0A0A0A]"
     >
-      <div className="flex min-h-[100svh] items-center">
-        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-10 md:py-16">
+      <div className="flex items-center">
+        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-8 md:py-12">
         {/* Section Header */}
-        <div className="border-b border-[var(--line)] pb-6 md:pb-8 mb-5 md:mb-8">
+        <div className="border-b border-[var(--line)] pb-5 md:pb-6 mb-4 md:mb-6">
           <span className="section-label block mb-3 text-[var(--accent)]">
             05 // PROBLEM-FIRST DIAGNOSIS
           </span>
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 md:gap-6">
             <div>
               <MaskReveal>
                 <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[var(--fg)] flex items-center gap-3">
@@ -118,7 +118,7 @@ export default function CuriousSection() {
 
           <div className="curious-resolution mt-6 lg:mt-0 rounded-xs border p-5 md:p-6">
             <span className="text-[10px] font-mono uppercase text-[var(--accent)] block mb-2">
-              NERDVANA RESOLUTION
+              <span className="brand-lowercase">nerdvana</span> RESOLUTION
             </span>
             <p className="text-base md:text-lg font-bold text-[#F5F5F2] flex items-start gap-2">
               <ArrowRight className="mt-0.5 w-4 h-4 text-[var(--accent)] shrink-0" />

@@ -53,7 +53,8 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div>
               <span className="section-label block mb-3 text-[var(--accent)]">
-                {siteSettings.agencyName}{" // "}{siteSettings.tagline}
+                <span className="brand-lowercase">{siteSettings.agencyName}</span>
+                {" // "}{siteSettings.tagline}
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[var(--fg)] max-w-2xl">
                 {siteSettings.heroHeadline}
@@ -225,7 +226,7 @@ export default function Footer() {
             <Link href="/cookie-policy" className="hover:text-[var(--fg)] transition-colors">
               COOKIE POLICY
             </Link>
-            <span>© 2026 NERDVANA. ALL RIGHTS RESERVED.</span>
+            <span>© 2026 nerdvana. ALL RIGHTS RESERVED.</span>
           </div>
         </div>
 
@@ -233,7 +234,7 @@ export default function Footer() {
         <Marquee className="mb-6 border-y border-[var(--line)] py-3 text-[11px] font-mono uppercase tracking-[0.22em] text-[var(--muted)]">
           <span className="whitespace-nowrap px-8">Technology + Creativity + Growth</span>
           <span className="whitespace-nowrap px-8 text-[var(--accent)]">Build better</span>
-          <span className="whitespace-nowrap px-8">NERDVANA</span>
+          <span className="brand-lowercase whitespace-nowrap px-8">nerdvana</span>
         </Marquee>
         <div className="pt-10 select-none text-center">
           <motion.h2

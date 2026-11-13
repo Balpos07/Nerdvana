@@ -35,10 +35,10 @@ export default function ProofTestimonialsSection() {
   }
 
   return (
-    <section className="py-24 md:py-36 bg-[#0A0A0A] border-b border-[var(--line)]">
+    <section className="py-12 md:py-20 bg-[#0A0A0A] border-b border-[var(--line)]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* Section Header */}
-        <div className="border-b border-[var(--line)] pb-12 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="border-b border-[var(--line)] pb-6 mb-8 md:pb-8 md:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
           <div>
             <span className="section-label block mb-3 text-[var(--accent)]">
               08 // PROOF & REPUTATION

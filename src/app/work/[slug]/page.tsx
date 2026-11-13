@@ -40,7 +40,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
   return (
     <Suspense
       fallback={
-        <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen bg-[#0A0A0A]">
+        <div className="pt-20 md:pt-28 pb-12 md:pb-20 min-h-screen bg-[#0A0A0A]">
           <div className="max-w-[1440px] mx-auto px-6 md:px-12 animate-pulse">
             <div className="h-4 w-32 rounded bg-[var(--surface)] mb-8" />
             <div className="h-20 max-w-2xl rounded bg-[var(--surface)] mb-12" />
@@ -67,7 +67,7 @@ async function CaseStudyContent({ params }: CaseStudyProps) {
   const nextProject = allProjects[(currentIndex + 1) % allProjects.length];
 
   return (
-    <article className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen bg-[#0A0A0A]">
+    <article className="pt-20 md:pt-28 pb-12 md:pb-20 min-h-screen bg-[#0A0A0A]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* Back Link */}
         <div className="mb-8">
@@ -81,7 +81,7 @@ async function CaseStudyContent({ params }: CaseStudyProps) {
         </div>
 
         {/* Title Bar */}
-        <div className="border-b border-[var(--line)] pb-12 mb-12">
+        <div className="border-b border-[var(--line)] pb-8 mb-8 md:pb-12 md:mb-12">
 <div className="mb-8 border-2 border-dashed border-[var(--line)] px-4 py-3 text-xs font-mono uppercase tracking-wider text-[var(--muted)]">
             VERIFIED PROJECT DATA // {project.client.toUpperCase()} // {project.year}
           </div>
@@ -119,7 +119,7 @@ async function CaseStudyContent({ params }: CaseStudyProps) {
         </div>
 
         {/* Hero Image */}
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xs border border-[var(--line)] mb-16 md:mb-24 bg-[var(--surface)]">
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xs border border-[var(--line)] mb-8 md:mb-14 bg-[var(--surface)]">
           <SharedCaseImage slug={project.slug} className="absolute inset-0">
             <Image
               src={project.heroImage}
@@ -133,7 +133,7 @@ async function CaseStudyContent({ params }: CaseStudyProps) {
         </div>
 
         {/* Summary & Metrics */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-20 border-b border-[var(--line)] mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 pb-10 md:pb-12 border-b border-[var(--line)] mb-10 md:mb-12">
           <div className="lg:col-span-5">
             <span className="section-label block mb-3 text-[var(--accent)]">OVERVIEW</span>
             <h2 className="text-2xl md:text-3xl font-extrabold uppercase tracking-tight text-[var(--fg)]">
@@ -159,8 +159,8 @@ async function CaseStudyContent({ params }: CaseStudyProps) {
         </div>
 
         {/* Challenge, Approach & Results */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-20 border-b border-[var(--line)] mb-20">
-          <div className="lg:col-span-5 flex flex-col gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 pb-10 md:pb-12 border-b border-[var(--line)] mb-10 md:mb-12">
+          <div className="lg:col-span-5 flex flex-col gap-8 md:gap-12">
             <div>
               <span className="section-label block mb-2 text-[var(--accent)]">01 // THE CHALLENGE</span>
               <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-[var(--fg)] mb-3">
@@ -230,7 +230,7 @@ async function CaseStudyContent({ params }: CaseStudyProps) {
 
         {/* Testimonial Quote */}
         {project.testimonial ? (
-          <div className="p-8 md:p-14 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-20">
+          <div className="p-5 md:p-10 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-10 md:mb-12">
             <Quote className="w-10 h-10 text-[var(--accent)]/40 mb-6" />
             <p className="text-2xl md:text-3xl font-bold text-[var(--fg)] tracking-tight mb-3">
 {project.testimonial?.quote ?? "Client testimonial copy to be added after approval to publish."}

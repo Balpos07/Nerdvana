@@ -20,7 +20,7 @@ export default function WorkPage() {
   ];
 
   return (
-    <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen bg-[#0A0A0A]">
+    <div className="pt-20 md:pt-28 pb-12 md:pb-20 min-h-screen bg-[#0A0A0A]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         <span className="section-label block mb-3 text-[var(--accent)]">
           WORK // CASE STUDIES
@@ -32,7 +32,7 @@ export default function WorkPage() {
           Verified client work, case-study narratives, and results will be published once approved project details, metrics, and visuals are available.
         </p>
 
-        <div className="mt-12 rounded-xs border border-[var(--line)] bg-[var(--surface)] p-6 md:p-8">
+        <div className="mt-8 md:mt-12 rounded-xs border border-[var(--line)] bg-[var(--surface)] p-5 md:p-8">
           <p className="text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-[var(--accent)] mb-4">
             Case-study structure
           </p>

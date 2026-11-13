@@ -57,26 +57,35 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           visible ? "translate-y-0" : "-translate-y-full"
         } ${
-          scrolled
-            ? "bg-[#F5F5F2]/95 backdrop-blur-md border-b border-black/10 py-3.5 text-[#0A0A0A]"
-            : "bg-transparent py-5"
+          mobileMenuOpen
+            ? "bg-[#F5F5F2] border-b border-black/10 py-3.5 text-[#0A0A0A]"
+            : scrolled
+              ? "bg-[#F5F5F2]/95 backdrop-blur-md border-b border-black/10 py-3.5 text-[#0A0A0A]"
+              : "bg-transparent py-5"
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div
+          className="relative max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-[1fr_auto_1fr] items-center md:flex md:justify-between"
+        >
           {/* Left: Brand Wordmark */}
           <Link
             href="/"
-            className="group flex items-baseline gap-1.5 brand-nav"
+            className="group col-start-2 flex items-center justify-self-center gap-1.5 brand-nav md:col-auto md:items-baseline md:gap-1.5"
             data-cursor-text="HOME"
+            aria-label={siteSettings.agencyName}
           >
             <Image
               src="/assest/nerdvana-logo-black.svg"
-              alt={siteSettings.agencyName}
+              alt=""
               width={400}
               height={360}
               priority
-              className="h-10 w-auto rounded-sm object-contain md:h-12"
+              aria-hidden="true"
+              className="h-11 w-11 rounded-sm object-contain md:h-12 md:w-auto"
             />
+            <span className="text-[clamp(1.2rem,5.5vw,1.5rem)] font-black tracking-[-0.06em] text-[#0A0A0A] md:hidden">
+              nerdvana
+            </span>
           </Link>
 
           {/* Right: Desktop Navigation Links & Mega Menu */}
@@ -232,17 +241,12 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-3">
-            <Link
-              href="/contacts"
-              className="px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[var(--accent)] text-[var(--accent-fg)]"
-            >
-              Let&apos;s Talk
-            </Link>
+          <div className="col-start-3 flex md:hidden items-center justify-self-end gap-2">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[#0A0A0A] hover:text-[#557800] transition-colors focus:outline-none"
+              className="p-2 text-[#0A0A0A] transition-colors hover:text-[#557800] focus:outline-none"
               aria-label="Toggle Navigation Menu"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -271,27 +275,27 @@ export default function Navbar() {
               clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
             }}
             transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
-            className="mobile-nav-shell fixed inset-0 z-40 flex flex-col justify-between px-6 pt-24 pb-10 overflow-y-auto"
+            className="mobile-nav-shell fixed inset-0 z-40 flex flex-col justify-start gap-8 px-6 pt-24 pb-10 overflow-y-auto"
           >
             <div className="border-b border-[var(--line)] pb-5">
-              <span className="section-label mb-2 block text-[var(--accent)]">
+              <span className="section-label mb-2 block text-[var(--accent-text)]">
                 GLOBAL AGENCY DIVISIONS
               </span>
               <div className="flex flex-col gap-2 font-mono text-xs text-[var(--muted)]">
-                <div>â€¢ NERDVANA TECHNOLOGIES (IT & Software)</div>
-                <div>â€¢ FIGURES BY NERDVANA (Branding & Creative)</div>
+                <div>01 // NERDVANA TECHNOLOGIES (IT & Software)</div>
+                <div>02 // FIGURES BY NERDVANA (Branding & Creative)</div>
               </div>
             </div>
 
             {/* Mobile Nav Links */}
-            <nav className="flex flex-col gap-5 my-auto py-6">
+            <nav className="flex flex-col gap-5">
               <Link
                 href="/services"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-3xl font-extrabold uppercase tracking-tight text-[#F5F5F2] hover:text-[#B8FF00] transition-colors flex items-center justify-between"
+                className="text-3xl font-extrabold uppercase tracking-tight text-[#F5F5F2] hover:text-[var(--accent-text)] transition-colors flex items-center justify-between"
               >
                 <span>Our Services</span>
-                <ArrowUpRight className="w-6 h-6 text-[var(--accent)]" />
+                <ArrowUpRight className="w-6 h-6 text-[var(--accent-text)]" />
               </Link>
 
               {navLinks.map((link) => (
@@ -299,10 +303,10 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-3xl font-extrabold uppercase tracking-tight text-[#F5F5F2] hover:text-[#B8FF00] transition-colors flex items-center justify-between"
+                  className="text-3xl font-extrabold uppercase tracking-tight text-[#F5F5F2] hover:text-[var(--accent-text)] transition-colors flex items-center justify-between"
                 >
                   <span>{link.label}</span>
-                  <ArrowUpRight className="w-6 h-6 text-[var(--accent)]" />
+                  <ArrowUpRight className="w-6 h-6 text-[var(--accent-text)]" />
                 </Link>
               ))}
 
@@ -312,14 +316,14 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-full inline-flex items-center justify-center gap-3 py-4 rounded-full bg-[var(--accent)] text-[var(--accent-fg)] font-black uppercase tracking-wider text-sm shadow-xl"
                 >
-                  <span>Get Started â€” Let&apos;s Talk</span>
+                  <span>Get Started - Let&apos;s Talk</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </div>
             </nav>
 
-            <div className="border-t border-[var(--line)] pt-5 flex items-center justify-between text-xs text-[var(--muted)] font-mono">
-              <span>Â© 2026 {siteSettings.agencyName}</span>
+            <div className="mt-auto border-t border-[var(--line)] pt-5 flex items-center justify-between text-xs text-[var(--muted)] font-mono">
+              <span>&copy; 2026 {siteSettings.agencyName}</span>
               <div className="flex gap-3">
                 {siteSettings.socials.slice(0, 3).map((s) => (
                   <a key={s.name} href={s.url} target="_blank" rel="noreferrer">

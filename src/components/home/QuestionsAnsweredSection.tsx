@@ -25,10 +25,10 @@ export default function QuestionsAnsweredSection() {
       : faqCategories.filter((f) => f.category === selectedCategory);
 
   return (
-    <section id="faq" className="py-24 md:py-36 bg-[#0A0A0A] border-b border-[var(--line)]">
+    <section id="faq" className="py-12 md:py-20 bg-[#0A0A0A] border-b border-[var(--line)]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* Section Header */}
-        <div className="border-b border-[var(--line)] pb-12 mb-12">
+        <div className="border-b border-[var(--line)] pb-6 mb-6 md:pb-8 md:mb-8">
           <span className="section-label block mb-3 text-[var(--accent)]">
             09 // TRANSPARENCY
           </span>
@@ -55,7 +55,7 @@ export default function QuestionsAnsweredSection() {
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-2 pb-12">
+        <div className="flex flex-wrap items-center gap-2 pb-8 md:pb-12">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -79,7 +79,7 @@ export default function QuestionsAnsweredSection() {
           {filtered.map((item, idx) => {
             const isOpen = openIdx === idx;
             return (
-              <div key={item.question} className="py-6 md:py-8">
+              <div key={item.question} className="py-5 md:py-8">
                 <button
                   onClick={() => setOpenIdx(isOpen ? null : idx)}
                   className="w-full flex items-start justify-between text-left group focus:outline-none"

@@ -39,7 +39,7 @@ export default function PostPage({ params }: PostPageProps) {
   return (
     <Suspense
       fallback={
-        <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen">
+        <div className="pt-20 md:pt-28 pb-12 md:pb-20 min-h-screen">
           <div className="max-w-[1040px] mx-auto px-6 md:px-12 animate-pulse">
             <div className="h-4 w-32 rounded bg-[var(--surface)] mb-8" />
             <div className="h-16 max-w-2xl rounded bg-[var(--surface)] mb-8" />
@@ -65,7 +65,7 @@ async function PostContent({ params }: PostPageProps) {
   const relatedPosts = allPosts.filter((p) => p.slug !== slug).slice(0, 2);
 
   return (
-    <article className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen">
+    <article className="pt-20 md:pt-28 pb-12 md:pb-20 min-h-screen">
       <div className="max-w-[1040px] mx-auto px-6 md:px-12">
         {/* Back Link */}
         <div className="mb-8">
@@ -79,7 +79,7 @@ async function PostContent({ params }: PostPageProps) {
         </div>
 
         {/* Article Header */}
-        <div className="border-b border-[var(--line)] pb-12 mb-12">
+        <div className="border-b border-[var(--line)] pb-6 mb-6 md:pb-8 md:mb-8">
           <div className="flex items-center gap-3 text-xs font-mono text-[var(--accent)] mb-4">
             <span>{post.date}</span>
             <span>•</span>
@@ -123,7 +123,7 @@ async function PostContent({ params }: PostPageProps) {
         </div>
 
         {/* Hero Cover Image */}
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xs border border-[var(--line)] mb-16 bg-[var(--surface)]">
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xs border border-[var(--line)] mb-8 md:mb-12 bg-[var(--surface)]">
           <Image
             src={post.cover}
             alt={post.title}
@@ -135,7 +135,7 @@ async function PostContent({ params }: PostPageProps) {
         </div>
 
         {/* Article Body Content */}
-        <div className="prose prose-invert max-w-none text-[var(--fg)] text-base md:text-lg leading-relaxed space-y-6 pb-20 border-b border-[var(--line)]">
+        <div className="prose prose-invert max-w-none text-[var(--fg)] text-base md:text-lg leading-relaxed space-y-6 pb-10 md:pb-12 border-b border-[var(--line)]">
           <div
             dangerouslySetInnerHTML={{
               __html: post.content
@@ -148,7 +148,7 @@ async function PostContent({ params }: PostPageProps) {
         </div>
 
         {/* Related Posts */}
-        <div className="pt-16">
+        <div className="pt-10 md:pt-16">
           <span className="section-label block mb-6 text-[var(--accent)]">
             MORE STUDIO NOTES
           </span>

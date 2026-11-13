@@ -26,19 +26,19 @@ export default function WhatNerdvanaDoes() {
   };
 
   return (
-    <section className="py-24 md:py-36 bg-[#0A0A0A] border-b border-[var(--line)]">
+    <section className="py-8 md:py-20 bg-[#0A0A0A] border-b border-[var(--line)]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* Section Header */}
-        <div className="border-b border-[var(--line)] pb-12 mb-16">
-          <span className="section-label block mb-3 text-[var(--fg)]">
+        <div className="border-b border-[var(--line)] pb-4 mb-5 md:pb-8 md:mb-10">
+          <span className="section-label block mb-2 md:mb-3 text-[var(--fg)]">
             01 // PROPOSITION
           </span>
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 md:gap-6">
             <MaskReveal>
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[var(--fg)]">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase leading-[0.95] tracking-tight text-[var(--fg)]">
                 <LineReveal text={whatNerdvanaDoes.headline} />
               </h2>
-              <p className="text-base md:text-lg text-[var(--muted)] max-w-2xl mt-4 leading-relaxed">
+              <p className="text-base md:text-lg text-[var(--muted)] max-w-2xl mt-2 md:mt-4 leading-relaxed">
                 {whatNerdvanaDoes.descriptor}
               </p>
             </MaskReveal>
@@ -49,7 +49,7 @@ export default function WhatNerdvanaDoes() {
         </div>
 
         <div
-          className="relative h-[430px] w-full md:h-[460px]"
+          className="relative h-[390px] w-full overflow-x-clip md:h-[460px]"
           style={{ perspective: "1600px" }}
           role="list"
           aria-label="Nerdvana delivery phases"

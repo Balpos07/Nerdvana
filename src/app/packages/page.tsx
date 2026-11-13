@@ -17,7 +17,7 @@ export default function PackagesPage() {
   ];
 
   return (
-    <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen bg-[#0A0A0A]">
+    <div className="pt-20 md:pt-28 pb-12 md:pb-20 min-h-screen bg-[#0A0A0A]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         <span className="section-label block mb-3 text-[var(--accent)]">
           PACKAGES // OFFERINGS
@@ -29,7 +29,7 @@ export default function PackagesPage() {
           Package names, pricing, scope, and add-ons are still awaiting final client approval. Until then, the page is structured around the PRD requirement for transparent, conversion-friendly package cards.
         </p>
 
-        <div className="mt-12 rounded-xs border border-[var(--line)] bg-[var(--surface)] p-6 md:p-8">
+        <div className="mt-8 md:mt-12 rounded-xs border border-[var(--line)] bg-[var(--surface)] p-5 md:p-8">
           <p className="text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-[var(--accent)] mb-4">
             Required package structure
           </p>

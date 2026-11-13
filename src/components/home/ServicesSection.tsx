@@ -13,10 +13,10 @@ export default function ServicesSection() {
   const activeDivision = serviceDivisions[activeDivisionIdx];
 
   return (
-    <section id="services" className="py-24 md:py-36 bg-[#0A0A0A] border-b border-[var(--line)]">
+    <section id="services" className="py-12 md:py-20 bg-[#0A0A0A] border-b border-[var(--line)]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* Section Header */}
-        <div className="border-b border-[var(--line)] pb-12 mb-12">
+        <div className="border-b border-[var(--line)] pb-6 mb-6 md:pb-8 md:mb-8">
           <span className="section-label block mb-3 text-[var(--accent)]">
             02 // BUSINESS ARCHITECTURE
           </span>
@@ -57,7 +57,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Active Division Meta Banner */}
-        <div className="p-8 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="p-5 md:p-8 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-8 md:mb-12 flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6">
           <div>
             <div className="flex items-center gap-2 text-[var(--accent)] text-xs font-mono font-bold uppercase mb-2">
               <span>ACTIVE DIVISION</span>
@@ -88,7 +88,7 @@ export default function ServicesSection() {
             return (
               <div
                 key={service.title}
-                className={`py-8 px-4 md:px-8 transition-colors duration-300 ${
+                className={`py-6 md:py-8 px-4 md:px-8 transition-colors duration-300 ${
                   isOpen ? "bg-[var(--card-bg)] rounded-xs" : "hover:bg-[var(--card-bg)]/40"
                 }`}
               >
@@ -126,7 +126,7 @@ export default function ServicesSection() {
                       transition={{ duration: 0.35, ease: [0.33, 1, 0.68, 1] }}
                       className="overflow-hidden"
                     >
-                      <div className="pt-8 pb-4 pl-8 md:pl-16">
+                      <div className="pt-6 md:pt-8 pb-4 pl-8 md:pl-16">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 border-t border-[var(--line)]">
                           {/* Capabilities */}
                           <div>

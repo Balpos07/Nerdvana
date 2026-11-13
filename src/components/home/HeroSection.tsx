@@ -12,10 +12,10 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[92vh] pt-32 pb-16 flex flex-col justify-end overflow-hidden bg-[var(--bg)]"
+      className="relative min-h-0 pt-20 pb-8 md:pt-24 md:pb-12 flex flex-col justify-end overflow-hidden bg-[var(--bg)]"
     >
       <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12">
-<div className="grid grid-cols-12 gap-x-6 gap-y-8 pb-10 border-b border-[var(--line)]">
+<div className="grid grid-cols-12 gap-x-6 gap-y-6 pb-8 md:gap-y-8 md:pb-10 border-b border-[var(--line)]">
           <div className="col-span-12 lg:col-span-3 flex flex-col justify-between">
             <div>
               <span className="section-label text-[var(--fg)]">Independent studio / 01</span>
@@ -32,18 +32,18 @@ export default function HeroSection() {
             <p className="mb-5 text-xs font-mono uppercase tracking-[0.18em] text-[var(--muted)]">
               Strategy / Technology / Creative
             </p>
-            <h1 className="max-w-[1100px] text-[clamp(3.25rem,7.5vw,8.25rem)] leading-[0.86] font-semibold tracking-[-0.065em] text-[var(--fg)]">
+            <h1 className="max-w-[1100px] text-[clamp(2.5rem,8vw,8.25rem)] leading-[0.9] font-semibold tracking-[-0.065em] text-[var(--fg)]">
               We build what moves business forward.
             </h1>
           </div>
         </div>
 
-        <div className="grid grid-cols-12 gap-x-6 pt-7 items-end">
+        <div className="grid grid-cols-12 gap-x-6 pt-5 md:pt-7 items-end">
           <div className="col-span-12 md:col-span-5 lg:col-span-4">
             <p className="max-w-md text-base md:text-lg leading-7 text-[var(--muted)]">
               {siteSettings.coreBrandStatement}
             </p>
-            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="mt-5 md:mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Link
                 href="/contacts"
                 className="inline-flex items-center gap-3 border-b border-[var(--fg)] pb-1.5 text-sm font-bold text-[var(--fg)] hover:text-[var(--accent-hover)] hover:border-[var(--accent-hover)] transition-colors"

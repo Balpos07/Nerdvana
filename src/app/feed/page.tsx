@@ -17,10 +17,10 @@ export default async function FeedPage() {
   const remainingPosts = posts.slice(1);
 
   return (
-    <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen">
+    <div className="pt-20 md:pt-28 pb-12 md:pb-20 min-h-screen">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* Editorial Header */}
-        <div className="border-b border-[var(--line)] pb-12 mb-16">
+        <div className="border-b border-[var(--line)] pb-6 mb-8 md:pb-8 md:mb-10">
           <span className="section-label block mb-3 text-[var(--accent)]">
             FEED // DISPATCHES
           </span>
@@ -36,7 +36,7 @@ export default async function FeedPage() {
 
         {/* Featured Big Story Hero */}
         {featuredPost && (
-          <div className="pb-20 border-b border-[var(--line)] mb-20">
+          <div className="pb-10 md:pb-12 border-b border-[var(--line)] mb-10 md:mb-12">
             <span className="section-label block mb-4 text-[var(--accent)]">
               FEATURED DISPATCH
             </span>
@@ -159,4 +159,3 @@ export default async function FeedPage() {
     </div>
   );
 }
-

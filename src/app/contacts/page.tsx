@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 
 export default function ContactsPage() {
   return (
-    <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen bg-[#0A0A0A]">
+    <div className="pt-20 md:pt-28 pb-12 md:pb-20 min-h-screen bg-[#0A0A0A]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* Header */}
-        <div className="border-b border-[var(--line)] pb-12 mb-16">
+        <div className="border-b border-[var(--line)] pb-6 mb-8 md:pb-8 md:mb-10">
           <span className="section-label block mb-3 text-[var(--accent)]">
             CONNECT // OFFICE
           </span>
@@ -31,11 +31,11 @@ export default function ContactsPage() {
         </div>
 
         {/* Lagos Office */}
-        <div className="grid grid-cols-1 gap-8 pb-16 border-b border-[var(--line)] mb-16">
+        <div className="grid grid-cols-1 gap-5 md:gap-8 pb-8 md:pb-10 border-b border-[var(--line)] mb-8 md:mb-10">
           {siteSettings.offices.map((office) => (
             <div
               key={office.name}
-              className="surface-panel p-8 border border-[var(--line)] bg-[var(--surface)] rounded-xs flex flex-col justify-between"
+              className="surface-panel p-5 md:p-8 border border-[var(--line)] bg-[var(--surface)] rounded-xs flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">

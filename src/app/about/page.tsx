@@ -36,15 +36,15 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen bg-[#0A0A0A]">
+    <div className="pt-20 md:pt-28 pb-12 md:pb-20 min-h-screen bg-[#0A0A0A]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* Header */}
-        <div className="border-b border-[var(--line)] pb-16 mb-20">
+        <div className="border-b border-[var(--line)] pb-8 mb-10 md:pb-10 md:mb-12">
           <span className="section-label block mb-3 text-[var(--accent)]">
             ABOUT // THE PARENT BRAND
           </span>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-[var(--fg)] mb-8">
-            Nerdvana
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-[var(--fg)] mb-8">
+            nerdvana
           </h1>
           <p className="text-xl md:text-2xl text-[var(--fg)] max-w-4xl font-normal leading-relaxed">
             {siteSettings.coreBrandStatement}
@@ -52,8 +52,8 @@ export default function AboutPage() {
         </div>
 
         {/* The Two Service Divisions Story */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-20 border-b border-[var(--line)] mb-20">
-          <div className="p-8 md:p-12 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 pb-10 md:pb-12 border-b border-[var(--line)] mb-10 md:mb-12">
+          <div className="p-5 md:p-12 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 text-[var(--muted)] text-xs font-mono font-bold uppercase mb-4">
                 {/* <Cpu className="w-4 h-4" /> */}
@@ -75,7 +75,7 @@ export default function AboutPage() {
             </Link>
           </div>
 
-          <div className="p-8 md:p-12 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between">
+          <div className="p-5 md:p-12 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 text-[var(--muted)] text-xs font-mono font-bold uppercase mb-4">
                 {/* <Sparkles className="w-4 h-4 text-[var(--accent)]" /> */}
@@ -99,7 +99,7 @@ export default function AboutPage() {
         </div>
 
         {/* Lagos Office */}
-        <div className="pb-20 border-b border-[var(--line)] mb-20">
+        <div className="pb-10 md:pb-12 border-b border-[var(--line)] mb-10 md:mb-12">
           <span className="section-label block mb-3 text-[var(--accent)]">
             NIGERIA // PRIMARY OFFICE
           </span>
@@ -137,7 +137,7 @@ export default function AboutPage() {
         </div>
 
         {/* Why Nerdvana */}
-        <div className="pb-20">
+        <div className="pb-10 md:pb-12">
           <span className="section-label block mb-3 text-[var(--accent)]">
             PHILOSOPHY // WHY NERDVANA
           </span>

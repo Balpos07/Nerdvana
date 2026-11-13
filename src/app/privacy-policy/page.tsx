@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen bg-[#0A0A0A]">
+    <div className="pt-20 md:pt-28 pb-12 md:pb-20 min-h-screen bg-[#0A0A0A]">
       <div className="max-w-[860px] mx-auto px-6 md:px-12">
         <div className="mb-8">
           <Link
@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
           </Link>
         </div>
 
-        <div className="border-b border-[var(--line)] pb-8 mb-12">
+        <div className="border-b border-[var(--line)] pb-6 mb-8 md:pb-8 md:mb-12">
           <span className="section-label block mb-2 text-[var(--accent)]">PRIVACY & PROTECTION</span>
           <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[var(--fg)]">
             Privacy Policy
@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </div>
 
-        <div className="prose prose-invert text-sm md:text-base text-[var(--muted)] leading-relaxed space-y-8">
+        <div className="prose prose-invert text-sm md:text-base text-[var(--muted)] leading-relaxed space-y-6 md:space-y-8">
           <section>
             <h2 className="text-xl font-bold uppercase text-[var(--fg)] mb-3">
               1. Information We Collect

@@ -10,8 +10,8 @@ import {
 } from "./types";
 
 export const siteSettings: SiteSettings = {
-  agencyName: "NERDVANA",
-  parentBrand: "NERDVANA",
+  agencyName: "nerdvana",
+  parentBrand: "nerdvana",
   tagline: "Technology. Creativity. Growth.",
   heroHeadline: "Build better. Grow faster. Stand out.",
   coreBrandStatement:
@@ -565,13 +565,13 @@ export const faqCategories: FAQCategoryItem[] = [
   },
   {
     category: "About Nerdvana",
-    question: "Who do you work with?",
+    question: "Who do we work with?",
     answer:
       "We partner with startups establishing their initial presence, small and medium businesses modernizing their operations, growth-stage scaleups expanding infrastructure, and forward-thinking organizations requiring specialized cross-disciplinary expertise.",
   },
   {
     category: "Services",
-    question: "What technology and branding services do you provide?",
+    question: "What technology and branding services do we provide?",
     answer:
       "Under Nerdvana Technologies, we engineer Cloud & Infrastructure, DevOps & Platform Engineering, Software Engineering, AI & Automation, and Reliability & Security. Under Figures by Nerdvana, we deliver Branding, UI/UX Design, Web Design & Development, Creative Production, and Marketing & Growth.",
   },

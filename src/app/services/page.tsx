@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="pt-28 md:pt-36 pb-24 md:pb-36 min-h-screen bg-[#0A0A0A]">
+    <div className="pt-20 md:pt-28 pb-12 md:pb-20 min-h-screen bg-[#0A0A0A]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {/* Header */}
-        <div className="border-b border-[var(--line)] pb-12 mb-16">
+        <div className="border-b border-[var(--line)] pb-6 mb-8 md:pb-8 md:mb-10">
           <span className="section-label block mb-3 text-[var(--accent)]">
             CAPABILITIES // BUSINESS DIVISIONS
           </span>
@@ -39,8 +39,8 @@ export default function ServicesPage() {
         </div>
 
         {/* Division 1: Nerdvana Technologies */}
-        <div id="technologies" className="mb-24 pt-4">
-          <div className="p-8 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div id="technologies" className="mb-10 md:mb-16 pt-4">
+          <div className="p-5 md:p-8 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-6 md:mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6">
             <div>
               <div className="flex items-center gap-2 text-[var(--accent)] text-xs font-mono font-bold uppercase mb-2">
                 {/* <Cpu className="w-4 h-4" /> */}
@@ -60,7 +60,7 @@ export default function ServicesPage() {
               <div
                 key={svc.title}
                 id={svc.title.toLowerCase().replace(/[^a-z0-9]/g, "-")}
-                className="p-8 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between group hover:border-[var(--accent)] transition-all"
+                className="p-5 md:p-8 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between group hover:border-[var(--accent)] transition-all"
               >
                 <div>
                   <h3 className="text-xl font-bold uppercase tracking-tight text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors mb-3">
@@ -114,8 +114,8 @@ export default function ServicesPage() {
         </div>
 
         {/* Division 2: Figures by Nerdvana */}
-        <div id="figures" className="mb-24 pt-8 border-t border-[var(--line)]">
-          <div className="p-8 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div id="figures" className="mb-10 md:mb-16 pt-6 md:pt-8 border-t border-[var(--line)]">
+          <div className="p-5 md:p-8 rounded-xs border border-[var(--line)] bg-[var(--surface)] mb-6 md:mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6">
             <div>
               <div className="flex items-center gap-2 text-[var(--muted)] text-xs font-mono font-bold uppercase mb-2">
                 {/* <Sparkles className="w-4 h-4 text-[var(--accent)]" /> */}
@@ -135,7 +135,7 @@ export default function ServicesPage() {
               <div
                 key={svc.title}
                 id={svc.title.toLowerCase().replace(/[^a-z0-9]/g, "-")}
-                className="p-8 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between group hover:border-[var(--accent)] transition-all"
+                className="p-5 md:p-8 rounded-xs border border-[var(--line)] bg-[var(--surface)] flex flex-col justify-between group hover:border-[var(--accent)] transition-all"
               >
                 <div>
                   <h3 className="text-xl font-bold uppercase tracking-tight text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors mb-3">
@@ -191,4 +191,3 @@ export default function ServicesPage() {
     </div>
   );
 }
-

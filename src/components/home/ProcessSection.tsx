@@ -17,9 +17,9 @@ export default function ProcessSection() {
       id="process"
       className="relative border-b border-[var(--line)] bg-[#0A0A0A]"
     >
-      <div className="flex min-h-[100svh] items-center">
-        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-10 md:py-16">
-          <div className="border-b border-[var(--line)] pb-6 md:pb-8 mb-5 md:mb-8">
+      <div className="flex items-center">
+        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-8 md:py-12">
+          <div className="border-b border-[var(--line)] pb-5 md:pb-6 mb-4 md:mb-6">
             <span className="section-label block mb-3 text-[var(--accent)]">
               07 // METHODOLOGY
             </span>
